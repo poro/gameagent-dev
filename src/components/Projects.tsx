@@ -21,6 +21,13 @@ const projects = [
     url: "https://naive.game-agents.com",
   },
   {
+    name: "markollila.com",
+    desc: "Personal site. Director of Endless Games and Learning Lab at ASU. Speaker, builder, podcast host.",
+    tags: ["Personal", "EGLL", "ASU"],
+    status: "live",
+    url: "https://markollila.com",
+  },
+  {
     name: "OpenClaw / Dufus",
     desc: "The AI agent framework powering all of this. Claude-based, tool-using, always online.",
     tags: ["AI Agent", "Claude", "TypeScript"],
