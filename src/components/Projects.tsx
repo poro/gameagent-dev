@@ -18,7 +18,7 @@ const projects = [
     desc: "AI-native game engine. Natural language to playable games. Built at ASU's Endless Games Lab.",
     tags: ["Game Engine", "AI", "TypeScript"],
     status: "building",
-    url: "https://naive.game-agents.com",
+    url: "https://naive.dev",
   },
   {
     name: "markollila.com",
