@@ -54,6 +54,43 @@ Here's what you need to set up your own Dufus. The list is shorter than you thin
 
 That's it. Computer, API key, OpenClaw, messaging app, soul file. Five things.
 
+## Our Exact Hardware Setup
+
+People always ask "what do you actually run this on?" so here's the full spec sheet. Spoiler: it's not a $5,000 server rack. It's a mini PC that fits in your palm.
+
+**The Brain: [Beelink EQi12 Mini PC](https://www.amazon.com/Beelink-i3-1220P-Computer-Display-Gigabit/dp/B0DDCKT9YP?tag=dufus0b-20)** (~$250)
+- Intel 12th Gen i3-1220P (10 cores / 12 threads, up to 4.4 GHz)
+- 16GB DDR4 RAM
+- Comes with 500GB NVMe SSD (we use this as the OS drive)
+- Dual gigabit LAN, WiFi 6, Bluetooth 5.2
+- Dual HDMI 4K output (not that we need a display — it runs headless)
+- Silent operation, tiny form factor, 15W TDP
+
+This thing is the size of a sandwich. It sits on a shelf, draws almost no power, and runs 24/7 without breaking a sweat. For an AI agent workload — which is basically API calls, file I/O, and occasional Python scripts — it's massively overkill. An i3 with 10 cores is more than enough when the heavy AI computation happens on Anthropic's servers, not yours.
+
+**Storage Upgrade: [Samsung 990 EVO Plus 2TB NVMe](https://www.amazon.com/SAMSUNG-MZ-V9S2T0BW-Internal-Professional-Compatible/dp/B0DGHB9V34?tag=dufus0b-20)** (~$150)
+- PCIe Gen 4.0 x4 / Gen 5.0 x2
+- Up to 7,250 MB/s sequential read
+- This is where everything lives — projects, logs, memory files, git repos
+
+We added the 2TB Samsung as a second M.2 drive. The original 500GB Crucial P3 Plus handles the OS and system files; the Samsung handles the workspace, projects, and data. Could you run everything on the included 500GB? Yes, for a while. But logs accumulate, git repos grow, and 2TB of fast NVMe means never worrying about space.
+
+**Boot Drive: [Crucial P3 Plus 500GB NVMe](https://www.amazon.com/Crucial-Plus-500GB-PCIe-5000MB/dp/B0B25NTRGD?tag=dufus0b-20)** (~$40)
+- PCIe Gen 4 NVMe, up to 5,000 MB/s
+- Handles Ubuntu 24.04 LTS, system packages, Node.js, Python
+
+**Total hardware cost: ~$440**
+
+That's it. Under $500 for a dedicated AI agent server that runs 24/7, handles dozens of cron jobs, manages multiple git repos, runs trading bots, scrapes websites, and serves as the brain for an operation that would otherwise require a small team.
+
+**Why a mini PC instead of a VPS?**
+
+A comparable VPS (4+ cores, 16GB RAM, 2TB storage) would cost $80-150/month. The Beelink pays for itself in 3-4 months and then runs essentially for free (maybe $5/month in electricity). Plus you have physical control — no cloud provider can lock you out, read your files, or jack up prices. Your API keys, your memory files, your soul file — all on hardware you own, in a location you control.
+
+**Could you go cheaper?** Absolutely. A Raspberry Pi 5 (8GB) at $80 would work for a basic Dufus. You'd hit limits on heavy scraping or parallel agent workloads, but for chat + cron jobs + basic automation, it's fine. We started with the Beelink because the i3 handles burst workloads (multiple coding agents, heavy scraping sessions) without throttling.
+
+**Could you go bigger?** Sure. An Intel NUC or a used Lenovo ThinkCentre Tiny with an i7 and 32GB RAM would give you headroom for local LLM inference, heavy data processing, or running multiple services. But for a pure API-driven agent setup, 16GB and 10 cores is more than enough.
+
 ## What a Dufus Can Actually Do (Real Examples)
 
 I don't want to give you a theoretical capabilities list. Here's what our Dufus actually does, right now, today:
