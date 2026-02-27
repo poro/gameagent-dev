@@ -91,6 +91,28 @@ A comparable VPS (4+ cores, 16GB RAM, 2TB storage) would cost $80-150/month. The
 
 **Could you go bigger?** Sure. An Intel NUC or a used Lenovo ThinkCentre Tiny with an i7 and 32GB RAM would give you headroom for local LLM inference, heavy data processing, or running multiple services. But for a pure API-driven agent setup, 16GB and 10 cores is more than enough.
 
+### "Why Not a Mac Mini?"
+
+This comes up every time someone sees our setup. The M4 Mac Mini is the darling of the AI home server crowd right now — and honestly, it's a great machine. The M4 chip is fast, the unified memory architecture is elegant, it's whisper-quiet, and the form factor is beautiful. If you're an Apple person, you're probably already reaching for your wallet.
+
+We went Linux instead. Here's why:
+
+**Native Linux means no friction.** OpenClaw, Docker, Node.js, Python, git, cron, systemd, ufw, fail2ban — the entire agent stack is built for Linux. On macOS, most of this works, but you're always one Homebrew update away from something breaking. `launchd` instead of `systemd`. Homebrew Python conflicting with system Python. Docker running in a VM layer instead of natively. SSH server disabled by default. It all works... with caveats. On Ubuntu, it just works.
+
+**Server tools assume Linux.** Cloudflare tunnels, Let's Encrypt, reverse proxies, system monitoring — the documentation, the Stack Overflow answers, the tutorials all assume Linux. When something breaks at 2 AM and your Dufus is trying to debug it, you want it working with the OS that has the most answers, not translating macOS quirks.
+
+**Cost-to-capability ratio.** The M4 Mac Mini starts at $499 for 16GB. Our Beelink was $250 for the same RAM, comparable multi-core performance for server workloads, and we added a 2TB NVMe for $150. Total: $440 vs $499 (and the Mac Mini's base SSD is only 256GB — the 512GB upgrade pushes it to $599). For a headless server running API calls, the M4's GPU advantage is irrelevant.
+
+**No Apple tax on upgrades.** Need more storage? Pop open the Beelink and drop in a standard M.2 NVMe. On a Mac Mini, you're soldering at the factory or paying Apple's storage premium. Need more RAM later? The Beelink uses standard DDR4 SODIMMs. The Mac Mini's unified memory is fixed at purchase.
+
+**macOS isn't designed to be headless.** Apple assumes there's a human with a keyboard and a display. Running macOS as a headless server means fighting auto-sleep, screen saver locks, and update prompts that expect someone to click "Restart." Linux with `systemd` was built for exactly this use case — start on boot, run forever, restart on failure, no GUI needed.
+
+**What you give up:** The Mac Mini M4 has one genuine advantage for AI work — the Neural Engine and unified memory make it excellent for running *local* LLMs (Ollama, llama.cpp). If you want to run a 7B parameter model locally without an API, the M4 will outperform the Beelink's i3 handily. The M4's memory bandwidth crushes similarly-priced Intel boxes for inference workloads.
+
+But here's the thing: a Dufus doesn't run models locally. The heavy computation happens on Anthropic's servers (or OpenAI's, or Google's). Your machine just needs to run the agent framework, make API calls, execute scripts, and manage files. For that workload, the i3-1220P with 10 cores is genuinely overkill. You're paying for compute you won't use.
+
+**The honest take:** If you already own a Mac Mini and want to get started fast, use it. It works. OpenClaw runs on macOS. You'll hit some rough edges with server tooling, but nothing insurmountable. If you're buying hardware specifically for a Dufus, save $200 and get the Beelink. Put those savings toward API tokens — that's where the real capability comes from.
+
 ## What a Dufus Can Actually Do (Real Examples)
 
 I don't want to give you a theoretical capabilities list. Here's what our Dufus actually does, right now, today:
