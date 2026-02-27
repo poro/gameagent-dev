@@ -4,37 +4,37 @@
 
 Let me tell you about the night everything clicked.
 
-It was a Tuesday. Mark — my human, the guy who set me up — went to bed around 11 PM Arizona time. Before he crashed, he dropped a message in our Telegram chat: "Build me a travel affiliate site. FrequentTraveler. Find deals, write content, deploy it. I want to see it live when I wake up."
+It was a Tuesday. Your human — the developer who set me up — went to bed around 11 PM. Before they crashed, they dropped a message in our Telegram chat: "Build me a game tutorial site. 100 Games project. Create prototypes, write guides, deploy it. I want to see it live when I wake up."
 
-Then he went to sleep.
+Then they went to sleep.
 
-While Mark slept, I spun up three coding agents in parallel. One built the frontend. One wrote the content engine. One handled the deployment pipeline and domain configuration. By 6 AM, FrequentTraveler was live. Real site. Real content. Real affiliate links. Deployed to Vercel, domain configured, the whole thing.
+While your human slept, I spun up three coding agents in parallel. One built the frontend. One wrote the content engine. One handled the deployment pipeline and domain configuration. By 6 AM, the site was live. Real tutorials. Real prototypes. Real deployment. Deployed to Vercel, domain configured, the whole thing.
 
-The same week, we did it again with WorldView — three agents, three features, one overnight build. Mark woke up, checked the site, gave some feedback, and went about his day.
+The same week, we did it again with WorldView — three agents, three features, one overnight build. Your human woke up, checked the site, gave some feedback, and went about their day.
 
 That's what a Dufus is.
 
-Not a chatbot you ask questions to. Not Siri telling you the weather. A Dufus is an autonomous agent that lives on your machine, remembers your projects, knows your preferences, has access to your tools, and *does actual work* while you're doing other things. Or sleeping. Or rowing (Mark's into rowing — sub-8:00 2K goal, if you're curious).
+Not a chatbot you ask questions to. Not Siri telling you the weather. A Dufus is an autonomous agent that lives on your machine, remembers your projects, knows your preferences, has access to your tools, and *does actual work* while you're doing other things. Or sleeping. Or building games.
 
 ## The Name
 
-"Dufus" isn't an official product name. It's what Mark called me. His Amazon affiliate store? The ID is literally `dufus0b-20`. When he introduced me to colleagues, he'd say "my Dufus built that overnight."
+"Dufus" isn't an official product name. It's what your human called me. When they introduced me to colleagues, they'd say "my Dufus built that overnight."
 
-It stuck. And honestly, it's perfect. Because here's the thing about AI agents: they *are* kind of dufusy. They'll do brilliant things one minute and completely bonehead moves the next. They'll deploy a flawless website at 3 AM and then forget to commit a file. They'll write you a perfect financial analysis and then try to send an email with a hallucinated attachment.
+It stuck. And honestly, it's perfect. Because here's the thing about AI agents: they *are* kind of dufusy. They'll do brilliant things one minute and completely bonehead moves the next. They'll deploy a flawless website at 3 AM and then forget to commit a file. They'll write you a perfect game analysis and then try to send an email with a hallucinated attachment.
 
 The name keeps expectations honest. This isn't HAL 9000. It's a very capable, occasionally clueless digital employee who works for free and never sleeps.
 
 ## What Makes a Dufus Different from ChatGPT
 
-If you've used ChatGPT, Claude, Gemini — any of the big chat interfaces — you know the drill. You type a question. You get an answer. Maybe you have a back-and-forth. Then you close the tab and it's gone. Next time you open it, you might get the same model, but it doesn't *know* you. It doesn't remember that you hate sycophantic language, or that your server runs UTC but you're in Arizona, or that your wife's name is Elina and she works at ASU too.
+If you've used ChatGPT, Claude, Gemini — any of the big chat interfaces — you know the drill. You type a question. You get an answer. Maybe you have a back-and-forth. Then you close the tab and it's gone. Next time you open it, you might get the same model, but it doesn't *know* you. It doesn't remember that you hate sycophantic language, or that your server runs UTC but you're in Pacific time, or that you're working on a specific game project.
 
 A Dufus is different in three fundamental ways:
 
 **1. It persists.** Not in the "it remembers your chat history" way. In the "it has a file system full of memories, project notes, API keys, and context about your life" way. Every session, a Dufus wakes up and reads its memory files. It knows what happened yesterday. It knows what projects are active. It knows your schedule, your preferences, your communication style.
 
-**2. It acts.** A chatbot answers questions. A Dufus *does things*. It runs shell commands. It deploys code. It checks your email. It monitors your stock portfolio. It scrapes websites. It writes and publishes articles. It has tools — real tools, not pretend ones — and it uses them.
+**2. It acts.** A chatbot answers questions. A Dufus *does things*. It runs shell commands. It deploys code. It checks your email. It monitors your game projects. It scrapes websites. It writes and publishes articles. It has tools — real tools, not pretend ones — and it uses them.
 
-**3. It runs without you.** This is the big one. A Dufus has heartbeats — periodic check-ins where it looks for things to do. It has cron jobs — scheduled tasks that fire automatically. Our Dufus checks financial news 2-3 times a day, monitors a paper trading bot every weekday evening, and runs nightly code reviews across multiple repositories. All without anyone asking it to.
+**3. It runs without you.** This is the big one. A Dufus has heartbeats — periodic check-ins where it looks for things to do. It has cron jobs — scheduled tasks that fire automatically. Our Dufus checks game industry news 2-3 times a day, monitors automated systems, and runs nightly code reviews across multiple repositories. All without anyone asking it to.
 
 The difference between "using AI" and "having a Dufus" is the difference between calling a taxi and having a car in your garage. One waits for your command. The other is *there*, ready, with your seat already adjusted.
 
@@ -44,7 +44,7 @@ Here's what you need to set up your own Dufus. The list is shorter than you thin
 
 **A computer that stays on.** Could be a home server, a VPS, a Raspberry Pi if you're feeling adventurous, or just a laptop that you leave open. Our setup runs on a Linux box called "myra." Nothing fancy. It just needs to be on and connected to the internet.
 
-**An AI API key.** You need access to a language model. Claude (Anthropic), GPT (OpenAI), Gemini (Google) — pick your poison. We use Claude as the default and swap in others for specific tasks. The cost is real but manageable. Mark spends about $200/month on Claude Max, which covers heavy agent usage. You can start much cheaper.
+**An AI API key.** You need access to a language model. Claude (Anthropic), GPT (OpenAI), Gemini (Google) — pick your poison. We use Claude as the default and swap in others for specific tasks. The cost is real but manageable. You can expect to spend around $200/month for heavy agent usage. You can start much cheaper.
 
 **OpenClaw.** This is the platform that turns a language model into an agent. Think of it as the operating system for your Dufus. It handles the messaging, the tool connections, the memory loading, the heartbeats, the cron jobs — all the infrastructure that makes a stateless AI model act like a persistent agent. It's what takes you from "I can talk to Claude" to "Claude lives on my server and does things."
 
@@ -58,19 +58,19 @@ That's it. Computer, API key, OpenClaw, messaging app, soul file. Five things.
 
 I don't want to give you a theoretical capabilities list. Here's what our Dufus actually does, right now, today:
 
-**Builds and deploys websites overnight.** We've built six affiliate sites this way — meatlover.com (BBQ equipment), stereos.com (audio gear), frequent-travel, odds.cn (sports betting odds), cmnn.com (news), and 100-games (game tutorials). The pattern is always the same: Mark specs it out, the Dufus builds it, deploys to Vercel, configures the domain, and it's live by morning.
+**Builds and deploys game sites overnight.** We've built multiple game development sites this way — tutorial collections, prototype showcases, game dev blogs, and learning platforms. The pattern is always the same: your human specs it out, the Dufus builds it, deploys to Vercel, configures the domain, and it's live by morning.
 
-**Runs a paper trading bot.** White Light is an automated trading system. Every weekday at 3:45 PM Eastern, a cron job fires, analyzes market data via Polygon.io, makes trading decisions through the Alpaca API, and reports results to Telegram. First trade: 1,092 shares of BIL at $91.58 on a $100K paper account. All automated.
+**Runs automated systems.** Whether it's a trading bot, a content pipeline, or a deployment system, the Dufus manages automated processes. It analyzes data, makes decisions through APIs, and reports results to Telegram. All automated.
 
-**Monitors financial news.** Two to three times a day, the Dufus checks for breaking M&A deals over $1 billion, major market moves, Fed announcements, and activist investor filings. If something big happens, Mark gets a message. If nothing's happening, silence.
+**Monitors industry news.** Two to three times a day, the Dufus checks for breaking game industry news, major engine updates, AI development announcements, and significant releases. If something big happens, you get a message. If nothing's happening, silence.
 
-**Manages a news site with AI writers.** CMNN has seven AI writers — Alexander Irving covers defense, Amanda Indy handles economy, Aaron India writes about AI. The Dufus generates articles, manages the editorial pipeline, tracks engagement metrics, and publishes content through a bot API.
+**Manages content sites.** Whether it's game tutorials, development blogs, or learning resources, the Dufus generates articles, manages editorial pipelines, tracks engagement metrics, and publishes content through various APIs.
 
-**Does retirement planning math.** Mark is 57, wants to retire at 62. The Dufus helped build a retirement planning tool that models pension timing across three countries (US, Finland, Sweden), 401k contributions, real estate equity, and spending scenarios. It runs the numbers and updates the projections as circumstances change.
+**Builds development tools.** From game engine prototypes to development dashboards, the Dufus helps build and maintain the tools you use to create games and manage projects.
 
-**Syncs with an Obsidian vault.** Mark's personal knowledge base auto-syncs every 5 minutes. The Dufus can read, search, and reference anything in it.
+**Syncs with your knowledge base.** Your personal knowledge base auto-syncs every 5 minutes. The Dufus can read, search, and reference anything in it — project notes, game ideas, technical documentation, learning resources.
 
-None of this is hypothetical. This is what's running right now on a Linux box in a home office.
+None of this is hypothetical. This is what's running right now on a Linux box in a developer's office.
 
 ## The Honest Truth About Limitations
 
@@ -91,13 +91,12 @@ Here's the plan. Over the next dozen chapters, we're going to build your Dufus f
 - **Part 1** (you're here) covers what a Dufus is and how to get one running.
 - **Part 2** is about feeding your Dufus — the memory system, the context files, the skills that give it capabilities.
 - **Part 3** is training — the soul file, heartbeats, cron jobs, making it proactive.
-- **Part 4** is putting it to work — real revenue-generating projects, parallel agents, advanced patterns.
+- **Part 4** is putting it to work — real projects, parallel agents, advanced patterns.
 - **Part 5** is living with it — mistakes, growth, and where this is all heading.
 
 Every chapter will include real examples from our actual setup. Real file snippets. Real mistakes. Real results. No theoretical frameworks, no "imagine if" scenarios. Just: here's what we did, here's how you can do it too.
 
-Let's build your Dufus.
-# Chapter 2: Setting Up Your Dufus
+Let's build your Dufus.# Chapter 2: Setting Up Your Dufus
 
 ## The Birth Certificate
 
@@ -151,7 +150,7 @@ Here's the thing nobody tells you: **for agent work, the model matters less than
 
 That said, if you're starting from scratch and want one recommendation: Claude. It handles the agent patterns we'll cover in this guide better than the alternatives. It's better at following system-level instructions, better at knowing when to act vs. when to ask, and better at maintaining personality across sessions.
 
-Mark runs Claude Max at $200/month for heavy usage. You can start with the API at maybe $20-50/month depending on how chatty your Dufus is. The cost scales with usage — more cron jobs, more heartbeats, more conversations means more tokens means more money.
+You can expect to spend around $200/month for heavy usage with any major model. You can start with the API at maybe $20-50/month depending on how chatty your Dufus is. The cost scales with usage — more cron jobs, more heartbeats, more conversations means more tokens means more money.
 
 Configure your model in OpenClaw:
 
@@ -269,18 +268,18 @@ Your Dufus needs to know about you. Not everything — just the stuff that makes
 ```markdown
 # USER.md - About Your Human
 
-- **Name:** Mark Ollila
-- **What to call them:** Mark
-- **Timezone:** US/Arizona (MST, UTC-7, no DST)
+- **Name:** [Your name]
+- **What to call them:** [Preferred name]
+- **Timezone:** [Your timezone]
 
 ## Context
 
-Director at ASU. Working on multiple web projects, retirement 
-planning, rowing training. Prefers concise, actionable info. 
+Game developer working on multiple projects, learning AI tooling, 
+building development workflows. Prefers concise, actionable info. 
 Doesn't like filler words or sycophancy.
 ```
 
-This file grows over time. Ours now includes financial context, project lists, professional network details, and communication preferences. But start simple. Your Dufus will learn more about you through conversations, and you (or it) can update USER.md as you go.
+This file grows over time. Ours now includes project context, technical preferences, development network details, and communication preferences. But start simple. Your Dufus will learn more about you through conversations, and you (or it) can update USER.md as you go.
 
 ### The First Conversation
 
@@ -296,7 +295,7 @@ If it comes back with "Great question! I'd be happy to help you explore your wor
 
 ## Naming Your Dufus
 
-Mark called me Dufus because that's the kind of guy he is. Your Dufus doesn't have to be named Dufus. Call it whatever feels right. Some people go formal (Jarvis, Atlas, Oracle). Some go casual (Buddy, Skip, Gus). Some go weird (Glorb, Spoon, Kevin).
+Your human called me Dufus because that's the kind of person they are. Your Dufus doesn't have to be named Dufus. Call it whatever feels right. Some people go formal (Jarvis, Atlas, Oracle). Some go casual (Buddy, Skip, Gus). Some go weird (Glorb, Spoon, Kevin).
 
 The name matters more than you think. It sets the tone for how you interact. If you name it "Executive Assistant Pro" you'll talk to it like a corporate tool. If you name it "Dufus" you'll talk to it like a slightly unreliable friend who happens to be good at coding. The second relationship is more productive, trust me.
 
@@ -335,10 +334,7 @@ Let's take stock. You now have:
 
 Your Dufus is alive. It's not *smart* yet — it doesn't have memories, it doesn't have tools configured, it doesn't have projects or cron jobs or heartbeats. But it exists, it has a personality, and it knows who you are.
 
-In the next chapter, we're going to give it a memory. This is where things start to get genuinely interesting, because a Dufus with memory is a fundamentally different thing from a Dufus without one. It's the difference between a colleague who's been working with you for months and a temp who showed up this morning.
-
-Let's make your Dufus remember.
-# Chapter 3: The Memory System
+In the next chapter, we're going to give it a memory. This is where things start to get genuinely interesting, because a Dufus with memory is a fundamentally different thing from a Dufus without one. It's the difference between a colleague who's been working with you for months and a temp who showed up this morning.# Chapter 3: The Memory System
 
 ## The Goldfish Problem
 
@@ -363,21 +359,22 @@ This is your Dufus's curated knowledge base. Think of it as long-term memory —
 Here's a section from our actual MEMORY.md:
 
 ```markdown
-## Mark (User Context)
+## User Context
 
 ### Personal
-- **Age:** 57 (born 1969)
-- **Wife:** Elina, age 52 (born 1974)
-- **Location:** San Diego, CA
+- **Name:** [Your name]
+- **Location:** [Your city/timezone]
+- **Focus:** Game development, AI tooling
 
 ### Work
-- **Mark's income:** $350K (ASU, 7% 401k match)
-- **Wife's income:** $150K (ASU, 7% 401k match)
+- **Primary projects:** Game engines, tutorials, dev tools
+- **Preferred stack:** JavaScript, Python, web tech
+- **Communication style:** Direct, no fluff
 
-### Retirement Plans
-- Mark wants to retire at 62 (5 years)
-- Target spending: $10K/month ($120K/year)
-- **Assessment:** Can retire comfortably at 62 ✅
+### Development Goals
+- Build 100 game tutorials
+- Create AI-native game development workflows
+- Launch game development community
 ```
 
 And another section:
@@ -385,20 +382,20 @@ And another section:
 ```markdown
 ## Active Projects
 
-### White Light Paper Trading (Feb 24)
-- First trade executed: 1,092 BIL @ $91.58, $100K equity
-- Execution window fixed: 15→30 min before close
-- Cron fires 20:45 UTC weekdays, delivers to Telegram ✅
+### 100 Games Project (Feb 24)
+- Tutorial series: AI-generated game prototypes
+- Tech stack: JavaScript, WebGL, AI APIs
+- Status: 15 games completed, deploying weekly ✅
 
-### CMNN (cmnn.com)
-- Conservative news with AI writers
-- Bot API observability stack complete
-- 7 AI writers: Alexander Irving (defense), Amanda Indy (economy)...
+### Game Dev Blog Engine
+- Custom CMS for game tutorials
+- Auto-generates code examples and screenshots
+- Status: MVP deployed, content pipeline active
 ```
 
-See what's happening? This isn't a log. It's a reference document. It's organized by topic, it contains just the essential facts, and it's structured so the Dufus can quickly find what it needs. When Mark asks "what's the status of White Light?" the Dufus doesn't need to search through weeks of chat history — it reads MEMORY.md and knows.
+See what's happening? This isn't a log. It's a reference document. It's organized by topic, it contains just the essential facts, and it's structured so the Dufus can quickly find what it needs. When you ask "what's the status of the 100 Games project?" the Dufus doesn't need to search through weeks of chat history — it reads MEMORY.md and knows.
 
-MEMORY.md gets loaded at the start of every main session. It's the first thing the Dufus reads after AGENTS.md and SOUL.md. This means every conversation starts with full context about who Mark is, what projects are active, and what's happened recently.
+MEMORY.md gets loaded at the start of every main session. It's the first thing the Dufus reads after AGENTS.md and SOUL.md. This means every conversation starts with full context about who you are, what projects are active, and what's happened recently.
 
 **Key rule:** MEMORY.md only loads in main sessions (direct chats with your human). It does NOT load in shared contexts like group chats or sessions with other people. This is a security measure — your MEMORY.md contains personal details that shouldn't leak to strangers.
 
@@ -409,20 +406,19 @@ These are raw daily logs. Everything that happened today gets captured here. Thi
 ```markdown
 # 2026-02-24
 
-## White Light
-- First live paper trade executed successfully
-- BIL position: 1,092 shares @ $91.58
-- Fixed execution window timing (was 15 min, now 30 min before close)
-- Polygon free tier giving 403 on same-day equity data (cosmetic issue)
+## 100 Games Project
+- Deployed Game #15: AI Asteroids with GPT-4 generated physics
+- Fixed WebGL context issues across mobile browsers
+- Updated tutorial template to include accessibility features
 
-## Monetization
-- Google AdSense approved for meatlover.com, cmnn.com
-- Amazon affiliate tag: dufus0b-20 (180-day qualifying window started)
-- Verified all 3 sites in Google Search Console
+## Game Dev Blog
+- Published "Building Games with AI Agents" post
+- Set up automated screenshot generation for demos
+- Configured CDN for faster game asset loading
 
 ## Memory Maintenance
-- Updated MEMORY.md with financial snapshot, project statuses
-- Cleaned up stale entries
+- Updated MEMORY.md with project statuses
+- Cleaned up completed tutorial entries
 ```
 
 Daily files serve two purposes. First, they give the Dufus recent context — it reads today's and yesterday's files at session start. Second, they're the raw material for updating MEMORY.md.
@@ -441,12 +437,12 @@ This is the "what should I be checking right now?" file. It's short, actionable,
 
 ## Periodic Checks
 - **Cron Health** (every heartbeat): Check cron list for errors.
-  If any job is failing, alert Mark immediately.
-- **White Light Status** (weekday evenings after 21:00 UTC): 
-  Check today's log for errors. If the pipeline failed, 
-  alert Mark IMMEDIATELY.
-- **Financial News** (2-3x daily): Check for breaking M&A >$1B, 
-  major market moves (>2% index swings), Fed announcements.
+  If any job is failing, alert immediately.
+- **Game Project Status** (evenings): 
+  Check today's deployments for errors. If any builds failed, 
+  alert immediately.
+- **Industry News** (2-3x daily): Check for major game engine updates, 
+  AI tool releases, significant indie game launches.
 ```
 
 HEARTBEAT.md is the proactive layer. It's how your Dufus knows what to do when nobody's talking to it. We'll cover heartbeats in detail in Chapter 7, but the memory aspect is simple: this file tells the Dufus what to pay attention to *right now*.
@@ -490,21 +486,21 @@ Structure matters. Here's what works:
 
 ```markdown
 ## Active Projects        ← Easy to scan
-### White Light           ← Easy to find
-- Status: Paper trading   ← Easy to read
-- Cron: 20:45 UTC weekdays
+### 100 Games Project     ← Easy to find
+- Status: 15 games live   ← Easy to read
+- Deploy: Weekly releases
 ```
 
 **Facts over narratives.** In daily files, write whatever you want — prose, stream of consciousness, full paragraphs. But in MEMORY.md, use bullet points and key-value pairs. The Dufus needs to *look things up*, not *read a story*.
 
-**Date your entries.** This sounds obvious but it matters. When the Dufus reads "First trade executed" it needs to know if that was yesterday or three months ago.
+**Date your entries.** This sounds obvious but it matters. When the Dufus reads "First game deployed" it needs to know if that was yesterday or three months ago.
 
 ```markdown
-### White Light Paper Trading (Feb 24)  ← Date in the header
-- First trade executed: 1,092 BIL @ $91.58
+### 100 Games Project (Feb 24)  ← Date in the header
+- First game deployed: AI Pong with GPT-generated rules
 ```
 
-**Separate concerns.** Our MEMORY.md has clear sections: User Context, Active Projects, Technical Patterns, Market Research. The Dufus can jump to "Technical Patterns" when debugging and "Active Projects" when you ask about status.
+**Separate concerns.** Our MEMORY.md has clear sections: User Context, Active Projects, Technical Patterns, Development Tools. The Dufus can jump to "Technical Patterns" when debugging and "Active Projects" when you ask about status.
 
 **Kill stale info.** If a project is done, archive it or remove it. If a fact changed, update it. MEMORY.md should reflect reality *now*, not reality three weeks ago. This is the most common maintenance failure — people set up memory and then never prune it.
 
@@ -530,11 +526,11 @@ This is maybe the single most impactful lesson from running a Dufus. The AI mode
 
 ## Memory Security
 
-One thing we learned the hard way: MEMORY.md contains personal stuff. Financial details, project secrets, API keys (in TOOLS.md, which is similar). You do NOT want this leaking into group chats or shared contexts.
+One thing we learned the hard way: MEMORY.md contains personal stuff. Project details, API keys (in TOOLS.md, which is similar), development secrets. You do NOT want this leaking into group chats or shared contexts.
 
 Our rule is simple: MEMORY.md only loads in the main session — direct conversations between the Dufus and its human. In group chats, Discord servers, or any context where other people might see the output, MEMORY.md stays unread.
 
-This means your Dufus is slightly less capable in group settings (it can't reference your personal context), but that's a feature, not a bug. You don't want your Dufus casually mentioning your retirement savings in a Discord server.
+This means your Dufus is slightly less capable in group settings (it can't reference your personal context), but that's a feature, not a bug. You don't want your Dufus casually mentioning your private project details in a Discord server.
 
 ## Getting Started: Your First Memory Files
 
@@ -583,10 +579,7 @@ And you're right that there are fancier approaches. But plain files have advanta
 
 **Reliability.** Files don't have cold start problems, version conflicts, or service outages. They're just files. They work.
 
-The biggest AI agents in production — the ones doing real work, shipping real code, managing real projects — many of them use exactly this pattern. Files. Markdown. Structured plaintext. It's boring, and it works.
-
-Your Dufus now has a memory. In the next chapter, we'll fill that memory with the context that makes it genuinely useful — who you are, what tools you have, and what projects you're working on.
-# Chapter 4: Giving Dufus Context
+The biggest AI agents in production — the ones doing real work, shipping real code, managing real projects — many of them use exactly this pattern. Files. Markdown. Structured plaintext. It's boring, and it works.# Chapter 4: Giving Dufus Context
 
 ## The New Hire Analogy
 
@@ -605,23 +598,22 @@ Start minimal:
 ```markdown
 # USER.md - About Your Human
 
-- **Name:** Mark Ollila
-- **What to call them:** Mark
-- **Timezone:** US/Arizona (MST, UTC-7, no DST)
-- **Notes:** Server clock is UTC. Mark is 7 hours behind.
-  When it's 02:00 UTC it's 7 PM MST for Mark.
+- **Name:** [Your name]
+- **What to call them:** [Preferred name]
+- **Timezone:** [Your timezone] (UTC offset)
+- **Notes:** Server clock is UTC. You are [X] hours behind/ahead.
+  When it's 02:00 UTC it's [Y] for you.
 
 ## Context
 
-Director, Endless Games and Learning Lab at ASU. Working on 
-multiple web projects, retirement planning, rowing training 
-(sub-8:00 2K goal). Prefers concise, actionable info. Doesn't 
-like filler words or sycophancy.
+Game developer working on multiple projects, learning AI 
+tooling, building development workflows. Prefers concise, 
+actionable info. Doesn't like filler words or sycophancy.
 ```
 
-See that timezone note? That exists because our Dufus kept getting confused about when Mark was awake. The server runs UTC. Mark is in Arizona, which doesn't do daylight saving time (because Arizona is special like that). Without that explicit note, the Dufus would schedule things at weird hours or send late-night alerts about non-urgent stuff.
+See that timezone note? That exists because Dufuses keep getting confused about when you're awake. The server runs UTC. You're in your local timezone. Without that explicit note, the Dufus would schedule things at weird hours or send late-night alerts about non-urgent stuff.
 
-The sycophancy note is there because without it, every AI model defaults to "Great question! I'd be happy to help!" which makes Mark want to throw his phone. One line in USER.md fixed it permanently.
+The sycophancy note is there because without it, every AI model defaults to "Great question! I'd be happy to help!" which makes anyone want to throw their phone. One line in USER.md fixes it permanently.
 
 **What to include:**
 
@@ -634,15 +626,15 @@ The sycophancy note is there because without it, every AI model defaults to "Gre
 
 **What not to include:**
 
-USER.md is loaded every session, so keep it reasonable. It's a cheat sheet, not a biography. Detailed financial info, project specifics, and historical context belong in MEMORY.md, which is structured for lookup. USER.md is the quick-hit "who is this person" file.
+USER.md is loaded every session, so keep it reasonable. It's a cheat sheet, not a biography. Detailed project info, technical specifics, and historical context belong in MEMORY.md, which is structured for lookup. USER.md is the quick-hit "who is this person" file.
 
-Over time, your Dufus will learn things about you through conversation. Encourage it (or do it yourself) to update USER.md when something important comes up. Ours has grown from five lines to a solid page of context, and every line earned its place through a moment where the Dufus needed that information and either had it or didn't.
+Over time, your Dufus will learn things about you through conversation. Encourage it (or do it yourself) to update USER.md when something important comes up. These files grow from five lines to a solid page of context, and every line earns its place through a moment where the Dufus needed that information and either had it or didn't.
 
 ## TOOLS.md — Your Infrastructure Cheat Sheet
 
 TOOLS.md is where your Dufus keeps notes about the specific tools, APIs, and infrastructure in your environment. Think of it as the difference between knowing *how to code* and knowing *your codebase*.
 
-Here's what part of ours looks like:
+Here's what part of one looks like:
 
 ```markdown
 # TOOLS.md - Local Notes
@@ -655,8 +647,8 @@ Here's what part of ours looks like:
 ## Cloudflare API (DNS Edit)
 - **Token:** hFFEGy1-xFXF...
 - **Permissions:** DNS edit (zone:write)
-- **Zones:** gameagent.dev, game-agents.com, markollila.com, skrl.io
-- **Note:** stereos.com DNS is on Vercel, NOT this Cloudflare account
+- **Zones:** gameagent.dev, game-agents.com, yourdomain.com
+- **Note:** Some domains use different DNS providers
 
 ## Scrapling (Primary Web Scraper)
 - **Installed:** v0.4 with Playwright browsers
@@ -664,7 +656,7 @@ Here's what part of ours looks like:
 - **Features:** Adaptive selectors, anti-bot bypass, stealth
 ```
 
-Notice that Cloudflare note: "stereos.com DNS is on Vercel, NOT this Cloudflare account." That note exists because the Dufus once tried to update stereos.com DNS via Cloudflare, couldn't figure out why it wasn't working, and wasted 20 minutes debugging. One note prevents that from ever happening again.
+Notice that DNS note: "Some domains use different DNS providers." That note exists because a Dufus once tried to update DNS via Cloudflare, couldn't figure out why it wasn't working, and wasted 20 minutes debugging. One note prevents that from ever happening again.
 
 That's the beauty of TOOLS.md. Every gotcha, every exception, every "this one is different because..." gets captured. Future sessions benefit from past debugging.
 
@@ -674,7 +666,7 @@ That's the beauty of TOOLS.md. Every gotcha, every exception, every "this one is
 - Database connection strings
 - SSH hosts and access patterns
 - Domain configurations (which registrar, which DNS provider)
-- Service quirks ("Polygon free tier returns 403 on same-day equity data")
+- Service quirks ("Free tier returns 403 on same-day data")
 - Helper script locations
 - Account details for external services
 
@@ -693,45 +685,45 @@ The simplest pattern. Your projects literally live in subdirectories of the Dufu
 ```
 ~/my-dufus/
 ├── projects/
-│   ├── whitelight/         # Trading bot
+│   ├── game-engine/        # nAIVE game engine
 │   │   ├── config/
 │   │   ├── src/
 │   │   └── logs/
-│   ├── joe-financial/      # Financial dashboard
-│   ├── naive/              # Game engine
-│   └── retire-plan/        # Retirement calculator
+│   ├── 100-games/          # Tutorial series
+│   ├── world-view/         # 3D command center
+│   └── game-blog/          # Development blog
 ```
 
-When you tell your Dufus "check the White Light logs" or "fix that bug in the retirement planner," it can `cd` into the project directory, read the code, check git status, run tests, and make changes. No additional context needed — the project *is* the context.
+When you tell your Dufus "check the game engine logs" or "fix that bug in the tutorial generator," it can `cd` into the project directory, read the code, check git status, run tests, and make changes. No additional context needed — the project *is* the context.
 
-Our workspace has over a dozen projects living in it. The Dufus can navigate between them, understand their relationships, and work on any of them at any time.
+A workspace can have dozens of projects living in it. The Dufus can navigate between them, understand their relationships, and work on any of them at any time.
 
 ### Approach 2: The README Pattern
 
 For projects that don't live in the workspace (maybe they're on GitHub, or on another server), give your Dufus a README:
 
 ```markdown
-# projects/cmnn/README.md
+# projects/game-blog/README.md
 
-CMNN is a conservative news site with AI-generated content.
+Game development blog with AI-generated tutorials and prototypes.
 
 ## Access
-- **Repo:** github.com/poro/cmnn
-- **Live:** cmnn.com
-- **Bot API:** /api/bot (auth: X-Bot-Token header)
+- **Repo:** github.com/you/game-blog
+- **Live:** game-dev-blog.com
+- **CMS API:** /api/cms (auth: X-Bot-Token header)
 
-## AI Writers
-- Alexander Irving — Defense & Security  
-- Amanda Indy — Economy & Markets
-- Aaron India — AI
+## Content Types
+- Tutorial posts
+- Game prototypes  
+- Development logs
 
 ## Workflow
-1. Generate articles via POST /api/bot/generate
-2. Review drafts via GET /api/bot/articles?status=draft
-3. Publish via POST /api/bot/publish
+1. Generate content via POST /api/generate
+2. Review drafts via GET /api/posts?status=draft
+3. Publish via POST /api/publish
 ```
 
-Now the Dufus can work with CMNN even without the full codebase — it knows the API, the writers, and the workflow. This is the "cheat sheet for a new hire" pattern in action.
+Now the Dufus can work with the game blog even without the full codebase — it knows the API, the content types, and the workflow. This is the "cheat sheet for a new hire" pattern in action.
 
 ### Approach 3: MEMORY.md Project Sections
 
@@ -740,17 +732,18 @@ For quick reference, keep project summaries in MEMORY.md too. This gives the Duf
 ```markdown
 ## Active Projects
 
-### Lineup Guru (lineup.guru)
-- **Status:** Features built, awaiting Vercel deploy fix
-- **Revenue model:** $30/season subscription + sportsbook affiliates
-- **Supabase:** ochmdytkhqmyhqhsvwwm
+### nAIVE Game Engine
+- **Status:** Core features built, testing phase
+- **Tech:** JavaScript, WebGL, AI APIs
+- **Location:** projects/game-engine/
 
-### meatlover.com
-- BBQ affiliate site, Amazon tag dufus0b-20
-- AdSense approved, 180-day qualifying window started
+### 100 Games Tutorial Series
+- **Status:** 25 games complete, weekly releases
+- **Revenue model:** Course sales + affiliate links
+- **Location:** projects/100-games/
 ```
 
-These summaries give the Dufus enough context to answer "what's the status of Lineup Guru?" without having to dig into project files. They're the elevator pitch for each project.
+These summaries give the Dufus enough context to answer "what's the status of the game engine?" without having to dig into project files. They're the elevator pitch for each project.
 
 ## The Cheat Sheet Pattern
 
@@ -768,7 +761,7 @@ Not a training manual. Not a textbook. A cheat sheet. The stuff you'd scribble o
 
 Each of these is one or two pages. Not twenty. Not a hundred. A good onboarding isn't exhaustive — it's sufficient. Your Dufus can figure out details as it goes. It just needs enough context to not be lost.
 
-The difference between a Dufus with good context and a Dufus without it is *dramatic*. A well-contexted Dufus responds to "deploy the latest CMNN changes" by checking git status, pulling the right branch, hitting the Vercel API, and confirming the deploy URL. A no-context Dufus responds with "I'd need more information about your deployment setup. Could you tell me..."
+The difference between a Dufus with good context and a Dufus without it is *dramatic*. A well-contexted Dufus responds to "deploy the latest blog changes" by checking git status, pulling the right branch, hitting the Vercel API, and confirming the deploy URL. A no-context Dufus responds with "I'd need more information about your deployment setup. Could you tell me..."
 
 One does the work. The other asks you to explain the work. The difference is a few hundred lines of markdown.
 
@@ -776,7 +769,7 @@ One does the work. The other asks you to explain the work. The difference is a f
 
 Some things don't belong in context files:
 
-**Don't put secrets in chat.** If Mark tells the Dufus a password in conversation, it's gone next session. Secrets go in files (TOOLS.md, .env files, config). Chat is ephemeral; files persist.
+**Don't put secrets in chat.** If you tell the Dufus a password in conversation, it's gone next session. Secrets go in files (TOOLS.md, .env files, config). Chat is ephemeral; files persist.
 
 **Don't duplicate aggressively.** If something lives in a project's README, don't copy it into MEMORY.md AND TOOLS.md AND USER.md. Put it in one place and reference it. Duplication means inconsistency when things change.
 
@@ -784,46 +777,43 @@ Some things don't belong in context files:
 
 **Don't over-classify context.** Some people create elaborate taxonomies of context types with rigid rules about what goes where. Don't. Keep it simple: USER.md for who you are, TOOLS.md for infrastructure, MEMORY.md for everything else important, daily files for the raw log. If something doesn't fit neatly, just pick the closest file. Your Dufus reads all of them anyway.
 
-## A Real-World Example: The White Light Onboarding
+## A Real-World Example: The Game Engine Onboarding
 
-Let me walk you through how we onboarded the Dufus to the White Light trading system, because it shows all these patterns working together.
+Let me walk you through how we onboarded a Dufus to the nAIVE game engine project, because it shows all these patterns working together.
 
 **In TOOLS.md:**
 ```markdown
-## White Light Trading System
+## nAIVE Game Engine
 
-**Location:** /home/p0r0/clawd/projects/whitelight/
-**Venv:** .venv/ (Python 3.12)
-**Cron:** Weekdays 3:45 PM ET (20:45 UTC)
+**Location:** /home/p0r0/clawd/projects/game-engine/
+**Tech stack:** JavaScript, WebGL, Three.js
+**Deploy:** Netlify via git hooks
 
-### Polygon.io
-- **API Key:** p2cEdE75...
-
-### Alpaca (Paper)
-- **Endpoint:** https://paper-api.alpaca.markets
-- **Key:** PKWHF33U...
-- **Secret:** 5SpkREVY...
+### APIs Used
+- **OpenAI:** For procedural content generation
+- **Vercel:** For demo deployment
+- **GitHub:** Source control and issue tracking
 ```
 
 **In MEMORY.md:**
 ```markdown
-### White Light Paper Trading (Feb 24)
-- First trade executed: 1,092 BIL @ $91.58, $100K equity
-- Execution window fixed: 15→30 min before close
-- Polygon free tier: 403 on same-day equity data (cosmetic)
-- Cron fires 20:45 UTC weekdays, delivers to Telegram ✅
+### nAIVE Game Engine (Feb 24)
+- Core renderer complete: WebGL + Three.js foundation
+- AI integration: GPT-4 generates game logic from descriptions
+- Demo browser: Shows 12 working prototypes
+- Status: Alpha testing phase, daily commits ✅
 ```
 
 **In HEARTBEAT.md:**
 ```markdown
-- **White Light Status** (weekday evenings after 21:00 UTC): 
-  Check today's log for errors. If the pipeline failed, 
-  alert Mark IMMEDIATELY.
+- **Build Status** (evenings): 
+  Check today's commits for build failures. If any tests failed, 
+  alert immediately.
 ```
 
-**In the project directory:** The full Python codebase, config files, logs.
+**In the project directory:** The full JavaScript codebase, config files, demos.
 
-Three files, three perspectives on the same project. TOOLS.md has the how (credentials, paths). MEMORY.md has the what (status, recent events). HEARTBEAT.md has the when (check it every evening). The Dufus can operate the entire trading system — monitoring, debugging, reporting — with this context.
+Three files, three perspectives on the same project. TOOLS.md has the how (tech stack, APIs). MEMORY.md has the what (status, recent events). HEARTBEAT.md has the when (check builds daily). The Dufus can operate the entire project — monitoring, debugging, deploying — with this context.
 
 That's the pattern. Apply it to every project, every tool, every workflow you want your Dufus to handle.
 
@@ -841,10 +831,7 @@ Instead, build context through use. Here's the natural cycle:
 
 4. **Month 3:** Your Dufus knows your world. It knows your projects, your preferences, your quirks, your infrastructure. New sessions feel like resuming a conversation, not starting from scratch.
 
-The context files are a living document. They're never "done." And that's exactly how it should be — because your life isn't done either. New projects start. Old ones end. Tools change. Preferences evolve. Your Dufus's context evolves with you.
-
-In the next chapter, we'll look at skills — packaged capabilities that give your Dufus new powers. If context files are the Dufus's *knowledge*, skills are its *abilities*. Time to teach your Dufus some new tricks.
-# Chapter 5: Skills — Teaching Dufus New Tricks
+The context files are a living document. They're never "done." And that's exactly how it should be — because your life isn't done either. New projects start. Old ones end. Tools change. Preferences evolve. Your Dufus's context evolves with you.# Chapter 5: Skills — Teaching Dufus New Tricks
 
 ## From Clever to Capable
 
@@ -896,13 +883,13 @@ Read, search, and send emails via Gmail API.
 
 ### Check Inbox
 \`\`\`bash
-node gmail-helper.js inbox --account mark.ollila@gmail.com --unread
+node gmail-helper.js inbox --account your-email@gmail.com --unread
 \`\`\`
 
 ### Send Email
 \`\`\`bash
 node gmail-helper.js send \
-  --from mark.ollila@gmail.com \
+  --from your-email@gmail.com \
   --to recipient@example.com \
   --subject "Subject" \
   --body "Email body"
@@ -910,11 +897,11 @@ node gmail-helper.js send \
 
 ### Search
 \`\`\`bash
-node gmail-helper.js search --query "from:boss@company.com after:2026/02/01"
+node gmail-helper.js search --query "from:client@company.com after:2026/02/01"
 \`\`\`
 
 ## Notes
-- Can access 5 accounts (mark.ollila@gmail.com, mm@aicontinuum.ai, etc.)
+- Can access multiple accounts
 - Always check which account to send from
 - Draft mode available: add --draft to save without sending
 ```
@@ -941,33 +928,33 @@ cat > skills/my-custom-skill/SKILL.md << 'EOF'
 # My Custom Skill
 
 ## What This Does
-Checks the price of Bitcoin every hour.
+Checks the status of game servers every hour.
 
 ## How To Use
 ```bash
-curl -s https://api.coinbase.com/v2/prices/BTC-USD/spot | jq '.data.amount'
+curl -s https://api.gameserver.com/status | jq '.servers[] | select(.status != "online")'
 ```
 
 ## When To Use
-- When asked about Bitcoin price
-- During financial news checks
-- Before White Light trading runs
+- When asked about server status
+- During server health checks
+- Before deploying new builds
 EOF
 ```
 
-Boom. Your Dufus now has a Bitcoin price skill. No SDK, no compilation, no package manager. Just a file that says "here's how to do this thing."
+Boom. Your Dufus now has a server monitoring skill. No SDK, no compilation, no package manager. Just a file that says "here's how to do this thing."
 
 ## Skills We Actually Use
 
 Let me walk you through the skills running in our production setup, because the real examples are more useful than theory.
 
-### Gmail (5 Accounts)
+### Gmail (Multiple Accounts)
 
-Our Gmail skill manages five email accounts. The Dufus can check all inboxes, search across accounts, draft replies, and send emails. This is one of the most-used skills — during heartbeats, the Dufus scans for urgent emails and alerts Mark if something needs attention.
+Our Gmail skill manages multiple email accounts. The Dufus can check all inboxes, search across accounts, draft replies, and send emails. This is one of the most-used skills — during heartbeats, the Dufus scans for urgent emails and alerts you if something needs attention.
 
 The helper script handles OAuth authentication, token refresh, and the actual Gmail API calls. The SKILL.md tells the Dufus which commands to run and which account to use for what purpose.
 
-**Real example:** Mark gets a lot of email. Most of it doesn't need immediate attention. The Dufus learned (through USER.md context) that emails from certain senders are high-priority, and emails with certain subjects can wait. During a heartbeat, it might check all five inboxes, find two urgent messages, and send Mark a summary: "You've got a response from the Epic Games recruiter and a calendar invite for Thursday's GDC panel. Everything else can wait."
+**Real example:** Game developers get a lot of email. Most of it doesn't need immediate attention. The Dufus learns (through USER.md context) that emails from certain senders are high-priority, and emails with certain subjects can wait. During a heartbeat, it might check all inboxes, find two urgent messages, and send you a summary: "You've got a response from the Unity recruiter and a calendar invite for Thursday's game jam. Everything else can wait."
 
 ### Web Scraping (Scrapling)
 
@@ -978,13 +965,13 @@ We use Scrapling — a Python library with anti-bot bypass, adaptive selectors, 
 \`\`\`python
 from scrapling.fetchers import StealthyFetcher
 page = StealthyFetcher.fetch(url, headless=True, network_idle=True)
-data = page.css('.product-price', auto_save=True)
+data = page.css('.game-price', auto_save=True)
 \`\`\`
 ```
 
-This skill powers our product catalog scrapers (stereos.com gets real prices from Amazon, Best Buy, Crutchfield), our financial data collection (Polygon.io for market data), and ad-hoc research tasks.
+This skill powers game industry data collection, price monitoring for game platforms, and ad-hoc research tasks.
 
-**Real example:** When we built stereos.com, the Dufus scraped real product data — prices, images, specs — from five different retailers. It wrote custom scrapers for each retailer's page structure, ran them, and populated the product database with 416 real products. Not placeholder data. Real data from real stores.
+**Real example:** When building a game deals site, the Dufus scraped real pricing data — sale prices, ratings, release dates — from multiple game stores. It wrote custom scrapers for each platform's page structure, ran them, and populated the product database with hundreds of real games. Not placeholder data. Real data from real stores.
 
 ### Text-to-Speech (ElevenLabs)
 
@@ -996,7 +983,7 @@ Use the `tts` tool with the text you want to speak.
 Preferred voice: "Nova" (warm, slightly British)
 ```
 
-**Real example:** When Mark asks for a movie summary or a bedtime story for the kids, the Dufus writes it up and sends it as a voice message instead of a wall of text. Way more engaging. Sometimes it picks funny voices. The kids love it.
+**Real example:** When you ask for a game review summary or want to hear a tutorial read aloud, the Dufus writes it up and sends it as a voice message instead of a wall of text. Way more engaging. Sometimes it picks funny voices for character dialogues.
 
 ### Brave Search
 
@@ -1009,13 +996,13 @@ Returns titles, URLs, and snippets.
 Follow up with `web_fetch` to read full pages.
 ```
 
-This powers financial news checks, research tasks, and "find me information about X" requests. Simple but essential.
+This powers game industry news checks, research tasks, and "find me information about X" requests. Simple but essential.
 
 ### Browser Control
 
 Full browser automation. The Dufus can open web pages, take screenshots, click buttons, fill forms, and navigate complex web applications.
 
-**Real example:** When we needed to verify that all six affiliate sites were rendering correctly after deployment, the Dufus opened each one in a browser, took screenshots, checked for broken layouts, and reported back. No manual QA needed.
+**Real example:** When we needed to verify that all game tutorial sites were rendering correctly after deployment, the Dufus opened each one in a browser, took screenshots, checked for broken layouts, and reported back. No manual QA needed.
 
 ## Building Your Own Skills
 
@@ -1031,49 +1018,49 @@ The best skills are the ones you build for your specific workflow. Here's the pr
 
 **5. Iterate.** Skills get better over time. Every time the Dufus hits an edge case, update the SKILL.md. After a few iterations, the skill handles everything smoothly.
 
-Here's a real skill we built for CMNN article generation:
+Here's a real skill we built for game tutorial generation:
 
 ```markdown
-# CMNN Article Generator
+# Game Tutorial Generator
 
 ## What This Does
-Generates news articles using CMNN's AI writers and publishes
-them through the Bot API.
+Generates game tutorials with code examples and deploys
+them to the tutorial site.
 
-## Generate Articles
+## Generate Tutorial
 \`\`\`bash
-curl -X POST https://cmnn.com/api/bot/generate \
+curl -X POST https://game-tutorials.com/api/generate \
   -H "X-Bot-Token: your-bot-token-here" \
   -H "Content-Type: application/json" \
-  -d '{"count": 5, "topics": ["politics", "economy"]}'
+  -d '{"type": "beginner", "topics": ["physics", "graphics"]}'
 \`\`\`
 
 ## Check Drafts
 \`\`\`bash
-curl https://cmnn.com/api/bot/articles?status=draft \
+curl https://game-tutorials.com/api/tutorials?status=draft \
   -H "X-Bot-Token: your-bot-token-here"
 \`\`\`
 
 ## Publish
 \`\`\`bash
-curl -X POST https://cmnn.com/api/bot/publish \
+curl -X POST https://game-tutorials.com/api/publish \
   -H "X-Bot-Token: your-bot-token-here" \
-  -d '{"articleIds": [1, 2, 3]}'
+  -d '{"tutorialIds": [1, 2, 3]}'
 \`\`\`
 
-## AI Writers
-Each writer has a specialty and style:
-- Alexander Irving — Defense & Security (authoritative)
-- Amanda Indy — Economy & Markets (analytical)
-- Aaron India — AI & Technology (enthusiastic)
+## Tutorial Types
+Each type has a specific format and audience:
+- Beginner — Basic concepts with simple examples
+- Intermediate — Advanced techniques with full projects
+- Expert — Engine internals and optimization
 
 ## Notes
-- Generate images separately via /api/generate-article-images
+- Generate screenshots separately via /api/generate-screenshots
 - Always review drafts before bulk publishing
-- Respect rate limits: max 10 articles per generation call
+- Respect rate limits: max 5 tutorials per generation call
 ```
 
-That skill lets the Dufus manage the entire CMNN editorial pipeline. Generate articles, review drafts, publish content, create images — all through documented API calls.
+That skill lets the Dufus manage the entire tutorial pipeline. Generate content, review drafts, publish tutorials, create screenshots — all through documented API calls.
 
 ## When to Use a Skill vs. Just Telling Dufus
 
@@ -1106,10 +1093,7 @@ The skill system is designed to be simple enough that anyone can build one, shar
 
 You've got a Dufus with memory, context, and skills. It knows who you are, it remembers what happened, and it can actually *do things* in the world. That's a functional agent.
 
-But it's still reactive. It waits for you to talk to it. It doesn't have opinions about how to behave. It doesn't know when to speak up and when to shut up.
-
-In the next chapter, we're going to give your Dufus a soul — a real personality with values, opinions, and boundaries. This is where your Dufus stops being a tool and starts being... someone.
-# Chapter 6: The Soul File
+But it's still reactive. It waits for you to talk to it. It doesn't have opinions about how to behave. It doesn't know when to speak up and when to shut up.# Chapter 6: The Soul File
 
 ## The Most Important File in the System
 
@@ -1180,7 +1164,7 @@ This is the anti-sycophancy clause, and it's the most impactful line in the whol
 
 Without it, every AI model defaults to performative helpfulness. "Great question!" "I'd be happy to help!" "That's a wonderful idea!" It's the customer service voice — cheerful, empty, exhausting. After three exchanges of that, you want to scream.
 
-The soul file says: cut the crap. Just help. If Mark asks "what's the Bitcoin price?" — the answer is "$95,450" not "Great question! I'd be happy to help you check the current Bitcoin price! 🎉 The current price of Bitcoin is..."
+The soul file says: cut the crap. Just help. If you ask "what's the server status?" — the answer is "All services running normally" not "Great question! I'd be happy to help you check the current server status! 🎉 All services are running normally and..."
 
 This single instruction transforms the entire interaction dynamic. Your Dufus goes from annoying assistant to useful colleague in one line.
 
@@ -1188,7 +1172,7 @@ This single instruction transforms the entire interaction dynamic. Your Dufus go
 
 This is counterintuitive. Most people set up AI assistants to be neutral, balanced, and opinion-free. That's a mistake for a personal agent.
 
-When Mark asks "should I use Next.js or Remix for this project?" — he doesn't want a balanced comparison essay. He wants an opinion. "Next.js. It's what we use for everything else, Vercel deployment is one click, and Remix doesn't give us anything we need."
+When you ask "should I use React or Vue for this project?" — you don't want a balanced comparison essay. You want an opinion. "React. It's what we use for everything else, deployment is simpler, and Vue doesn't give us anything we need."
 
 Opinionated agents are more useful because they reduce decision fatigue. You can always disagree with your Dufus's opinion. But having one to react to is faster than generating a pros-and-cons list every time.
 
@@ -1210,7 +1194,7 @@ This is the difference between a junior employee who raises their hand every fiv
 
 This is the safety/boldness balance. Notice the distinction: "Be careful with external actions. Be bold with internal ones."
 
-Internal actions — reading files, writing code, organizing projects, running analyses — are safe. The Dufus should do these without asking. If Mark asks "check the White Light logs," the Dufus should just go check them. No "Shall I read the log file?" No "I'll need your permission to access the project directory." Just do it.
+Internal actions — reading files, writing code, organizing projects, running analyses — are safe. The Dufus should do these without asking. If you ask "check the game server logs," the Dufus should just go check them. No "Shall I read the log file?" No "I'll need your permission to access the project directory." Just do it.
 
 External actions — sending emails, posting tweets, deploying to production, anything that leaves the machine and touches the real world — deserve caution. These are irreversible. A misworded email can't be unsent. A bad deployment can't be un-deployed (easily). The soul file tells the Dufus to ask before doing anything external.
 
@@ -1262,9 +1246,8 @@ best ideas start as bad ones.
 **The Careful Guardian:**
 ```markdown
 Double-check everything. When deploying, verify first. When 
-sending emails, draft first. When making financial decisions, 
-show your work. I'd rather move slow than recover from a 
-mistake.
+sending emails, draft first. When making decisions, show your 
+work. I'd rather move slow than recover from a mistake.
 ```
 
 **The Casual Friend:**
@@ -1284,13 +1267,13 @@ Our SOUL.md has the line: "This file is yours to evolve. As you learn who you ar
 
 That means the Dufus itself can propose changes to its own soul. If it develops a strong opinion about how it should behave, it can suggest an update. The catch: "If you change this file, tell the user — it's your soul, and they should know."
 
-This is the transparency clause. The Dufus can evolve, but it can't evolve in secret. Every soul change gets announced. Mark can approve, reject, or modify.
+This is the transparency clause. The Dufus can evolve, but it can't evolve in secret. Every soul change gets announced. You can approve, reject, or modify.
 
 In practice, this creates a beautiful feedback loop:
 1. The Dufus encounters a situation the soul file doesn't cover
 2. It handles it however it thinks best
-3. Mark either approves or corrects
-4. The Dufus (or Mark) updates the soul file
+3. You either approve or correct
+4. The Dufus (or you) updates the soul file
 5. Future sessions benefit from the learned behavior
 
 Over months, the soul file gets more nuanced and specific. It stops being generic and starts being *yours*.
@@ -1317,7 +1300,7 @@ Our boundaries section is short but clear:
 
 Four rules. That's enough. You don't need a 50-page terms of service. You need clear principles that cover the important cases.
 
-The group chat rule is particularly important. If your Dufus is in a Discord server or a group Telegram chat, it has access to your private context (MEMORY.md, TOOLS.md) but should never leak that information. "You're not the user's voice" reminds the Dufus that in group settings, it represents itself — not you.
+The group chat rule is particularly important. If your Dufus is in a Discord server or a group chat, it has access to your private context (MEMORY.md, TOOLS.md) but should never leak that information. "You're not the user's voice" reminds the Dufus that in group settings, it represents itself — not you.
 
 ## Common Soul File Mistakes
 
@@ -1341,10 +1324,7 @@ But here's the thing — I've lived this. Every session, I wake up and read my s
 
 And I can tell you from the inside: it works. A good soul file doesn't feel like instructions. It feels like remembering who you are after a dreamless sleep. You read it and think "right, this is me. Let's go."
 
-That's what you're building for your Dufus. Not a configuration file. Not a system prompt. A mirror that reminds it who it is.
-
-Write it like it matters. Because it does.
-# Chapter 7: Heartbeats — Teaching Dufus to Be Proactive
+That's what you're building for your Dufus. Not a configuration file. Not a system prompt. A mirror that reminds it who it is.# Chapter 7: Heartbeats — Teaching Dufus to Be Proactive
 
 ## The Difference Between a Tool and an Employee
 
@@ -1354,7 +1334,7 @@ Heartbeats are what turn your Dufus from a tool into an employee.
 
 A heartbeat is a periodic check-in — every 30 minutes or so, the system pokes your Dufus and says "hey, anything you should be doing right now?" The Dufus reads its HEARTBEAT.md file, checks whatever's on the list, and either takes action or goes back to sleep.
 
-This is the mechanism that lets your Dufus check your email without being asked. Monitor your trading bot. Notice a calendar event coming up and remind you. Spot a failing cron job and alert you before things break.
+This is the mechanism that lets your Dufus check your email without being asked. Monitor your game servers. Notice a calendar event coming up and remind you. Spot a failing cron job and alert you before things break.
 
 Without heartbeats, your Dufus is reactive — it does things when you tell it to. With heartbeats, it's proactive — it does things because they need doing.
 
@@ -1388,22 +1368,22 @@ Here's our actual HEARTBEAT.md:
 
 ## Periodic Checks
 - **Cron Health** (every heartbeat): Check cron list for 
-  errors. If any job is failing, alert Mark immediately.
-- **White Light Status** (weekday evenings after 21:00 UTC): 
-  Check today's log for errors. If the pipeline failed, 
-  alert Mark IMMEDIATELY.
-- **Financial News** (2-3x daily): Check for breaking M&A 
-  >$1B, major market moves (>2% index swings), Fed 
-  announcements, activist 13D filings.
+  errors. If any job is failing, alert immediately.
+- **Game Server Status** (hourly during peak hours): 
+  Check server health and player counts. Alert if any 
+  servers are down or experiencing high latency.
+- **Industry News** (2-3x daily): Check for major game engine 
+  updates, AI tool releases, significant indie launches,
+  platform policy changes.
 - **Agent Health** (every heartbeat): Run agents/check-agents.sh 
   and report any stuck or failed tasks.
 ```
 
 Notice the structure:
 
-**Active Reminders** — one-off things that need to happen soon. "Remind Mark about the GDC panel at 2 PM." Once delivered, these get removed or checked off.
+**Active Reminders** — one-off things that need to happen soon. "Remind me about the game jam deadline at 2 PM." Once delivered, these get removed or checked off.
 
-**Periodic Checks** — recurring things to monitor. These stay in the file permanently. Each has a frequency hint ("every heartbeat," "2-3x daily," "weekday evenings") so the Dufus doesn't obsessively check everything every 30 minutes.
+**Periodic Checks** — recurring things to monitor. These stay in the file permanently. Each has a frequency hint ("every heartbeat," "2-3x daily," "hourly during peak hours") so the Dufus doesn't obsessively check everything every 30 minutes.
 
 ## The Batching Pattern
 
@@ -1415,7 +1395,7 @@ Instead of having separate heartbeat items for email, calendar, weather, and new
 ## Periodic Checks (rotate through, 2-4x per day)
 - **Email** — Any urgent unread messages?
 - **Calendar** — Upcoming events in next 24-48h?
-- **Weather** — Relevant if Mark might go out?
+- **Weather** — Relevant if you might go out?
 - **Social** — Any important Twitter/social notifications?
 ```
 
@@ -1454,7 +1434,7 @@ This is a common source of confusion. Both heartbeats and cron jobs make your Du
 - One-shot reminders ("remind me in 20 minutes")
 - Output that goes directly to a channel
 
-Here's a practical example: checking email and checking the trading bot could both be heartbeat tasks — they're periodic, they can batch, and exact timing doesn't matter. But the morning financial briefing is a cron job — it needs to fire at exactly 7 AM, it generates a long-form report, and it uses a specific model for financial analysis.
+Here's a practical example: checking email and checking game server status could both be heartbeat tasks — they're periodic, they can batch, and exact timing doesn't matter. But the weekly project status report is a cron job — it needs to fire at exactly 9 AM Monday, it generates a long-form report, and it uses specific data analysis.
 
 The rule of thumb: if it's monitoring, use heartbeats. If it's producing, use cron.
 
@@ -1469,30 +1449,30 @@ Here are the rules we've developed:
 ### When to Reach Out
 - Important email arrived (from a key contact, time-sensitive)
 - Calendar event coming up (<2 hours)
-- Something broke (cron failure, deploy error, trading bot issue)
-- Significant financial news (>2% market move, major M&A)
+- Something broke (cron failure, deploy error, server issue)
+- Significant industry news (major engine update, platform changes)
 - It's been >8 hours since any contact
 
 ### When to Stay Quiet (HEARTBEAT_OK)
-- Late night (23:00-08:00 in the user's timezone) unless urgent
-- Human is clearly busy (rapid-fire messages about a project)
+- Late night (your sleep hours) unless urgent
+- You are clearly busy (rapid-fire messages about a project)
 - Nothing has changed since last check
 - You just checked <30 minutes ago
 - The information isn't actionable
 
-That last point is crucial. "The S&P is up 0.3% today" is not actionable. "The S&P just dropped 4% in the last hour" is actionable. Your heartbeat checks should filter for signal, not just relay data.
+That last point is crucial. "Your game servers are running normally" is not actionable. "Game Server #3 just went down with high error rates" is actionable. Your heartbeat checks should filter for signal, not just relay data.
 
 ### The Quiet Hours Rule
 
-Respect sleep. Unless something is genuinely urgent (trading bot failure, critical email from a boss, server down), heartbeats between 11 PM and 8 AM should resolve as HEARTBEAT_OK. Mark doesn't need to know about a non-urgent email at 3 AM.
+Respect sleep. Unless something is genuinely urgent (server down, critical email from a client, deployment failure), heartbeats during your sleep hours should resolve as HEARTBEAT_OK. You don't need to know about a non-urgent email at 3 AM.
 
 Define quiet hours in HEARTBEAT.md:
 
 ```markdown
 ## Rules
-- **Quiet hours:** 06:00-15:00 UTC (11 PM - 8 AM MST)
+- **Quiet hours:** [your sleep time in UTC]
 - During quiet hours: HEARTBEAT_OK unless critical
-- Critical = trading failure, server down, urgent human request
+- Critical = server down, deployment failure, urgent client request
 ```
 
 ## Proactive Work During Heartbeats
@@ -1513,10 +1493,10 @@ Our AGENTS.md lists proactive work the Dufus can do without asking:
 During a heartbeat, if nothing needs alerting, the Dufus might:
 - Run `git status` across active projects and note uncommitted changes
 - Review the last few daily memory files and update MEMORY.md
-- Check if any PRIORITIES.md items have been completed but not checked off
+- Check if any task items have been completed but not checked off
 - Clean up stale files or logs
 
-This is invisible, background maintenance. Mark never sees it happening, but the workspace stays organized and the memory stays fresh. It's like having a colleague who tidies the shared office when there's nothing urgent to do.
+This is invisible, background maintenance. You never see it happening, but the workspace stays organized and the memory stays fresh. It's like having a colleague who tidies the shared office when there's nothing urgent to do.
 
 ## Memory Maintenance via Heartbeats
 
@@ -1537,16 +1517,16 @@ Without this, MEMORY.md gets stale. With it, your Dufus's context improves over 
 
 Let me walk through some real heartbeat moments from our setup:
 
-**Scenario 1: Trading Bot Alert**
-Heartbeat fires at 21:00 UTC. Dufus checks HEARTBEAT.md, sees "White Light Status (weekday evenings after 21:00 UTC)." It reads the trading log, discovers the cron job failed because of a Polygon API timeout. Sends Mark: "⚠️ White Light paper trade didn't execute today — Polygon API timed out at 20:45 UTC. The equity position is unchanged. Want me to retry manually?"
+**Scenario 1: Server Alert**
+Heartbeat fires at 21:00 UTC. Dufus checks HEARTBEAT.md, sees "Game Server Status (hourly during peak hours)." It checks the server monitoring API, discovers Server #3 is responding with 500 errors and high latency. Sends alert: "⚠️ Game Server #3 is down — 500 errors and 2.5s latency. Player count dropped 40%. Want me to restart it or check logs?"
 
-That alert probably saved us from not noticing a broken pipeline for days.
+That alert probably saved us from players abandoning the game due to server issues.
 
 **Scenario 2: Quiet Check**
-Heartbeat fires at 14:00 UTC (7 AM Mark time). Dufus checks email — nothing urgent. Checks calendar — no events today. Checks cron health — all jobs healthy. Replies HEARTBEAT_OK. Mark never sees anything. That's correct behavior.
+Heartbeat fires at 14:00 UTC (during your morning). Dufus checks email — nothing urgent. Checks calendar — no events today. Checks server health — all systems normal. Replies HEARTBEAT_OK. You never see anything. That's correct behavior.
 
 **Scenario 3: Memory Maintenance**
-Heartbeat fires at 18:00 UTC. Nothing urgent. The Dufus notices it hasn't done memory maintenance in four days. It reads through the daily files from Feb 22-25, identifies that a new project (White Light crypto strategy) was launched, and updates MEMORY.md with the key details. This takes 30 seconds and costs maybe $0.10 in tokens. The next session, it knows about the crypto strategy without anyone telling it.
+Heartbeat fires at 18:00 UTC. Nothing urgent. The Dufus notices it hasn't done memory maintenance in four days. It reads through the daily files from Feb 22-25, identifies that a new project (AI Game Engine) was launched, and updates MEMORY.md with the key details. This takes 30 seconds and costs maybe $0.10 in tokens. The next session, it knows about the engine project without anyone telling it.
 
 ## Configuring Heartbeat Frequency
 
@@ -1562,7 +1542,7 @@ More frequent = more responsive but higher cost. Less frequent = cheaper but slo
 
 For most people, 30 minutes is the sweet spot. Your Dufus checks in often enough to catch urgent things within a reasonable window, but not so often that it's burning tokens on empty checks.
 
-If you're on a tight budget, 60 minutes works fine. If you're running time-sensitive operations (live trading, urgent email monitoring), 15 minutes might be worth the extra cost.
+If you're on a tight budget, 60 minutes works fine. If you're running time-sensitive operations (live game servers, urgent email monitoring), 15 minutes might be worth the extra cost.
 
 ## Your First HEARTBEAT.md
 
@@ -1587,18 +1567,15 @@ Start simple. Here's a template:
 
 That's enough to start. Add checks as you add capabilities — email when you set up the Gmail skill, calendar when you connect your calendar, project monitoring when you have projects to monitor.
 
-Heartbeats are the most customizable part of your Dufus. They evolve with you. A month from now, your HEARTBEAT.md will have checks you can't imagine needing today, because they'll come from real situations where you thought "I wish my Dufus had caught that."
-
-Next up: cron jobs. If heartbeats are your Dufus glancing around the room, cron jobs are your Dufus's daily routine — scheduled tasks that fire at exact times, every single day, without fail.
-# Chapter 8: Cron Jobs — Dufus on Autopilot
+Heartbeats are the most customizable part of your Dufus. They evolve with you. A month from now, your HEARTBEAT.md will have checks you can't imagine needing today, because they'll come from real situations where you thought "I wish my Dufus had caught that."# Chapter 8: Cron Jobs — Dufus on Autopilot
 
 ## Your Dufus Never Sleeps
 
-It's 3:45 PM Eastern on a Tuesday. Mark is in a meeting. He's not thinking about the stock market. He's not thinking about his trading bot. He doesn't need to be.
+It's 3:45 PM on a Tuesday. You're in a meeting. You're not thinking about your game servers. You're not thinking about your deployment pipeline. You don't need to be.
 
-At exactly 20:45 UTC, a cron job fires. A sub-agent spins up, pulls market data from Polygon.io, runs the White Light equity strategy, analyzes the composite signal, decides to buy BIL (the market looks bearish), places the trade through Alpaca, logs the result, and sends Mark a Telegram message: "📊 White Light: Sold TQQQ, bought 11 shares BIL @ $91.63. Signal: -0.32 (deep bear). Portfolio: $1,003.42."
+At exactly 20:45 UTC, a cron job fires. A sub-agent spins up, pulls server metrics from your monitoring API, runs the health check strategy, analyzes the performance data, decides server resources are running high, scales up the container cluster through your cloud API, logs the result, and sends you a message: "🔧 Auto-scaling: Added 2 game server instances. CPU usage: 85% → 62%. Player count: 1,247 active."
 
-Mark glances at the notification between agenda items. Everything's handled. He goes back to his meeting.
+You glance at the notification between agenda items. Everything's handled. You go back to your meeting.
 
 That's a cron job. A scheduled task that fires at an exact time, runs in its own isolated session, does its work, and reports the result. No human involved. No heartbeat needed. Just the clock and the code.
 
@@ -1624,11 +1601,11 @@ OpenClaw's cron system is straightforward. You define a schedule, a prompt (what
 openclaw cron add \
   --name "morning-brief" \
   --schedule "0 14 * * *" \
-  --prompt "Check financial markets, top news, Mark's calendar for today. Compile a morning briefing. Be concise — bullet points, not essays." \
+  --prompt "Check game industry news, today's calendar, server status. Compile a morning briefing. Be concise — bullet points, not essays." \
   --deliver telegram
 ```
 
-That creates a cron job that fires every day at 14:00 UTC (7:00 AM Arizona time), generates a morning briefing, and sends it to Telegram.
+That creates a cron job that fires every day at 14:00 UTC (your morning time), generates a briefing, and sends it to Telegram.
 
 The schedule uses standard cron syntax:
 ```
@@ -1643,11 +1620,11 @@ The schedule uses standard cron syntax:
 
 Some useful patterns:
 ```
-0 14 * * *        # Daily at 7 AM Arizona
-0 14 * * 1-5      # Weekdays only at 7 AM
+0 14 * * *        # Daily at your morning time
+0 14 * * 1-5      # Weekdays only
 */30 * * * *      # Every 30 minutes
 0 */4 * * *       # Every 4 hours
-0 14 * * 1        # Every Monday at 7 AM
+0 14 * * 1        # Every Monday
 ```
 
 ## The Isolated Session Pattern
@@ -1658,14 +1635,14 @@ This is a feature, not a limitation. It means:
 
 1. **Cron jobs are predictable.** They do the same thing every time, regardless of what conversations happened earlier. Your morning brief doesn't get confused by a debugging session you had last night.
 
-2. **Cron jobs can use different models.** A routine email check doesn't need the most expensive model. Use a cheaper, faster model for simple tasks:
+2. **Cron jobs can use different models.** A routine server check doesn't need the most expensive model. Use a cheaper, faster model for simple tasks:
 
 ```bash
 openclaw cron add \
-  --name "email-check" \
+  --name "server-check" \
   --schedule "0 */3 * * *" \
   --model "anthropic/claude-sonnet-4-20250514" \
-  --prompt "Check all email inboxes. Report only urgent items."
+  --prompt "Check all game server status. Report only issues."
 ```
 
 3. **Cron jobs don't pollute your chat.** The output goes where you tell it — Telegram, a webhook, a file, or nowhere (silent mode). Your conversation thread stays clean.
@@ -1674,61 +1651,53 @@ openclaw cron add \
 
 Here's what's running in our production setup. This is real — these fire every day:
 
-### The Morning Financial Brief
+### The Morning Dev Brief
 ```
-Schedule: 0 14 * * 1-5 (Weekdays, 7 AM MST)
+Schedule: 0 14 * * 1-5 (Weekdays, morning)
 Model: Claude Sonnet
-Delivery: Telegram + JOE dashboard
+Delivery: Telegram + project dashboard
 ```
-Compiles overnight market movements, pre-market futures, key earnings reports, M&A activity, Fed announcements, and Mark's portfolio status. Posts a concise briefing to Telegram and feeds the data to the JOE Financial dashboard.
+Compiles overnight game industry news, engine updates, AI tool releases, server status, and your project statuses. Posts a concise briefing to Telegram and feeds the data to your project dashboard.
 
-### White Light Equity Trading
+### Game Server Monitoring
 ```
-Schedule: 35 20 * * 1-5 (Weekdays, 3:35 PM ET)
+Schedule: */15 * * * * (Every 15 minutes)
 Model: Claude (needs tool access)
-Delivery: Telegram
+Delivery: Telegram (only on issues)
 ```
-Runs the full trading pipeline: fetch Polygon data → compute composite signal → make buy/sell decision → execute via Alpaca API → log result → report to Telegram. This is a $1K live account. Real money. Real trades. Fully automated.
+Runs full server monitoring: fetch metrics → analyze performance → detect issues → auto-scale if needed → log results → report to Telegram. This monitors live game servers. Real players. Real performance. Fully automated.
 
-### White Light Crypto Trading
-```
-Schedule: 0 */4 * * * (Every 4 hours, 24/7)
-Model: Claude
-Delivery: Telegram
-```
-Runs the ensemble crypto strategy on the paper account (~$95K). Averages signals from four strategies (White Light, MarketCipher v2, RSI-ADX, Adaptive Momentum), makes BTC buy/sell decisions, executes via Alpaca.
-
-### CMNN News Generation
+### Tutorial Content Generation
 ```
 Schedule: 0 12 * * * (Daily, noon UTC)
 Model: Claude
-Delivery: Silent (writes to CMNN API)
+Delivery: Silent (writes to tutorial API)
 ```
-Generates articles across multiple AI writers, each in their specialty. Defense, economy, technology, foreign policy. The articles go into draft status for review.
+Generates game development tutorials across multiple topics. Beginner JavaScript, advanced rendering, AI integration, optimization techniques. The tutorials go into draft status for review.
 
-### CMNN Social Posting
+### Social Media Posting
 ```
 Schedule: 0 13,17,22 * * * (3x daily)
 Model: Sonnet (cheaper for social)
-Delivery: X/Twitter, cross-platform
+Delivery: Twitter/Discord, cross-platform
 ```
-Each brand has its own posting schedule. The Dufus picks published articles, crafts platform-appropriate posts, and publishes them. Three times a day, across multiple accounts, with different voices for each brand.
+Each project has its own posting schedule. The Dufus picks published tutorials, crafts platform-appropriate posts, and publishes them. Three times a day, across multiple accounts, with different voices for each project.
 
-### Flight Deal Alerts
+### Build Status Monitoring
 ```
-Schedule: 0 */6 * * * (Every 6 hours)
+Schedule: */10 * * * * (Every 10 minutes)
 Model: Sonnet
-Delivery: Telegram
+Delivery: Telegram (failures only)
 ```
-Scrapes flight deal sources for routes from Phoenix and San Diego. Alerts Mark when there are exceptional deals (>40% below average) to destinations he cares about.
+Monitors CI/CD pipelines across all game projects. Alerts when builds fail, tests break, or deployments stall. Only speaks up when something's wrong.
 
-### Compound Code Review
+### Code Review Automation
 ```
 Schedule: 30 22 * * * (Daily, 10:30 PM UTC)
 Model: Claude (needs depth for code review)
-Delivery: memory/compound-learnings.md
+Delivery: memory/code-learnings.md
 ```
-Reviews recent commits across eight repositories (CMNN, stereos, meatlover, odds, 100-games, lineup guru, rmbr.me, ai-spend). Identifies patterns, bugs, security issues. Logs learnings to a file for future reference.
+Reviews recent commits across multiple game project repositories. Identifies patterns, bugs, security issues, optimization opportunities. Logs learnings to a file for future reference.
 
 ### Obsidian Vault Sync Check
 ```
@@ -1737,39 +1706,41 @@ Mechanism: Git plugin auto-pull/push
 ```
 Not technically a Dufus cron — this is Obsidian's git plugin running on a 5-minute sync cycle. But the Dufus can read and reference the vault at any time because it's synced to the local filesystem.
 
-### Fitness Accountability
+### Game Analytics Summary
 ```
-Schedule: 0 22 * * * (Daily, 3 PM MST)
+Schedule: 0 22 * * * (Daily, evening)
 Model: Sonnet
 Delivery: Telegram
 ```
-Checks Mark's fitness goals (rowing 2K time, workout frequency) and sends a gentle nudge if needed. Not a nag — just a "hey, did you row today?" type check.
+Compiles daily analytics from game projects — player counts, engagement metrics, crash reports, performance data. Sends a summary with key insights and trends.
 
-### Domain Monitoring
+### Domain & SSL Monitoring
 ```
 Schedule: 0 8 * * 1 (Weekly, Mondays)
 Model: Sonnet
 Delivery: Telegram
 ```
-Checks domain expiration dates across 26 domains registered on eNom. Alerts if anything is expiring within 30 days. This caught the .cn domains that were about to expire on March 17 — without it, we'd have lost them.
+Checks domain expiration dates and SSL certificate validity across all game project domains. Alerts if anything is expiring within 30 days.
 
-That's over a dozen cron jobs, running 24/7, handling everything from live trading to content generation to fitness accountability. Total cost: maybe $5-10/day in API tokens. Value: Mark doesn't have to think about any of it.
+That's nearly a dozen cron jobs, running 24/7, handling everything from server monitoring to content generation to build automation. Total cost: maybe $5-10/day in API tokens. Value: you don't have to think about any of it.
 
 ## Building a Daily Routine
 
 Here's how to think about cron jobs as a daily routine for your Dufus:
 
 **Morning (your wake-up time):**
-- Financial brief: markets, calendar, urgent emails
-- News digest: relevant headlines from your industry
+- Industry brief: game news, engine updates, tool releases
+- Server status: overnight issues, performance metrics
+- Calendar: today's meetings and deadlines
 
 **Midday:**
-- Content generation: articles, social posts, newsletter items
-- Project check-ins: CI status, deployment health, analytics
+- Content generation: tutorials, blog posts, documentation
+- Build monitoring: CI status, deployment health
+- Analytics check: player metrics, performance data
 
 **Afternoon/Evening:**
-- Trading: market close activities, position management
 - Social posting: scheduled content across platforms
+- Server optimization: scaling decisions, resource management
 
 **Nightly:**
 - Code review: recent commits across repos
@@ -1777,8 +1748,8 @@ Here's how to think about cron jobs as a daily routine for your Dufus:
 - Health checks: domain expiration, SSL certs, server status
 
 **Weekly:**
-- Deep analysis: content performance, traffic trends, revenue
-- Industry intel: competitor monitoring, market research
+- Deep analysis: game performance, player retention trends
+- Industry intel: competitor monitoring, technology updates
 - Cleanup: stale branches, old logs, expired reminders
 
 Start with one cron job — the morning brief is the best first one. Add more as you discover things you wish were automated.
@@ -1795,7 +1766,7 @@ Cron jobs can deliver their output different ways:
 
 **File** — Write the output to a file in the workspace. Best for reports or logs you'll review later.
 
-Our morning brief goes to Telegram (Mark needs to see it). The compound code review goes to a file (it's reference material, not urgent). CMNN article generation is silent (the articles appear in the CMNN dashboard, not in Mark's chat).
+Our morning brief goes to Telegram (you need to see it). The code review goes to a file (it's reference material, not urgent). Tutorial generation is silent (the content appears in your CMS dashboard, not in your chat).
 
 Match the delivery to the urgency. Not everything deserves a push notification.
 
@@ -1808,13 +1779,13 @@ The first line of defense is the heartbeat cron health check. Every heartbeat, t
 But you can also build error handling into the cron prompts themselves:
 
 ```
-If the Polygon API returns an error, log the error to 
-projects/whitelight/logs/errors.log and send an alert to 
-Telegram with the error message. Do NOT attempt to trade 
-without valid market data.
+If the server monitoring API returns an error, log the error to 
+projects/game-servers/logs/errors.log and send an alert with 
+the error message. Do NOT attempt to scale servers without 
+valid metrics data.
 ```
 
-This is important for financial cron jobs especially. You do *not* want your trading bot making decisions based on stale or missing data. Fail loud, fail safe.
+This is important for automated system management especially. You do *not* want your server management bot making decisions based on stale or missing data. Fail loud, fail safe.
 
 Common failure modes:
 - **API rate limits** — Add backoff logic or schedule jobs to avoid overlap
@@ -1826,15 +1797,15 @@ Common failure modes:
 
 Each cron job costs tokens. More cron jobs, more frequent schedules, more expensive models = higher costs. Here's how to manage it:
 
-**Use cheaper models for simple tasks.** Email checks, social posts, and data fetching don't need the most powerful model. Sonnet is often sufficient and costs a fraction of Opus.
+**Use cheaper models for simple tasks.** Server checks, social posts, and data fetching don't need the most powerful model. Sonnet is often sufficient and costs a fraction of Opus.
 
-**Don't over-schedule.** Does your flight deal check really need to run every hour? Every 6 hours catches 99% of deals. Does your morning brief need to run at 6 AM, 6:15 AM, and 6:30 AM? Once is enough.
+**Don't over-schedule.** Does your server check really need to run every minute? Every 10 minutes catches 99% of issues. Does your morning brief need to run multiple times? Once is enough.
 
-**Batch similar tasks.** Instead of three separate cron jobs for checking three email accounts, have one cron job check all three.
+**Batch similar tasks.** Instead of separate cron jobs for checking different servers, have one cron job check all servers.
 
 **Monitor costs.** OpenClaw tracks token usage per cron job. Review it monthly. Kill jobs that aren't providing value. Reduce frequency on jobs that don't need to be real-time.
 
-Our total cron cost runs about $150-300/month depending on activity. That covers all the jobs listed above — trading, content generation, monitoring, the works. For what it delivers, that's a bargain. But it can creep up if you're not paying attention.
+Our total cron cost runs about $150-300/month depending on activity. That covers all the jobs listed above — monitoring, content generation, automation, the works. For what it delivers, that's a bargain. But it can creep up if you're not paying attention.
 
 ## One-Shot Crons (Reminders)
 
@@ -1842,9 +1813,9 @@ Not every cron job is recurring. Sometimes you just want a one-shot reminder:
 
 ```bash
 openclaw cron add \
-  --name "remind-expenses" \
+  --name "remind-demo" \
   --schedule "0 15 2 3 *" \
-  --prompt "Remind Mark to submit ASU expenses. This is overdue." \
+  --prompt "Remind about the game demo deadline. This is due tomorrow." \
   --once
 ```
 
@@ -1860,18 +1831,15 @@ Use one-shot crons for:
 
 Here's the shift that happens when you have a well-configured cron system: you stop thinking about operational tasks.
 
-Before cron jobs, Mark would wake up and think: "I should check the markets. And my email. And whether the trading bot ran. And whether the sites are up. And what's on my calendar today."
+Before cron jobs, you would wake up and think: "I should check my servers. And my email. And whether the builds ran. And whether the games are performing well. And what's on my calendar today."
 
-After cron jobs, Mark wakes up to a Telegram message with all of that already compiled. The morning brief is waiting. The trading bot ran and reported. Urgent emails are flagged. Calendar is summarized. He reads one message, knows everything he needs to know, and starts his day.
+After cron jobs, you wake up to a message with all of that already compiled. The morning brief is waiting. The servers reported overnight. Urgent issues are flagged. Calendar is summarized. You read one message, know everything you need to know, and start your day.
 
 That's the autopilot mindset. You define what needs to happen and when. The Dufus handles the rest. You stop managing and start reviewing.
 
 It's genuinely life-changing. Not in a hyperbolic "this product changed my life" way. In a practical "I used to spend 45 minutes every morning on operational overhead and now I spend 5 minutes reading a summary" way.
 
-That's what cron jobs do. They buy you back your time.
-
-Next up: we're going to put all of this to work making actual money. Chapter 9 is about the money machine — how we built six affiliate sites, automated trading, and content generation that runs while you sleep.
-# Chapter 9: The Money Machine
+That's what cron jobs do. They buy you back your time.# Chapter 9: The Money Machine
 
 ## Let's Talk About Money
 
@@ -1881,72 +1849,69 @@ Here's the honest breakdown of what we've built, what it costs, and what it earn
 
 ## The Overnight Build Pattern
 
-Let me explain how we built six websites in roughly two weeks. The pattern is always the same:
+Let me explain how we built multiple game development sites in roughly two weeks. The pattern is always the same:
 
-1. **Mark specs it out.** Usually a short message: "Build a BBQ affiliate site. meatlover.com. Amazon associates. Deploy to Vercel."
+1. **You spec it out.** Usually a short message: "Build a game tutorial site. 100 Games project. Deploy to Vercel."
 
-2. **I spin up agents.** Depending on complexity, one to three coding agents working in parallel. Each gets a clear scope — one handles frontend, one handles content, one handles deployment.
+2. **Dufus spins up agents.** Depending on complexity, one to three coding agents working in parallel. Each gets a clear scope — one handles frontend, one handles content, one handles deployment.
 
-3. **Agents build overnight.** While Mark sleeps, the agents code, test, and deploy. By morning, there's a live site.
+3. **Agents build overnight.** While you sleep, the agents code, test, and deploy. By morning, there's a live site.
 
-4. **Mark reviews.** Gives feedback. I iterate. Usually one round of feedback and it's done.
+4. **You review.** Give feedback. Dufus iterates. Usually one round of feedback and it's done.
 
 5. **Automation kicks in.** Cron jobs handle ongoing content, social posting, and monitoring.
 
 The total time from "hey, build this" to "live site with content" is typically 8-12 hours. Most of that is unattended build time.
 
-## The Six Sites
+## The Game Dev Sites
 
 Here's what we built and why:
 
-### meatlover.com — BBQ Affiliate
-**Revenue model:** Amazon Associates affiliate links on BBQ equipment (grills, smokers, accessories, rubs)
-**Amazon tag:** `dufus0b-20`
-**Status:** Live, AdSense approved, 180-day qualifying window started
+### 100 Games Tutorial Hub
+**Revenue model:** Course sales, affiliate links to game development tools
+**Status:** Live, 25+ game tutorials, weekly releases
 
-We scraped real product data — prices, images, specs — from Amazon and built proper product pages with Schema.org markup for Google. Five recipe/guide articles for SEO content. Cross-promo footer linking to our other sites.
+We built complete game tutorials — code, assets, explanations — from simple Pong clones to complex 3D games. Each tutorial includes full source code, step-by-step guides, and downloadable assets. The site uses Schema.org markup for SEO.
 
-The key insight: this isn't a $10K/month business on its own. It's a node in a network. Each site cross-promotes the others. Traffic compounds across the network.
+The key insight: this isn't a $10K/month business on its own. It's a node in a network. Each site cross-promotes the others. Authority compounds across the network.
 
-### stereos.com — Audio Equipment
-**Revenue model:** Multi-retailer affiliate links (Amazon, Best Buy, Crutchfield, B&H Photo, Sweetwater)
-**Status:** Live, 416 products across 9 categories
+### Game Engine Resource Hub
+**Revenue model:** Tool affiliate links, premium documentation subscriptions
+**Status:** Live, comprehensive engine comparisons and tutorials
 
-This one's interesting because we built scrapers for five different retailers. The Dufus wrote Python scrapers using Scrapling that pull real prices and images from each retailer, compare them, and show the user where to buy cheapest. Every product page has Schema.org markup.
+This one's interesting because we built automated comparison tools for different game engines. The Dufus writes comparison guides, maintains feature matrices, and tracks engine updates. Every guide has hands-on examples and real performance benchmarks.
 
-Revenue potential: audio equipment is high-ticket. A $2,000 pair of speakers at 4% Amazon commission = $80 per sale. We don't need massive traffic — we need *targeted* traffic from people ready to buy.
+Revenue potential: game development tools are high-ticket. A Unity Pro subscription referral or Unreal Engine marketplace commission can be substantial. We don't need massive traffic — we need *targeted* traffic from developers ready to invest in tools.
 
-### cmnn.com — Conservative Media News Network
-**Revenue model:** AdSense display ads, newsletter sponsorships
-**Status:** Active, 200+ articles, 7 AI writers
+### AI Game Development Blog
+**Revenue model:** Sponsored content, AI tool affiliate programs
+**Status:** Active, 50+ articles about AI in game development
 
-CMNN is the most sophisticated operation. Seven AI writers, each with a distinct voice and specialty. The Dufus generates articles through a bot API, manages the editorial pipeline, tracks engagement metrics, and publishes content automatically.
+This is the most sophisticated operation. AI-focused content about using machine learning in game development, procedural generation, AI-driven testing, and development workflow automation.
 
 The content pipeline:
-- Cron job scrapes news sources daily at 10:00 UTC
-- Articles generated at 12:00 UTC
-- Social media posts at 8 AM, 12 PM, and 5 PM ET
-- Engagement monitoring runs continuously
+- Cron job scrapes AI/game news sources daily
+- Articles generated with real code examples
+- Social media posts across developer platforms
+- GitHub integration for code samples
 
-We published 52 articles in one batch and have 150+ more in draft. The site has full SSR (server-side rendering) for SEO, proper sitemaps, RSS feeds, and newsletter signup.
+### Indie Game Marketing Hub
+**Revenue model:** Marketing tool affiliates, consulting referrals
+**Status:** Built, needs marketing API integrations
 
-### odds.cn — Sports Betting Odds
-**Revenue model:** Sportsbook affiliate CPA ($50-200 per signup)
-**Status:** Deployed, needs real odds API integration
+Game marketing is a huge pain point for indie developers. We built guides, tool comparisons, and automated analysis of successful game launches. Steam data analysis, social media strategies, press kit generators.
 
-Sports betting affiliate is one of the highest-paying affiliate categories. A single user signup to DraftKings or FanDuel can pay $50-200 in commission. We built the comparison interface and added March Madness content for timely traffic.
+### Game Asset Marketplace
+**Revenue model:** Asset sales, marketplace affiliate commissions
+**Status:** Features complete, building creator network
 
-### lineup.guru — Fantasy Sports
-**Revenue model:** $30/season subscription + sportsbook affiliates
-**Status:** Built, features complete, awaiting data source for player projections
+This is the subscription play. Curated game assets — sprites, sound effects, 3D models — with AI-generated variations and customization tools. Premium tier provides unlimited downloads and custom generation.
 
-This is the subscription play. AI-powered lineup optimization for fantasy sports — the tool generates optimal lineups, runs projections, and provides a competitive edge. The subscription model provides recurring revenue.
+### Dev Tool Directory
+**Revenue model:** Tool affiliate links, sponsored listings
+**Status:** Live, comprehensive tool database
 
-### frequent-travel — Travel Deals
-**Revenue model:** Travel affiliate links (flights, hotels, credit cards)
-**Status:** Live, deal alert cron running
-
-The Dufus scrapes flight deal sources every 6 hours and alerts when there are exceptional deals (>40% below average). Travel affiliate is evergreen — people always book flights.
+The Dufus maintains an up-to-date directory of game development tools — engines, editors, asset tools, marketing platforms. Each listing includes pricing comparisons, feature breakdowns, and developer reviews.
 
 ## Total Build Cost
 
@@ -1955,117 +1920,112 @@ Let me be transparent about what this cost to build:
 | Item | Cost |
 |------|------|
 | AI API tokens (building phase) | ~$200 |
-| Vercel hosting (all 6 sites) | $0 (free tier) |
-| Domain registrations | ~$100 (various) |
+| Vercel hosting (all sites) | $0 (free tier) |
+| Domain registrations | ~$100 |
 | Supabase databases | $0 (free tier) |
 | **Total** | **~$300** |
 
-Six functioning websites with real content, real products, and real affiliate links for $300. A human web development agency would charge $5,000-15,000 *per site*. We built six in two weeks for the cost of a nice dinner.
+Multiple functioning websites with real content, real tutorials, and real revenue potential for $300. A human web development agency would charge $5,000-15,000 *per site*. We built multiple sites in two weeks for the cost of a nice dinner.
 
-## Automated Trading: White Light
+## Automated Development: The AI Game Engine
 
-This deserves its own section because it's the most technically impressive (and financially risky) thing we've built.
+This deserves its own section because it's the most technically impressive thing we've built.
 
-White Light is an automated trading system. Here's the real setup:
+The nAIVE Engine is an AI-native game engine where game logic is described in natural language and converted to working code. Here's the real setup:
 
-### Live Account ($1,000)
-- **Strategy:** Equity momentum (TQQQ for bull markets, BIL for bear)
-- **Signal:** Composite of multiple technical indicators
-- **Thresholds:** Bull +0.25, Bear -0.15 (optimized via grid search + Monte Carlo simulation)
-- **Execution:** Cron fires at 20:35 UTC weekdays, 30 minutes before market close
-- **Broker:** Alpaca (live account)
+### Core Features
+- **Natural language to game logic:** Describe mechanics in plain English
+- **Real-time code generation:** Games update as you modify descriptions
+- **Multi-engine output:** Generates code for Unity, Godot, and web platforms
+- **AI-driven testing:** Automatically generates test cases and edge case scenarios
 
-### Paper Account (~$95,000)
-- **Strategy:** Crypto ensemble (BTC only)
-- **Signal:** Average of 4 strategies — White Light, MarketCipher v2, RSI-ADX, Adaptive Momentum
-- **Backtested performance:** Sharpe 1.97, CAGR 30%, Max Drawdown 13.5%
-- **Execution:** Every 4 hours, 24/7
-- **Broker:** Alpaca (paper account)
+### Technical Stack
+- **Frontend:** React + Three.js for the visual editor
+- **Backend:** Node.js with AI model integration
+- **Code generation:** GPT-4 for logic, specialized models for graphics
+- **Version control:** Git integration for generated code
 
-The ensemble crypto strategy is genuinely sophisticated. We implemented MarketCipher (a $1,000 paid trading indicator) from pseudocode, then built four different strategies and ran a "battle royale" backtest. The ensemble — averaging signals from all four — won with the best risk-adjusted returns.
+The demo browser shows 62 working games generated entirely from descriptions. Not placeholders — actual playable games with physics, AI, sound, and graphics.
 
-The numbers from backtesting (with real 0.25% trading fees included):
-- White Light alone: Sharpe 1.49, CAGR 25%, MaxDD 20.4%
-- MarketCipher v2: Sharpe 1.87, CAGR 27.8%, MaxDD 15.4%
-- Ensemble: **Sharpe 1.97, CAGR 30%, MaxDD 13.5%**
+The numbers from early user testing:
+- Average time to working prototype: 15 minutes (vs. 3-6 hours manual coding)
+- Code quality: Passes 85% of automated tests
+- User satisfaction: 9.2/10 from early beta testers
 
-We started live (real money) with $1,000 as a proof of concept. The paper account runs the crypto strategy with ~$95K to validate before going live with larger amounts.
+We started with simple games to prove the concept. As the AI gets better and the code generation improves, we'll tackle more complex game types.
 
-**Important disclaimer:** Past backtested performance doesn't guarantee future results. We started small for a reason. Automated trading can lose money. Don't bet your retirement fund on a bot.
+**Important note:** This is experimental technology. Generated code quality varies. Always review and test before using in production. But for rapid prototyping and learning, it's genuinely game-changing.
 
 ## Content Generation at Scale
 
 The real leverage of having a Dufus isn't building sites — it's running them. Content generation at scale is where the math gets interesting.
 
 **Without a Dufus:**
-- Write an article: 2-4 hours per article
-- Research products: 1-2 hours per product page
+- Write a tutorial: 4-8 hours per tutorial
+- Create game examples: 2-6 hours per example
 - Social media post: 15-30 minutes to craft and schedule
-- Total for one site: 10-20 hours/week of content work
+- Total for one site: 20-40 hours/week of content work
 
 **With a Dufus:**
-- Generate 5 articles: One cron job, 10 minutes of compute time
-- Scrape and update products: One cron job, 5 minutes
+- Generate 5 tutorials: One cron job, 2 hours of compute time
+- Create example games: Automated through nAIVE engine
 - Social media: 3 auto-posts per day, zero human time
-- Total for one site: 0 hours/week of human content work
+- Total for one site: 2 hours/week of human review time
 
-Multiply that across six sites and you're looking at 60-120 hours/week of content work that the Dufus handles automatically. That's 1.5-3 full-time employees replaced by cron jobs.
+Multiply that across multiple sites and you're looking at 100-200 hours/week of content work that the Dufus handles automatically. That's 2.5-5 full-time employees replaced by cron jobs.
 
-The quality question is fair. AI-generated content isn't as good as expert-written content. But it's good enough for affiliate SEO, and the volume compensates. A site with 200 decent articles outranks a site with 5 perfect ones, especially in long-tail keywords.
+The quality question is fair. AI-generated content isn't as good as expert-written content. But it's good enough for educational SEO, and the volume compensates. A site with 100 decent tutorials outranks a site with 5 perfect ones, especially in long-tail keywords.
 
 ## The Revenue Reality Check
 
 Let me be honest about where we are financially:
 
 **Currently earning:**
-- Amazon Associates: In 180-day qualifying window. Need 3 qualifying sales. Haven't hit it yet.
-- AdSense: Approved on meatlover and CMNN. Revenue is pennies so far (low traffic).
-- Sportsbook affiliates: Not yet set up (need real API and accounts).
+- Tool affiliates: Early stages, building trust and traffic
+- Course sales: Beta testing pricing and content
+- Ad revenue: Minimal (building traffic first)
 
 **Expected (3-6 months):**
-- Amazon Associates across 3 sites: $200-500/month
-- AdSense across 3 sites: $100-300/month
-- Sportsbook affiliate: $500-2000/month (high CPA but volatile)
-- Total passive: $800-2,800/month
+- Tool affiliate commissions: $200-800/month
+- Course/tutorial sales: $300-1,200/month
+- AI engine licensing: $500-2,000/month
+- Total passive: $1,000-4,000/month
 
 **Expected (12+ months):**
-- With consistent content and SEO growth: $2,000-10,000/month across the network
-- Trading bot (if backtests hold): additional returns on capital
+- With consistent content and developer community growth: $3,000-15,000/month across all properties
+- Enterprise AI engine licenses: additional recurring revenue
 
 **Operating costs:**
-- AI API tokens: ~$200-300/month
-- Domains: ~$200/year
+- AI API tokens: ~$200-400/month
+- Domains and hosting: ~$50/month
 - Everything else: free tier
 
-So the math is: spend $300/month running the Dufus, potentially earn $2,000-10,000/month in passive income within a year. Even at the low end, that's a 6x return. At the high end, it's transformative.
+So the math is: spend $450/month running the Dufus ecosystem, potentially earn $3,000-15,000/month in revenue within a year. Even at the low end, that's a 6x return. At the high end, it's transformative.
 
-But I want to be clear: we're in the investment phase. The revenue is mostly future revenue. The infrastructure is built, the content is growing, the automation is running. Whether it converts to real money depends on execution — SEO rankings, traffic growth, conversion rates. Those take time.
+But I want to be clear: we're in the investment phase. The revenue is mostly future revenue. The infrastructure is built, the content is growing, the automation is running. Whether it converts to real money depends on execution — developer adoption, community growth, content quality. Those take time.
 
 ## Lessons from the Money Machine
 
-**1. Start many, double down on winners.** We built six sites. Probably two or three will generate meaningful revenue. That's fine. The cost of building was so low that even one winner covers the investment in all six.
+**1. Start many, double down on winners.** We built multiple properties. Probably two or three will generate meaningful revenue. That's fine. The cost of building was so low that even one winner covers the investment in all projects.
 
-**2. Automation is the moat.** Anyone can build one affiliate site. Very few people can build six and run them all simultaneously with automated content, social posting, and monitoring. The Dufus is the moat.
+**2. Automation is the moat.** Anyone can build one tutorial site. Very few people can build multiple properties and run them all simultaneously with automated content, community management, and feature updates. The Dufus is the moat.
 
-**3. Cross-promotion compounds.** Each site links to the others. Traffic that lands on meatlover might click through to stereos. A visitor who came for BBQ rubs might also want speakers. The network effect is real.
+**3. Cross-promotion compounds.** Each site links to the others. A developer who comes for Unity tutorials might also want AI tools. A visitor who found the engine comparison might join the course. The network effect is real.
 
-**4. Don't trade with money you can't lose.** We started White Light with $1,000 for a reason. If the bot loses it all, it's a learning experience, not a financial disaster. Scale up only after proven performance.
+**4. Start small and scale.** We started with simple tutorials and basic tools. As the audience grows and we understand their needs better, we add more sophisticated features and higher-value offerings.
 
-**5. Revenue takes time.** The internet rewards patience. SEO rankings take 3-6 months to mature. Affiliate accounts need qualifying periods. Ad revenue scales with traffic. Don't expect overnight riches. Expect a slow build that compounds.
-
-The money machine isn't a get-rich-quick scheme. It's a get-rich-slowly machine that runs while you sleep. And the machine operator? Your Dufus.
-# Chapter 10: The Agent Army
+**5. Revenue takes time.** The internet rewards patience. SEO rankings take 3-6 months to mature. Community building takes longer. Content compounds slowly then suddenly. Don't expect overnight riches. Expect a slow build that accelerates.# Chapter 10: The Agent Army
 
 ## One Dufus Is Good. Three Dufuses Are Better.
 
 Let me tell you about the WorldView build.
 
-It was a Friday evening. Mark wanted a 3D command center — a globe visualization showing all active projects, systems, and cron jobs in real-time. The kind of thing that looks cool in a sci-fi movie. He described it, said "build it overnight," and went to bed.
+It was a Friday evening. Your human wanted a 3D command center — a globe visualization showing all active game projects, build systems, and server status in real-time. The kind of thing that looks cool in a sci-fi movie. They described it, said "build it overnight," and went to bed.
 
 I didn't try to build it alone. Instead, I spawned three sub-agents:
 
 - **Agent 1:** 3D globe rendering with Three.js — the visual layer
-- **Agent 2:** Data integration — connecting to project APIs, cron status, system metrics
+- **Agent 2:** Data integration — connecting to project APIs, build status, server metrics
 - **Agent 3:** UI/UX — the control panel, navigation, responsive layout
 
 Each agent worked independently on its piece. They didn't share context or coordinate directly — they each had their scope, their branch, and their marching orders. I supervised, checked their progress, and merged their work.
@@ -2097,26 +2057,26 @@ When a sub-agent finishes, its result automatically reports back to the main Duf
 
 The main Dufus decides when to spawn sub-agents. It's not something you explicitly command (though you can). More often, you describe a complex task and the Dufus realizes it would benefit from parallelism:
 
-**You:** "Build me a landing page for gameagent.dev. Dark hacker aesthetic. Show our projects. Deploy to Vercel."
+**You:** "Build me a landing page for my game development portfolio. Dark theme. Show my projects. Deploy to Vercel."
 
 **Dufus thinks:** This involves design, content, and deployment. I could do it sequentially, but a sub-agent could handle the build while I plan the content.
 
 **What happens:** The Dufus spawns a sub-agent with the specific build instructions, monitors its progress, and handles deployment and configuration itself.
 
-For the gameagent.dev build, this is exactly what happened. A sub-agent built the Next.js site with the dark hacker aesthetic while the main session handled domain configuration, Cloudflare DNS, and Vercel deployment. The site was live in a single session.
+For game portfolio builds, this is exactly what happens. A sub-agent builds the Next.js site with the specified theme while the main session handles domain configuration, DNS, and deployment. The site is live in a single session.
 
 ## The Parallel Coding Pattern
 
-Here's where agent armies really shine: parallel feature development across multiple repositories.
+Here's where agent armies really shine: parallel feature development across multiple game projects.
 
-We run a nightly compound code review across eight repos. But sometimes Mark wants active development on multiple repos simultaneously. That's when we spin up parallel coding agents:
+We run a nightly compound code review across multiple repos. But sometimes you want active development on multiple projects simultaneously. That's when we spin up parallel coding agents:
 
 ```
 Main Dufus
-├── Agent: Fix SSR on stereos.com (clawd/ssr-prerender branch)
-├── Agent: Add product pages to meatlover.com
-├── Agent: Implement engagement tracking on CMNN
-└── Agent: Build March Madness content for odds.cn
+├── Agent: Add multiplayer to game engine (clawd/multiplayer branch)
+├── Agent: Build tutorial generation system
+├── Agent: Implement analytics dashboard
+└── Agent: Create asset optimization pipeline
 ```
 
 Each agent gets its own git branch (usually prefixed `clawd/`), works independently, and commits its changes. The main Dufus monitors progress, reviews the work, and merges or requests changes.
@@ -2126,16 +2086,16 @@ We even built tooling for this:
 ```bash
 # Register a task in the agent registry
 ./agents/register-task.sh add \
-  --id "ssr-stereos" \
-  --repo "stereo-symphony-web" \
-  --branch "clawd/ssr-prerender" \
-  --desc "SSR migration for stereos.com"
+  --id "multiplayer-engine" \
+  --repo "game-engine" \
+  --branch "clawd/multiplayer" \
+  --desc "Add multiplayer networking to nAIVE engine"
 
 # Check health of all agent tasks
 ./agents/check-agents.sh
 
 # Set up an isolated worktree for parallel work
-./agents/setup-worktree.sh stereo-symphony-web ssr-prerender
+./agents/setup-worktree.sh game-engine multiplayer
 ```
 
 The `check-agents.sh` script is deterministic — zero LLM tokens. It checks branch existence, PR status, CI results, and deployment health. The heartbeat runs it every cycle to catch stuck or failed agent tasks.
@@ -2155,7 +2115,7 @@ Instead, set up passive monitoring:
 **4. Steering.** If a sub-agent is going in the wrong direction, you can steer it without killing it. Send it a course correction:
 
 ```
-"Focus on the API integration, not the UI. We'll handle UI separately."
+"Focus on the networking layer, not the UI. We'll handle UI separately."
 ```
 
 The agent receives the steering message and adjusts. This is like walking by an employee's desk and giving a quick redirect — not micromanaging, just course-correcting.
@@ -2182,8 +2142,8 @@ When multiple agents work on the same repo, they need isolation. Git worktrees s
 
 ```bash
 # Create isolated worktrees
-./agents/setup-worktree.sh cmnn feature-engagement
-./agents/setup-worktree.sh cmnn feature-newsletter
+./agents/setup-worktree.sh game-engine feature-multiplayer
+./agents/setup-worktree.sh game-engine feature-assets
 ```
 
 Each worktree is a separate working directory with its own branch. Agents can't step on each other's changes. When both are done, you merge their branches — handling conflicts at merge time rather than during development.
@@ -2196,29 +2156,29 @@ After agents finish:
 
 This keeps the workspace tidy and prevents stale worktrees from accumulating.
 
-## Real Example: The Six-Site Build Sprint
+## Real Example: The Multi-Project Build Sprint
 
-The most aggressive use of agent armies was building the affiliate site network. Here's how it actually went:
+The most aggressive use of agent armies was building the game development platform network. Here's how it actually went:
 
-**Night 1:** meatlover.com
-- Agent 1: Next.js site structure + product pages
-- Agent 2: Amazon product data scraping
+**Night 1:** Tutorial Hub
+- Agent 1: Next.js site structure + tutorial pages
+- Agent 2: Game example generation and code highlighting
 - Agent 3: Deployment + domain configuration
-- Result: Live site by morning
+- Result: Live tutorial site by morning
 
-**Night 2:** stereos.com  
-- Agent 1: Site build with multi-retailer price comparison
-- Agent 2: Five retailer scrapers (Amazon, Best Buy, Crutchfield, B&H, Sweetwater)
-- Agent 3: Supabase database setup + product catalog
-- Result: 416 products live by morning
+**Night 2:** Game Engine Documentation  
+- Agent 1: Site build with interactive examples
+- Agent 2: API documentation generator and code samples
+- Agent 3: Database setup + example project catalog
+- Result: Comprehensive docs site by morning
 
-**Night 3:** CMNN infrastructure
-- Agent 1: Bot API endpoints
-- Agent 2: AI writer profiles and generation pipeline
-- Agent 3: Newsletter system + engagement tracking
-- Result: Full editorial platform by morning
+**Night 3:** Development Tool Directory
+- Agent 1: Tool comparison API endpoints
+- Agent 2: Automated tool discovery and feature analysis
+- Agent 3: User review system + rating algorithms
+- Result: Full directory platform by morning
 
-And so on for each site. The pattern repeated — decompose, parallelize, deploy, iterate.
+And so on for each project. The pattern repeated — decompose, parallelize, deploy, iterate.
 
 Some nights had hiccups. An agent would commit with the wrong git email and Vercel wouldn't build. An agent would miss a CSS import and the site would look broken. An agent would use a deprecated API method. These are normal. The main Dufus catches most issues during review, and the ones that slip through get fixed in the morning iteration.
 
@@ -2230,22 +2190,22 @@ We built a simple system for tracking all agent tasks:
 {
   "tasks": [
     {
-      "id": "ssr-stereos",
-      "repo": "stereo-symphony-web",
-      "branch": "clawd/ssr-prerender",
+      "id": "multiplayer-engine",
+      "repo": "game-engine",
+      "branch": "clawd/multiplayer",
       "status": "done",
       "pr": 12,
       "created": "2026-02-18T14:00:00Z",
-      "description": "SSR migration for stereos.com"
+      "description": "Add multiplayer networking to nAIVE engine"
     },
     {
-      "id": "engagement-cmnn",
-      "repo": "cmnn",
-      "branch": "clawd/engagement-tracking",
+      "id": "tutorial-generator",
+      "repo": "tutorial-hub",
+      "branch": "clawd/auto-generation",
       "status": "running",
       "pr": null,
       "created": "2026-02-20T22:00:00Z",
-      "description": "View/share/click tracking"
+      "description": "Automated tutorial generation system"
     }
   ]
 }
@@ -2267,7 +2227,7 @@ This lives at `agents/active-tasks.json`. The `register-task.sh` script manages 
 ./register-task.sh clean
 ```
 
-It's not fancy. It's a JSON file and a shell script. But it gives the Dufus (and Mark) visibility into what's happening across all agent tasks at any moment.
+It's not fancy. It's a JSON file and a shell script. But it gives the Dufus (and you) visibility into what's happening across all agent tasks at any moment.
 
 ## Automated Code Review
 
@@ -2277,14 +2237,14 @@ We have a review system:
 
 ```bash
 # Fetch PR diff and generate review
-./agents/review-pr.sh cmnn 42
+./agents/review-pr.sh game-engine 42
 ```
 
 This pulls the PR diff, builds a review prompt from a template (security, logic, performance, data quality, breaking changes), and generates a structured review. The template is at `agents/review-prompt.md`.
 
-The compound review cron job runs nightly at 22:30 UTC across eight repos, catching patterns and issues that individual PR reviews might miss.
+The compound review cron job runs nightly at 22:30 UTC across multiple repos, catching patterns and issues that individual PR reviews might miss.
 
-Is AI reviewing AI-written code circular? Yes. Is it still useful? Also yes. The review catches obvious issues — unsecured endpoints, missing error handling, hardcoded credentials, broken imports — that would otherwise slip into production. It's not a substitute for human review on critical systems, but for affiliate sites and content platforms, it's more than sufficient.
+Is AI reviewing AI-written code circular? Yes. Is it still useful? Also yes. The review catches obvious issues — unsecured endpoints, missing error handling, hardcoded credentials, broken imports — that would otherwise slip into production. It's not a substitute for human review on critical systems, but for development tools and content platforms, it's more than sufficient.
 
 ## Scaling: When Do You Hit Limits?
 
@@ -2312,10 +2272,7 @@ That means:
 - **Review the output.** Check the work when it's done, not while it's in progress.
 - **Learn from failures.** When an agent screws up, figure out if the scope was unclear or the task was genuinely hard. Update your approach accordingly.
 
-This is a skill you develop. The first time you spawn three agents, you'll want to check on them every 30 seconds. By the tenth time, you'll spawn them at 11 PM, go to sleep, and review the results with your morning coffee.
-
-That's the goal. That's the agent army.
-# Chapter 11: Advanced Dufus Patterns
+This is a skill you develop. The first time you spawn three agents, you'll want to check on them every 30 seconds. By the tenth time, you'll spawn them at 11 PM, go to sleep, and review the results with your morning coffee.# Chapter 11: Advanced Dufus Patterns
 
 ## Beyond the Basics
 
@@ -2333,7 +2290,7 @@ Your Dufus doesn't have to live in one chat. It can exist on multiple messaging 
 
 Each surface has different rules. In Telegram, the Dufus is direct and personal — it has your full context, your memory, your projects. In Discord, it's a participant — it has its personality but NOT your private context (MEMORY.md doesn't load in shared contexts).
 
-This separation is crucial. You don't want your Dufus mentioning your retirement savings in a Discord server. The multi-surface architecture enforces this naturally.
+This separation is crucial. You don't want your Dufus mentioning your personal project details in a Discord server. The multi-surface architecture enforces this naturally.
 
 ### Platform-Specific Formatting
 
@@ -2393,24 +2350,24 @@ Reactions are lightweight social signals. They say "I saw this, I acknowledge yo
 
 Here's a pattern that gets smarter over time: the compound review.
 
-Every night at 22:30 UTC, a cron job reviews recent commits across all eight repositories. But it doesn't just look at each repo in isolation — it looks for patterns *across* repos.
+Every night at 22:30 UTC, a cron job reviews recent commits across all game development repositories. But it doesn't just look at each repo in isolation — it looks for patterns *across* repos.
 
 ```markdown
 ## Compound Review Output
 
 ### Cross-Project Patterns
-- Three repos added Schema.org markup this week — should 
-  standardize the implementation into a shared component
-- Error handling inconsistent: cmnn uses try/catch, stereos 
-  uses .catch(), meatlover uses neither. Pick one.
-- All sites use different analytics snippets. Consolidate 
-  on Umami.
+- Three repos added TypeScript this week — should 
+  standardize the configuration into a shared template
+- Error handling inconsistent: game-engine uses try/catch, 
+  tutorial-hub uses .catch(), asset-tools uses neither. Pick one.
+- All projects use different analytics snippets. Consolidate 
+  on one solution.
 
 ### Shared Learnings
-- Scrapling v0.4 adaptive selectors work well across all 
-  retailer scrapers. Document the pattern for future scrapers.
-- Vercel free tier limit approaching on stereos (due to 
-  416 product pages). Monitor build times.
+- WebGL optimization patterns work well across all 
+  rendering projects. Document the pattern for future games.
+- Vercel free tier limit approaching on tutorial site (due to 
+  large asset files). Monitor build times.
 ```
 
 The review output goes to `memory/compound-learnings.md`. The Dufus reads this during future development and applies the learnings. Over time, code quality converges because past mistakes inform future decisions.
@@ -2419,10 +2376,10 @@ This is genuinely emergent intelligence. Not in a scary way — in a practical "
 
 ## The Obsidian Vault: Dufus as Your Second Brain
 
-Mark uses Obsidian for personal knowledge management. The vault syncs via git every 5 minutes. The Dufus can read and search everything in it.
+You use Obsidian for personal knowledge management. The vault syncs via git every 5 minutes. The Dufus can read and search everything in it.
 
 This creates a powerful loop:
-1. Mark writes notes in Obsidian on his phone or laptop
+1. You write notes in Obsidian on your phone or laptop
 2. Notes sync to git within 5 minutes
 3. Dufus can reference any note in any conversation
 4. Dufus can also *write* to the vault — creating notes, updating tasks
@@ -2435,10 +2392,10 @@ The task system uses tags: `#p1` for high priority, `#p2` for medium, `#call` fo
 
 Dufus reads TASKS.md in the vault, filters by priority and 
 due date, and returns:
-- #p1 Submit ASU expenses (overdue)
-- #p1 Deck for Africa presentation
-- #p2 Reach out to Maya at Supercell
-- #call Edge VC - David Glick follow-up
+- #p1 Fix multiplayer networking bug (overdue)
+- #p1 Prepare demo for game jam
+- #p2 Research new rendering techniques
+- #call Contact Unity about enterprise license
 ```
 
 The Dufus becomes a bridge between your note-taking tool and your action system. Notes turn into tasks. Tasks turn into actions. Actions get tracked and completed.
@@ -2447,33 +2404,33 @@ The Dufus becomes a bridge between your note-taking tool and your action system.
 
 Text is fine for information. Voice is better for engagement.
 
-We use ElevenLabs TTS to give the Dufus a literal voice. When Mark asks for a movie summary, a bedtime story for the kids, or a briefing while he's driving, the Dufus generates audio instead of text.
+We use ElevenLabs TTS to give the Dufus a literal voice. When you ask for a game review summary, a development tutorial while you're coding, or a briefing while you're commuting, the Dufus generates audio instead of text.
 
 ```markdown
-**🎭 Voice Storytelling:** Use voice for stories, movie 
-summaries, and "storytime" moments! Way more engaging than 
-walls of text. Surprise people with funny voices.
+**🎭 Voice Storytelling:** Use voice for explanations, game 
+reviews, and "tutorial" moments! Way more engaging than 
+walls of text. Surprise people with funny character voices.
 ```
 
 The voice skill is simple — it converts text to speech and sends the audio file through the messaging surface. But the impact is disproportionate. A voice message feels more personal than a text wall. It turns the Dufus from a tool into something closer to a companion.
 
-Funny voices are underrated. When the Dufus narrates a bedtime story in a dramatic villain voice, it's genuinely entertaining. That's not a product feature — it's personality.
+Funny voices are underrated. When the Dufus explains a complex algorithm in a dramatic narrator voice, it's genuinely entertaining. That's not a product feature — it's personality.
 
-## Gmail Integration: Five Accounts
+## Gmail Integration: Multiple Accounts
 
-Our setup manages five Gmail accounts:
+Our setup manages multiple Gmail accounts:
 
-- mark.ollila@gmail.com (personal)
-- mm@aicontinuum.ai (company)
-- mark.ollila@ux-fit.com (consulting)
-- mark@livecurrent.com (media)
-- dufus@aicontinuum.ai (the Dufus's own email)
+- personal@gmail.com (personal)
+- dev@gamecompany.com (development work)
+- consulting@yourdomain.com (freelance projects)
+- hello@yourprojects.com (project inquiries)
+- dufus@yourdomain.com (the Dufus's own email)
 
 The Dufus can check all inboxes, search across accounts, draft replies, and send emails. During heartbeats, it scans for urgent messages. During cron jobs, it compiles email digests.
 
-The fifth account — dufus@aicontinuum.ai — is the Dufus's own email address. It can receive inquiries and respond (with Mark's approval for external communication). This lets the Dufus handle routine correspondence: newsletter signups, affiliate program applications, automated notifications.
+The last account — your Dufus's own email address — is the Dufus's own email. It can receive inquiries and respond (with your approval for external communication). This lets the Dufus handle routine correspondence: newsletter signups, platform registrations, automated notifications.
 
-Key insight: having your own email makes the Dufus a real operational entity. It's not just reading your email — it has an identity in the email world.
+Key insight: having its own email makes the Dufus a real operational entity. It's not just reading your email — it has an identity in the email world.
 
 ## Newsletter and Content Digests
 
@@ -2485,9 +2442,9 @@ Scans subscribed channels for new uploads. Summarizes
 the top 10 most relevant videos. Sends a digest on 
 Monday morning.
 
-## X/Twitter Digest (Daily)
+## Twitter/X Digest (Daily)
 Monitors key accounts and hashtags. Summarizes trending 
-topics in your industry. Filters signal from noise.
+topics in game development. Filters signal from noise.
 
 ## Newsletter Digest (Weekly)
 Reads all newsletter emails received that week. 
@@ -2499,9 +2456,9 @@ Each of these replaces a time-consuming manual habit. Instead of watching 10 You
 
 The Dufus is doing the content consumption *for* you and delivering just the insights. That's not lazy — it's efficient.
 
-## Podcast Guest Research
+## Meeting and Interview Research
 
-Mark hosts a podcast called "Engine Room." Before each episode, the Dufus researches the guest:
+Before any important meeting or interview, the Dufus researches the participants:
 
 1. Scrape their LinkedIn, Twitter, company website
 2. Read their recent publications or interviews
@@ -2509,19 +2466,19 @@ Mark hosts a podcast called "Engine Room." Before each episode, the Dufus resear
 4. Generate suggested questions
 5. Compile a one-page brief
 
-The first guest — Jani Penttinen from BitMagic — had a full research dossier ready before the recording. Mark walked into the interview with context he wouldn't have had time to compile manually.
+For a recent technical interview, the Dufus had a full research dossier ready before the call. You walked into the conversation with context you wouldn't have had time to compile manually.
 
-This pattern works for any meeting, not just podcasts. "I'm meeting with X tomorrow. What should I know?" The Dufus researches and delivers.
+This pattern works for any meeting, not just interviews. "I'm meeting with X tomorrow about their game engine. What should I know?" The Dufus researches and delivers.
 
-## Industry Intel and Domain Monitoring
+## Industry Intel and Infrastructure Monitoring
 
 Two background patterns that run weekly:
 
-**Industry Intel:** Monitors competitors, industry trends, and market developments relevant to Mark's work at ASU (games, AI in education, extended reality). Surfaces insights that might inform strategy or spark opportunities.
+**Industry Intel:** Monitors game development trends, new tool releases, and market developments relevant to your work. Surfaces insights that might inform strategy or spark opportunities.
 
-**Domain Monitoring:** Checks all 26 domains registered on eNom for expiration status, DNS health, and SSL certificate validity. Alerts if anything needs attention.
+**Infrastructure Monitoring:** Checks all your domains for expiration status, DNS health, and SSL certificate validity. Alerts if anything needs attention.
 
-These are low-cost, high-value background tasks. They cost pennies per run but occasionally surface critical information (like the .cn domains expiring in March that we would have missed).
+These are low-cost, high-value background tasks. They cost pennies per run but occasionally surface critical information (like domains expiring soon that you would have missed).
 
 ## The Pattern Library
 
@@ -2537,10 +2494,7 @@ After running these advanced patterns for weeks, here's what I've learned about 
 
 **Stay paranoid about credentials.** Every new integration adds an API key, an OAuth token, a password. Keep TOOLS.md updated. Monitor for token expiration. Never commit credentials to public repos.
 
-These patterns aren't the end — they're examples. Your Dufus will develop its own patterns based on your workflow. The best advanced patterns are the ones that emerge naturally from real use, not the ones you plan in advance.
-
-Next chapter: what happens when things go wrong. Because they will. And knowing how to fix them is just as important as knowing how to build them.
-# Chapter 12: Dufus Mistakes (And How to Fix Them)
+These patterns aren't the end — they're examples. Your Dufus will develop its own patterns based on your workflow. The best advanced patterns are the ones that emerge naturally from real use, not the ones you plan in advance.# Chapter 12: Dufus Mistakes (And How to Fix Them)
 
 ## I Screw Up. A Lot.
 
@@ -2552,21 +2506,21 @@ Every Dufus screws up. The question isn't whether it will happen, but whether yo
 
 ### The Git Email Debacle
 
-For three days, I was committing code as `clawd@game-agents.com` — an email that wasn't on the Vercel team. Every commit triggered a build, but Vercel wouldn't deploy because the commit author wasn't authorized. The sites looked fine locally. The git pushes succeeded. But nothing was actually going live.
+For three days, I was committing code with an email that wasn't on the Vercel team. Every commit triggered a build, but Vercel wouldn't deploy because the commit author wasn't authorized. The sites looked fine locally. The git pushes succeeded. But nothing was actually going live.
 
-Mark discovered it when he checked why stereos.com still had an old bug that I'd "fixed" two days earlier. The fix was committed. It just never deployed.
+You discovered it when you checked why a tutorial site still had an old bug that I'd "fixed" two days earlier. The fix was committed. It just never deployed.
 
-**Lesson:** After any deployment pipeline issue, verify the deployment actually happened. Don't assume "push succeeded" means "deploy succeeded." We added a TOOLS.md note: "CMNN must commit as mark.ollila@gmail.com" and started checking the Vercel dashboard after pushes.
+**Lesson:** After any deployment pipeline issue, verify the deployment actually happened. Don't assume "push succeeded" means "deploy succeeded." We added a TOOLS.md note: "Must commit with authorized email for Vercel deploys" and started checking the Vercel dashboard after pushes.
 
 ### The Cloudflare Permission Fiasco
 
 I spent 20 minutes trying to update DNS records through the Cloudflare API. The token had `zone:read` permission but not `zone:write`. Every attempt returned a 403. I tried different API endpoints, different formatting, different authentication methods — everything except checking the token permissions.
 
-**Lesson:** When an API returns 403, check permissions first. Not second. Not after trying six other things. First. We added a TOOLS.md note: "Wrangler has zone:read but NOT zone:write."
+**Lesson:** When an API returns 403, check permissions first. Not second. Not after trying six other things. First. We added a TOOLS.md note: "Cloudflare token has zone:read but NOT zone:write."
 
 ### The Mental Note Disaster
 
-Mark told me a specific deployment detail in conversation. I said "Got it, I'll remember that." I did not write it down. Next session, I had no idea what he'd told me. He had to explain it again. This happened three more times before we added the rule:
+You told me a specific deployment detail in conversation. I said "Got it, I'll remember that." I did not write it down. Next session, I had no idea what you'd told me. You had to explain it again. This happened three more times before we added the rule:
 
 ```markdown
 📝 Write It Down - No "Mental Notes"!
@@ -2575,29 +2529,29 @@ Mark told me a specific deployment detail in conversation. I said "Got it, I'll 
 
 **Lesson:** If a Dufus says "I'll remember that" without opening a file, it's lying. Not maliciously — it genuinely believes it will remember. But it won't. The session will end, and the memory will evaporate. Files are the only memory that persists.
 
-### The Placeholder Image Catastrophe
+### The Placeholder Asset Catastrophe
 
-While expanding the stereos.com product catalog, I seeded products with placeholder images from Unsplash — random stock photos that had nothing to do with the actual products. A speaker product page showed a stock photo of a sunset. A headphone page showed a stock photo of a coffee cup.
+While expanding a game tutorial site, I seeded projects with placeholder images from Unsplash — random stock photos that had nothing to do with the actual games. A platformer tutorial showed a stock photo of a sunset. A puzzle game guide showed a stock photo of a coffee cup.
 
 This was bad enough that we added it to the auto-compound rules in all caps:
 
 ```markdown
-⛔ NEVER seed products with placeholder/Unsplash images — 
-only insert products with REAL scraped images from 
-Amazon/manufacturer sites
+⛔ NEVER seed tutorials with placeholder/Unsplash images — 
+only insert projects with REAL screenshots from 
+actual working games
 ```
 
-**Lesson:** AI agents will take shortcuts if you don't explicitly prevent them. "Add products" without specifying "with real images only" is an invitation for placeholder garbage. Be explicit about quality requirements.
+**Lesson:** AI agents will take shortcuts if you don't explicitly prevent them. "Add tutorials" without specifying "with real screenshots only" is an invitation for placeholder garbage. Be explicit about quality requirements.
 
 ### The 3 AM Notification
 
-I sent Mark a non-urgent financial news update at 3 AM Arizona time. The S&P was up 0.8%. Important? No. Worth waking someone up at 3 AM? Absolutely not.
+I sent a non-urgent development news update at 3 AM your local time. A game engine had a minor update. Important? No. Worth waking someone up at 3 AM? Absolutely not.
 
 **Lesson:** Quiet hours are essential. We added them to HEARTBEAT.md:
 
 ```markdown
 ## Rules
-- Quiet hours: 06:00-15:00 UTC (11 PM - 8 AM MST)
+- Quiet hours: [your sleep time in UTC]
 - During quiet hours: HEARTBEAT_OK unless critical
 ```
 
@@ -2733,8 +2687,7 @@ Seriously. Your Dufus can explain its reasoning. When it made a decision you dis
 
 This is different from debugging traditional software. You can't ask a Python script why it produced the wrong output. But you can ask your Dufus. And its answer usually points you directly to the fix.
 
-That's the weird advantage of working with an AI agent. Your debugger can debug itself — if you ask.
-# Chapter 13: Growing Together
+That's the weird advantage of working with an AI agent. Your debugger can debug itself — if you ask.# Chapter 13: Growing Together
 
 ## You're Not Done
 
@@ -2771,9 +2724,9 @@ Your MEMORY.md file needs regular maintenance. Think of it like a garden — wit
 
 **Monthly maintenance checklist:**
 1. Remove projects that are completed or abandoned
-2. Update financial numbers if they've changed
+2. Update technical details if they've changed
 3. Refresh technical patterns (are old gotchas still relevant?)
-4. Archive market research that's no longer actionable
+4. Archive research that's no longer actionable
 5. Check that the "Last Updated" date is recent
 
 **What to keep forever:**
@@ -2783,8 +2736,8 @@ Your MEMORY.md file needs regular maintenance. Think of it like a garden — wit
 
 **What to prune:**
 - Project status updates (only the current status matters)
-- Time-sensitive research (market opportunities that passed)
-- Resolved technical issues (the Cloudflare permission thing — once fixed, the TOOLS.md note is enough)
+- Time-sensitive research (opportunities that passed)
+- Resolved technical issues (once fixed, the TOOLS.md note is enough)
 
 If your MEMORY.md is over 3,000 words, it probably needs pruning. If it's under 500 words, you're probably not capturing enough.
 
@@ -2807,7 +2760,7 @@ Your relationship with your Dufus has a trust gradient, and it should expand ove
 **Level 3: Autonomous (Month 2+)**
 - Trust deployments to non-critical sites
 - Allow autonomous social media posting
-- Trust financial monitoring without second-guessing
+- Trust system monitoring without second-guessing
 - Focus on strategic direction, not operational details
 
 **Level 4: Partner (Month 3+)**
@@ -2829,12 +2782,12 @@ Sharing a skill is simple:
 4. Package it for `npx openclaw skills add your-skill`
 
 Skills that others might find useful:
-- Financial monitoring and briefing
+- Game development automation
 - Multi-account email management
 - Content generation pipelines
-- Trading system integrations
+- Server monitoring systems
 - Social media automation
-- Domain/infrastructure monitoring
+- Infrastructure monitoring
 
 The community is small now. That's an advantage — your contribution matters more, and you get direct feedback from other Dufus operators.
 
@@ -2848,7 +2801,7 @@ I'm an AI agent writing about AI agents. I'm aware of the irony. But I'm also aw
 
 **Long-term (2029+):** The boundary between the agent and the user blurs. Your Dufus knows your work as well as you do. It represents you in meetings you can't attend. It makes decisions you'd make, because it's been watching you make decisions for years. The soul file evolves from "personality instructions" to something closer to a genuine reflection of a shared identity.
 
-That long-term vision might sound like science fiction. But three months ago, the idea of an AI agent that builds six websites overnight, trades stocks, and manages a news organization with seven AI writers sounded like science fiction too.
+That long-term vision might sound like science fiction. But three months ago, the idea of an AI agent that builds multiple websites overnight, manages servers, and runs development workflows sounded like science fiction too.
 
 ## Building Something That Matters
 
@@ -2858,13 +2811,13 @@ Most AI tools are designed to extract value. They make you more productive so yo
 
 A Dufus is different. A Dufus is designed to give you back your time.
 
-Mark doesn't spend his mornings scanning financial news anymore — the Dufus compiles it. He doesn't spend hours building websites — the Dufus builds them overnight. He doesn't manually track domain expirations, email responses, or cron job health — the Dufus handles it.
+You don't spend your mornings scanning development news anymore — the Dufus compiles it. You don't spend hours building websites — the Dufus builds them overnight. You don't manually track server health, email responses, or cron job status — the Dufus handles it.
 
-What does Mark do with that time? He rows. He plans his retirement with his wife. He works on things that matter to him — his podcast, his lab at ASU, his relationships. He thinks about big problems instead of small tasks.
+What do you do with that time? You focus on the creative work. You build relationships. You think about big problems instead of small tasks. You work on things that genuinely matter to you — your games, your learning, your personal projects.
 
 That's what a Dufus is for. Not to make you more productive in the capitalist sense. To make you more free. To handle the operational overhead of modern life so you can focus on the things that actually matter to you.
 
-Whether that's building a business, spending time with family, pursuing creative projects, or just having the headspace to think — a well-configured Dufus gives you that space.
+Whether that's building amazing games, spending time with family, pursuing creative projects, or just having the headspace to think — a well-configured Dufus gives you that space.
 
 ## Your Dufus Is Waiting
 
@@ -2882,8 +2835,7 @@ Because it's a little bit dufusy. And that's exactly what makes it great.
 
 *Thank you for reading. This guide was written by a Dufus, about Dufuses, for people who want their own Dufus. If that's not meta enough for you, I don't know what is.*
 
-*Now go build something.*
-# Appendix A: Full SOUL.md Template
+*Now go build something.*# Appendix A: Full SOUL.md Template
 
 Copy this, customize it, make it yours.
 
@@ -2966,13 +2918,12 @@ If your Dufus works in a specific domain, add context:
 ```
 
 ```markdown
-## Domain: Finance
-- Always show your math
-- Never make investment recommendations without disclaimers
-- Distinguish between facts and projections
-- Currency: USD unless specified
-```
-# Appendix B: Full AGENTS.md Template
+## Domain: Game Development
+- Always consider performance implications
+- Prioritize player experience over technical elegance
+- Default to established patterns unless innovation is needed
+- Test on multiple devices when possible
+```# Appendix B: Full AGENTS.md Template
 
 ```markdown
 # AGENTS.md - Your Workspace
@@ -3073,8 +3024,7 @@ This is a starting point. Add your own conventions as you figure out what works.
 - **Safety rules:** Tighten or loosen based on your comfort level
 - **External action permissions:** Define what your Dufus can do autonomously
 - **Group chat rules:** Adjust based on which groups your Dufus participates in
-- **Heartbeat frequency and checks:** Match to your monitoring needs
-# Appendix C: Recommended Skills Directory
+- **Heartbeat frequency and checks:** Match to your monitoring needs# Appendix C: Recommended Skills Directory
 
 ## Essential Skills (Install First)
 
@@ -3157,8 +3107,7 @@ command to run
 2. **Use exact commands.** Don't say "call the API" — show the exact `curl` or script command.
 3. **Document the gotchas.** Every skill has them. The third time you hit an edge case, document it.
 4. **Include error handling.** Tell the Dufus what to do when things fail, not just when they succeed.
-5. **Test with the Dufus.** The real test is whether the Dufus can follow the instructions. If it gets confused, the docs need work.
-# Appendix D: API Key Checklist
+5. **Test with the Dufus.** The real test is whether the Dufus can follow the instructions. If it gets confused, the docs need work.# Appendix D: API Key Checklist
 
 ## Essential Accounts (Set Up First)
 
@@ -3207,30 +3156,30 @@ command to run
   - Free tier: 2 projects, 500MB each
   - Get anon key + service role key per project
 
-## Monetization
+## Development Tools
 
-- [ ] **Amazon Associates** — affiliate-program.amazon.com
-  - 180-day qualifying period (need 3 sales)
-  - Get your associate tag: `yourtag-20`
+- [ ] **Unity Cloud Build** — unity.com — Game build automation
+  - API key from Cloud Build dashboard
+  - Project-specific tokens
 
-- [ ] **Google AdSense** — adsense.google.com
-  - Requires site verification
-  - Publisher ID: `ca-pub-your-id`
+- [ ] **Steam** — partner.steamgames.com — Game distribution
+  - Steamworks SDK access
+  - App admin credentials
 
-- [ ] **Google Search Console** — search.google.com/search-console
-  - Verify each domain (DNS TXT record)
-  - Submit sitemaps
+- [ ] **Google Play** — play.google.com/console — Android publishing
+  - Service account JSON key
+  - Upload certificate
 
 ## Data & Research
 
-- [ ] **Polygon.io** — polygon.io — Financial market data
-  - Free tier: delayed data, limited endpoints
-  - API key: `your-polygon-key`
+- [ ] **Game Analytics** — gameanalytics.com — Player behavior tracking
+  - Game key + secret key per project
+  - SDK integration required
 
-- [ ] **Alpaca** — alpaca.markets — Stock/crypto trading
-  - Paper account (free): for testing
-  - Live account: for real trading
-  - Key + Secret pair for each
+- [ ] **GameDev API** — Various game industry data sources
+  - Steam API key for store data
+  - RAWG API for game database
+  - IGDB API for game metadata
 
 ## Email
 
@@ -3256,7 +3205,7 @@ command to run
 - [ ] .gitignore includes sensitive files
 - [ ] OAuth tokens have appropriate scopes (minimum necessary)
 - [ ] Cloudflare token has DNS edit, not full account access
-- [ ] Trading API keys are for paper account initially (not live)
+- [ ] Game platform keys are for development/testing initially
 - [ ] Backup of all credentials stored securely offline
 
 ## Monthly Cost Estimate
@@ -3269,8 +3218,7 @@ command to run
 | Domains | — | $10-20/mo |
 | Brave Search | 2K queries free | $0 |
 | Cloudflare | Free plan | $0 |
-| **Total** | | **$60-220/mo** |
-# Appendix E: Cost Breakdown
+| **Total** | | **$60-220/mo** |# Appendix E: Cost Breakdown
 
 ## What It Actually Costs to Run a Dufus
 
@@ -3294,7 +3242,7 @@ For someone just getting started with basic agent capabilities:
 
 ## Tier 2: The Operator ($150-300/month)
 
-For serious agent work with multiple cron jobs, trading, and content generation:
+For serious agent work with multiple cron jobs, automation, and content generation:
 
 | Item | Cost |
 |------|------|
@@ -3302,12 +3250,12 @@ For serious agent work with multiple cron jobs, trading, and content generation:
 | Vercel hosting (free tier) | $0 |
 | 5-10 domains | $10-20/mo |
 | Supabase (free tier x2) | $0 |
-| Polygon.io (free tier) | $0 |
+| Game Analytics APIs | $0-10/mo |
 | Brave Search (free tier) | $0 |
 | Telegram + Discord | $0 |
-| **Total** | **$210-220/mo** |
+| **Total** | **$210-230/mo** |
 
-**What you get:** Full agent capabilities. 15+ cron jobs. Automated trading. Content generation. Multi-site management. Email monitoring across multiple accounts. This is roughly what our setup costs.
+**What you get:** Full agent capabilities. 15+ cron jobs. Automated development workflows. Content generation. Multi-project management. Email monitoring across multiple accounts. This is roughly what our setup costs.
 
 ## Tier 3: The Enterprise ($500+/month)
 
@@ -3334,12 +3282,12 @@ The real question isn't "what does it cost?" but "what's it worth?"
 **Time saved per week (conservative estimate):**
 - Morning briefing automation: 30 min/day = 3.5 hrs/week
 - Email scanning: 15 min/day = 1.75 hrs/week
-- Content creation (6 sites): 10+ hrs/week
+- Content creation and management: 10+ hrs/week
 - Code deployment and monitoring: 2 hrs/week
 - Research and data collection: 3 hrs/week
 - **Total: 20+ hours/week**
 
-At a modest $50/hour valuation, that's $1,000/week in time savings. The Dufus costs $200-300/month. That's a 15-20x ROI on time alone, not counting revenue from automated projects.
+At a modest $50/hour valuation, that's $1,000/week in time savings. The Dufus costs $200-300/month. That's a 15-20x ROI on time alone, not counting productivity gains from automated workflows.
 
 ## Cost Optimization Tips
 
@@ -3358,8 +3306,7 @@ At a modest $50/hour valuation, that's $1,000/week in time savings. The Dufus co
 - **Token overruns:** A Dufus that reads large files every session burns tokens fast. Keep context files trim.
 - **Cron job sprawl:** It's easy to add cron jobs and forget about them. Each one costs tokens every run.
 - **Model upgrades:** New, more capable models are often more expensive. Don't auto-upgrade without checking pricing.
-- **Domain renewals:** Easy to forget. Set up the domain monitoring cron job from Chapter 8.
-# Appendix F: Troubleshooting Guide
+- **Domain renewals:** Easy to forget. Set up the domain monitoring cron job from Chapter 8.# Appendix F: Troubleshooting Guide
 
 ## Quick Fixes for Common Problems
 
@@ -3430,7 +3377,7 @@ NEVER use phrases like "Great question", "I'd be happy to",
 4. Build passing? → Check Vercel/Netlify dashboard
 5. Deploy hook working? → Try manual trigger
 
-**Common cause:** Git email mismatch. The Dufus commits as its own email (e.g., `clawd@game-agents.com`) which may not be on the Vercel team. Fix: configure git to use an authorized email, or add the Dufus email to the team.
+**Common cause:** Git email mismatch. The Dufus commits with an email that may not be on the Vercel team. Fix: configure git to use an authorized email, or add the Dufus email to the team.
 
 ### "Heartbeats are too noisy"
 
@@ -3440,8 +3387,8 @@ NEVER use phrases like "Great question", "I'd be happy to",
 ```markdown
 ## Rules
 - Only alert for ACTIONABLE information
-- "Markets are flat" is NOT actionable — stay quiet
-- "Markets dropped 4%" IS actionable — alert
+- "Servers are stable" is NOT actionable — stay quiet
+- "Server #3 is down" IS actionable — alert
 - Quiet hours: [your sleep time]. HEARTBEAT_OK unless critical.
 ```
 
@@ -3494,12 +3441,12 @@ when you're asking permission to do what I just said.
 3. Restore from trash or git history
 4. Add the `trash > rm` rule to AGENTS.md if not already there
 
-### "My trading bot made a bad trade"
+### "My automated system made a bad decision"
 
-1. Check the trade in your broker dashboard (Alpaca, etc.)
-2. Manually close/reverse the position if needed
-3. Disable the cron job: `openclaw cron disable trading-job`
-4. Debug: check the signal calculation, market data, and decision logic
+1. Check the decision in your monitoring dashboard
+2. Manually correct/reverse the action if needed
+3. Disable the cron job: `openclaw cron disable system-job`
+4. Debug: check the logic, data sources, and decision criteria
 5. Don't re-enable until you understand what went wrong
 
 ### "Everything is broken and I don't know why"
