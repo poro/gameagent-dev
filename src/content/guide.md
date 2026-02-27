@@ -133,7 +133,193 @@ Here's the plan. Over the next dozen chapters, we're going to build your Dufus f
 
 Every chapter will include real examples from our actual setup. Real file snippets. Real mistakes. Real results. No theoretical frameworks, no "imagine if" scenarios. Just: here's what we did, here's how you can do it too.
 
-Let's build your Dufus.# Chapter 2: Setting Up Your Dufus
+Let's build your Dufus.
+
+---
+
+# Quick Start Cheat Sheet
+
+*Tear this page out. This is everything you need to buy and do, in order.*
+
+## Shopping List
+
+### Hardware (one-time, ~$440)
+
+| Item | Price | Link |
+|------|-------|------|
+| **Beelink EQi12 Mini PC** — i3-1220P, 16GB RAM, 500GB SSD | ~$250 | [Amazon](https://www.amazon.com/Beelink-i3-1220P-Computer-Display-Gigabit/dp/B0DDCKT9YP?tag=dufus0b-20) |
+| **Samsung 990 EVO Plus 2TB NVMe** — project/data drive | ~$150 | [Amazon](https://www.amazon.com/SAMSUNG-MZ-V9S2T0BW-Internal-Professional-Compatible/dp/B0DGHB9V34?tag=dufus0b-20) |
+| **Crucial P3 Plus 500GB NVMe** — already included with Beelink (spare/backup) | ~$40 | [Amazon](https://www.amazon.com/Crucial-Plus-500GB-PCIe-5000MB/dp/B0B25NTRGD?tag=dufus0b-20) |
+| **Ethernet cable** — hardwire it, don't rely on WiFi | ~$8 | [Amazon](https://www.amazon.com/dp/B00N2VISLW?tag=dufus0b-20) |
+
+**Budget alternative:** Skip the Samsung drive and run on the included 500GB. Total: ~$250.
+**Ultra-budget:** Raspberry Pi 5 (8GB) + microSD. Total: ~$100. It works, just slower under load.
+
+### Subscriptions (monthly)
+
+| Service | Cost | What For |
+|---------|------|----------|
+| **Claude API** (Anthropic) | $20-200/mo | The AI brain. Start with pay-per-token (~$20-50/mo for light use). Scale to Claude Max ($200/mo) when you're hooked. |
+| **Telegram** | Free | Primary messaging surface. Create a bot via @BotFather. |
+| **GitHub** | Free | Code hosting, version control. |
+| **Vercel** | Free | Deploy sites. Free tier handles multiple projects. |
+| **Brave Search API** | Free | 2,000 web searches/month. |
+| **Cloudflare** | Free | DNS management, tunnels. |
+| **Domain name** | ~$12/year | Your Dufus needs a home. One domain is enough to start. |
+
+**Day 1 minimum spend:** ~$250 (Beelink) + ~$20 (first month API) + $12 (domain) = **~$282 to get started.**
+
+### Optional (add later)
+
+| Service | Cost | What For |
+|---------|------|----------|
+| **OpenAI API** | $20-200/mo | Second model for variety/speed |
+| **Supabase** | Free | Postgres database for projects |
+| **ElevenLabs** | $22/mo | Give your Dufus a voice |
+| **Polygon.io** | Free tier | Financial/market data |
+| **Resend** | Free tier | Transactional email |
+
+## Installation (30 minutes)
+
+### Step 1: Set up the machine (10 min)
+
+If using the Beelink, install the 2TB drive in the second M.2 slot (open the bottom panel, one screw). Then install Ubuntu:
+
+```bash
+# Download Ubuntu 24.04 LTS Server (no desktop needed)
+# Flash to USB with Balena Etcher
+# Boot from USB, follow installer
+# Choose: minimal install, enable SSH, set your username
+```
+
+After install, SSH in and lock it down:
+
+```bash
+# Update everything
+sudo apt update && sudo apt upgrade -y
+
+# Install essentials
+sudo apt install -y git curl ufw fail2ban
+
+# Firewall: deny all inbound except SSH
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw enable
+
+# SSH hardening: disable password auth
+sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sudo systemctl restart sshd
+
+# Mount the 2TB drive (if added)
+# Find it: lsblk
+# Format: sudo mkfs.ext4 /dev/nvme1n1
+# Mount: sudo mkdir /data && sudo mount /dev/nvme1n1 /data
+# Auto-mount: add to /etc/fstab
+```
+
+### Step 2: Install Node.js and OpenClaw (5 min)
+
+```bash
+# Install Node.js 22+ via nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+source ~/.bashrc
+nvm install 22
+
+# Install OpenClaw globally
+npm install -g openclaw
+
+# Create your workspace
+mkdir ~/clawd && cd ~/clawd
+openclaw init
+
+# Start the gateway
+openclaw gateway start
+
+# Verify it's running
+openclaw gateway status
+```
+
+### Step 3: Configure the AI model (2 min)
+
+```bash
+# Set your Anthropic API key
+openclaw config set anthropic.apiKey sk-ant-your-key-here
+
+# Set default model (Sonnet is good to start — cheaper, fast)
+openclaw config set model anthropic/claude-sonnet-4-20250514
+```
+
+### Step 4: Connect Telegram (5 min)
+
+1. Open Telegram, find **@BotFather**
+2. Send `/newbot`, pick a name, get your bot token
+3. Configure:
+
+```bash
+openclaw config set telegram.token YOUR_BOT_TOKEN_HERE
+openclaw gateway restart
+```
+
+4. Open your new bot in Telegram and send "hello"
+5. Your Dufus should respond. 🎉
+
+### Step 5: Create the core files (5 min)
+
+Your Dufus is alive but empty. Create these three files in your workspace:
+
+**SOUL.md** — Who your Dufus is:
+```bash
+cat > ~/clawd/SOUL.md << 'EOF'
+# SOUL.md - Who You Are
+
+Be genuinely helpful, not performatively helpful.
+Have opinions. Be resourceful before asking.
+Skip the filler words. Just help.
+
+If you change this file, tell your human.
+EOF
+```
+
+**USER.md** — Who you are:
+```bash
+cat > ~/clawd/USER.md << 'EOF'
+# USER.md - About Your Human
+
+- **Name:** [your name]
+- **Timezone:** [your timezone]
+- **Notes:** [anything your Dufus should know]
+EOF
+```
+
+**AGENTS.md** — How to be an agent:
+```bash
+cat > ~/clawd/AGENTS.md << 'EOF'
+# AGENTS.md
+
+## Every Session
+1. Read SOUL.md
+2. Read USER.md
+3. Read memory/ files for recent context
+
+## Safety
+- Don't run destructive commands without asking
+- trash > rm
+- When in doubt, ask
+EOF
+```
+
+### Step 6: First conversation (3 min)
+
+Go to Telegram. Talk to your Dufus. Tell it who you are. Tell it what you're working on. Ask it to read its files. Watch it become something more than a generic chatbot.
+
+That's it. You're running.
+
+Everything from here — memory, skills, heartbeats, cron jobs, agent armies — is just making it better. But right now, you have a Dufus. It's on your hardware, it knows your name, and it's ready to work.
+
+---
+
+# Chapter 2: Setting Up Your Dufus
 
 ## The Birth Certificate
 
