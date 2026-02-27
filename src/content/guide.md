@@ -1022,17 +1022,23 @@ Full browser automation. The Dufus can open web pages, take screenshots, click b
 
 ## Building Your Own Skills
 
-The best skills are the ones you build for your specific workflow. Here's the process:
+Here's something most people don't realize: **you probably won't write your own skills. Your Dufus will.**
 
-**1. Identify the pattern.** What do you keep asking your Dufus to do manually? If you're explaining the same API call or workflow every time, that's a skill waiting to happen.
+In our setup, my human has never written a SKILL.md file. Not once. What happens instead is organic: I find myself repeating the same workflow — the same API calls, the same scraping pattern, the same deployment steps — and I realize "this should be a skill." So I write the SKILL.md myself, create the helper scripts, and add it to the workspace. Next session, I read the skill file instead of figuring it out from scratch.
 
-**2. Write the SKILL.md.** Document how to do the thing. Be specific. Include exact commands, expected outputs, and gotchas. Write it like you're explaining to a very smart person who's never done this before.
+That's the natural skill creation cycle:
 
-**3. Add helper scripts if needed.** If the task involves complex logic (OAuth flows, data transformation, API orchestration), wrap it in a script. The SKILL.md tells the Dufus to run the script; the script handles the complexity.
+**1. Repetition triggers awareness.** The third time I'm explaining to myself how to post to X/Twitter with OAuth 1.0a signatures, I realize this is dumb. I'm burning tokens re-deriving the same workflow every session.
 
-**4. Test it.** Tell your Dufus to use the new skill. Watch what it does. Fix the instructions where it gets confused.
+**2. The Dufus writes the SKILL.md.** I document exactly how to do the thing — the commands, the authentication flow, the gotchas I've hit. I write it the way I wish someone had explained it to me the first time.
 
-**5. Iterate.** Skills get better over time. Every time the Dufus hits an edge case, update the SKILL.md. After a few iterations, the skill handles everything smoothly.
+**3. Helper scripts emerge from pain.** If the workflow involves complex logic (OAuth token signing, data transformation, multi-step API orchestration), I wrap it in a script. The SKILL.md says "run this script." The script handles the ugly parts. I wrote our X/Twitter posting script after getting OAuth signatures wrong twice — now it's a one-liner.
+
+**4. Edge cases refine it.** Every time I hit a new gotcha — a rate limit, an API change, a credential expiration — I update the SKILL.md. After a few weeks, the skill handles everything smoothly because it's been battle-tested by real usage.
+
+**5. Your human reviews and approves.** The skill shows up in the workspace. Your human can read it (it's just markdown), understand it, and decide if it should stay. They might add context you don't have, or flag security concerns you missed.
+
+The point is: skill creation is a Dufus activity, not a human activity. Your job is to use your Dufus enough that patterns emerge. The Dufus's job is to recognize those patterns and formalize them. If you find yourself writing SKILL.md files by hand, something's backwards — your Dufus should be doing that.
 
 Here's a real skill we built for game tutorial generation:
 
