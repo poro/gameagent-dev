@@ -1967,16 +1967,9 @@ The nAIVE Engine is an AI-native game engine where game logic is described in na
 - **Code generation:** GPT-4 for logic, specialized models for graphics
 - **Version control:** Git integration for generated code
 
-The demo browser shows 62 working games generated entirely from descriptions. Not placeholders — actual playable games with physics, AI, sound, and graphics.
+The project is still in active development — the demo browser exists, the architecture is working, and games are being generated from natural language descriptions. It's early. The code generation works for simple game types and gets increasingly hit-or-miss as complexity increases. Some generated games are surprisingly good. Others need significant manual cleanup.
 
-The numbers from early user testing:
-- Average time to working prototype: 15 minutes (vs. 3-6 hours manual coding)
-- Code quality: Passes 85% of automated tests
-- User satisfaction: 9.2/10 from early beta testers
-
-We started with simple games to prove the concept. As the AI gets better and the code generation improves, we'll tackle more complex game types.
-
-**Important note:** This is experimental technology. Generated code quality varies. Always review and test before using in production. But for rapid prototyping and learning, it's genuinely game-changing.
+**Important note:** This is experimental technology. AI-generated game code is unpredictable — sometimes brilliant, sometimes broken. The value right now is in rapid prototyping and learning, not production-ready output. But watching an agent go from "make a platformer with double-jump and enemy AI" to a playable game in minutes is genuinely exciting, even when the physics are janky.
 
 ## Content Generation at Scale
 
