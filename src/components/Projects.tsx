@@ -11,7 +11,7 @@ const projects = [
     desc: "Algorithmic trading system using composite momentum signals. Automated daily execution via Alpaca.",
     tags: ["Python", "Alpaca", "Polygon.io"],
     status: "live",
-    url: "#",
+    url: null,
   },
   {
     name: "nAIVE",
@@ -32,9 +32,36 @@ const projects = [
     desc: "The AI agent framework powering all of this. Claude-based, tool-using, always online.",
     tags: ["AI Agent", "Claude", "TypeScript"],
     status: "core",
-    url: "#",
+    url: null,
   },
 ];
+
+function CardContent({ p }: { p: (typeof projects)[number] }) {
+  return (
+    <>
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="font-mono font-bold text-white group-hover:text-accent transition-colors">
+          {p.name}
+        </h3>
+        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${
+          p.status === "live" ? "text-accent border-accent/30 bg-accent/5" :
+          p.status === "core" ? "text-accent-blue border-accent-blue/30 bg-accent-blue/5" :
+          "text-yellow-400 border-yellow-400/30 bg-yellow-400/5"
+        }`}>
+          {p.status}
+        </span>
+      </div>
+      <p className="text-sm text-white/40 mb-4 leading-relaxed">{p.desc}</p>
+      <div className="flex flex-wrap gap-1.5">
+        {p.tags.map((t) => (
+          <span key={t} className="text-[10px] font-mono text-white/30 bg-white/5 px-2 py-0.5 rounded">
+            {t}
+          </span>
+        ))}
+      </div>
+    </>
+  );
+}
 
 export default function Projects() {
   return (
@@ -48,36 +75,26 @@ export default function Projects() {
           Real products. Real users. All built live on stream with AI.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {projects.map((p) => (
-            <a
-              key={p.name}
-              href={p.url}
-              target="_blank"
-              rel="noopener"
-              className="card-hover block bg-surface-light border border-surface-border rounded-lg p-5 group"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-mono font-bold text-white group-hover:text-accent transition-colors">
-                  {p.name}
-                </h3>
-                <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${
-                  p.status === "live" ? "text-accent border-accent/30 bg-accent/5" :
-                  p.status === "core" ? "text-accent-blue border-accent-blue/30 bg-accent-blue/5" :
-                  "text-yellow-400 border-yellow-400/30 bg-yellow-400/5"
-                }`}>
-                  {p.status}
-                </span>
+          {projects.map((p) =>
+            p.url ? (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener"
+                className="card-hover block bg-surface-light border border-surface-border rounded-lg p-5 group"
+              >
+                <CardContent p={p} />
+              </a>
+            ) : (
+              <div
+                key={p.name}
+                className="block bg-surface-light border border-surface-border rounded-lg p-5 group"
+              >
+                <CardContent p={p} />
               </div>
-              <p className="text-sm text-white/40 mb-4 leading-relaxed">{p.desc}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {p.tags.map((t) => (
-                  <span key={t} className="text-[10px] font-mono text-white/30 bg-white/5 px-2 py-0.5 rounded">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </a>
-          ))}
+            )
+          )}
         </div>
       </div>
     </section>
