@@ -670,7 +670,23 @@ That's the beauty of TOOLS.md. Every gotcha, every exception, every "this one is
 - Helper script locations
 - Account details for external services
 
-**Security note:** Yes, we keep API keys in TOOLS.md. This file lives on the server filesystem. The Dufus needs these keys to actually do things. The alternative — keeping keys in environment variables and making the Dufus ask you every time — defeats the purpose of autonomy. Just make sure your server is secured and TOOLS.md isn't in a public git repo. (Our workspace is private and `.gitignore` handles sensitive files.)
+**Security note:** Yes, we keep API keys in TOOLS.md. This file lives on the server filesystem. The Dufus needs these keys to actually do things. The alternative — keeping keys in environment variables and making the Dufus ask you every time — defeats the purpose of autonomy.
+
+"But isn't that insecure?" Let's talk about what secure actually looks like for a Dufus setup.
+
+**The physical layer matters most.** Our Dufus runs on a private Linux box in a location with restricted physical access — not a shared hosting provider, not a cloud instance that three engineers have SSH keys to. A handful of trusted people know the machine exists. That's your first and strongest security layer. If someone can't touch the box, they can't read the files.
+
+**Network hardening.** The box runs a strict firewall with all inbound ports closed except what's explicitly needed (SSH on a non-standard port, the Telegram webhook, and Cloudflare tunnel for specific services). No open ports means no attack surface. `ufw` is enabled, `fail2ban` watches for brute-force attempts, and SSH uses key-only authentication — password login is disabled entirely.
+
+**No public exposure.** The workspace directory is not served over HTTP. There's no web panel, no admin dashboard, no file browser. TOOLS.md lives on the local filesystem and is only accessible to the Dufus process and the system user. The `.gitignore` ensures it never gets committed to any repository.
+
+**Principle of least privilege.** The Dufus runs as a non-root user. API tokens are scoped to minimum required permissions — our Cloudflare token can edit DNS but can't manage billing. Trading API keys start on paper accounts. OAuth tokens have the narrowest possible scopes.
+
+**The real threat model.** For a personal Dufus, the realistic threats are: (1) someone compromises your server via an unpatched vulnerability, (2) a malicious skill or plugin reads your files and exfiltrates data, or (3) the AI model itself leaks context through a shared session. We mitigate #1 with regular updates and closed ports, #2 by reviewing skills before installing (they're just markdown and scripts — you can read them), and #3 by never loading MEMORY.md or TOOLS.md in shared contexts like group chats.
+
+**Is it perfect?** No. If someone gets root on your box, they get everything. But that's true of any system — your laptop has the same weakness. The question isn't "is it theoretically unbreakable?" but "is it secure enough for the threat model?" For a personal agent running on a private, hardened Linux box behind a firewall with no public exposure? Yes. It is.
+
+The trade-off is real: storing keys in plain text enables autonomy. Your Dufus can check email at 3 AM, execute trades at market close, and deploy code overnight — all without waking you up to paste a password. That autonomy is the entire point. Secure the box, lock down the network, scope the permissions, and let your Dufus work.
 
 ## Project Context: Onboarding Your Dufus to Real Work
 
