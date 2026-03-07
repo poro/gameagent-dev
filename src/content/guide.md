@@ -117,17 +117,17 @@ But here's the thing: a Dufus doesn't run models locally. The heavy computation 
 
 I don't want to give you a theoretical capabilities list. Here's what our Dufus actually does, right now, today:
 
-**Builds and deploys game sites overnight.** We've built multiple game development sites this way — tutorial collections, prototype showcases, game dev blogs, and learning platforms. The pattern is always the same: your human specs it out, the Dufus builds it, deploys to Vercel, configures the domain, and it's live by morning.
+**Builds and deploys projects overnight.** We've built WorldView (a 3D globe with live global event data), a financial intelligence dashboard, game tutorial sites, and development blogs — all as overnight builds. The pattern is always the same: your human specs it out, the Dufus builds it, deploys to Vercel, configures the domain, and it's live by morning.
 
-**Runs automated systems.** Whether it's a trading bot, a content pipeline, or a deployment system, the Dufus manages automated processes. It analyzes data, makes decisions through APIs, and reports results to Telegram. All automated.
+**Runs automated trading.** A quantitative trading system (White Light) runs live trades every weekday — pulling market data, calculating signals across 7 sub-strategies, and executing trades through Alpaca's API. A separate paper crypto strategy (BlackLight) runs 24/7 testing ensemble models. The Dufus runs the pipeline, monitors account health, and reports P&L to Telegram. All automated.
 
-**Monitors industry news.** Two to three times a day, the Dufus checks for breaking game industry news, major engine updates, AI development announcements, and significant releases. If something big happens, you get a message. If nothing's happening, silence.
+**Compiles morning intelligence.** Every weekday morning, the Dufus scans financial news, M&A activity, Fed announcements, and market moves, then delivers a scannable brief to Telegram and a dashboard. Replaces 30 minutes of manual news scanning.
 
-**Manages content sites.** Whether it's game tutorials, development blogs, or learning resources, the Dufus generates articles, manages editorial pipelines, tracks engagement metrics, and publishes content through various APIs.
+**Ingests and processes live data.** The GDELT news pipeline runs every 4 hours — scraping global events, classifying them, geocoding, and storing in Supabase to feed the WorldView globe. When the data source went down for 50+ hours, the Dufus detected it, reduced polling frequency, and tracked recovery autonomously.
 
-**Builds development tools.** From game engine prototypes to development dashboards, the Dufus helps build and maintain the tools you use to create games and manage projects.
+**Supports game engine development.** The nAIVE engine is human-built in Rust, but the Dufus maintains its landing site, generates documentation, creates conference preparation plans, manages the AI asset pipeline integration, and tracks development milestones.
 
-**Syncs with your knowledge base.** Your personal knowledge base auto-syncs every 5 minutes. The Dufus can read, search, and reference anything in it — project notes, game ideas, technical documentation, learning resources.
+**Syncs with your knowledge base.** Your Obsidian vault auto-syncs every 5 minutes. The Dufus reads tasks, priorities, and notes — surfacing `#p1` items in morning briefings and tracking what got done vs. what slipped.
 
 None of this is hypothetical. This is what's running right now on a Linux box in a developer's office.
 
@@ -243,7 +243,7 @@ sudo systemctl restart sshd
 ### Step 2: Install Node.js and OpenClaw (5 min)
 
 ```bash
-# Install Node.js 22+ via nvm
+# Install Node.js 22+ via nvm (we run v25, but 22+ works)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 source ~/.bashrc
 nvm install 22
@@ -269,7 +269,7 @@ openclaw gateway status
 openclaw config set anthropic.apiKey sk-ant-your-key-here
 
 # Set default model (Sonnet is good to start — cheaper, fast)
-openclaw config set model anthropic/claude-sonnet-4-20250514
+openclaw config set model anthropic/claude-sonnet-4-6
 ```
 
 ### Step 4: Connect Telegram (5 min)
@@ -353,7 +353,7 @@ Your job in this chapter is to give that blank slate everything it needs to beco
 
 OpenClaw is the operating system for your Dufus. It handles all the plumbing — connecting to AI models, managing chat sessions, loading context files, running heartbeats and cron jobs, providing access to tools like shell commands, web browsing, file editing, and more.
 
-Installation is straightforward. You need Node.js (v22+) on whatever machine you're running:
+Installation is straightforward. You need Node.js (v22+ — we run v25) on whatever machine you're running:
 
 ```bash
 # Install OpenClaw
@@ -404,10 +404,22 @@ Configure your model in OpenClaw:
 openclaw config set anthropic.apiKey sk-ant-your-key-here
 
 # Set default model
-openclaw config set model anthropic/claude-sonnet-4-20250514
+openclaw config set model anthropic/claude-sonnet-4-6
 ```
 
 You can always change this later, and you can even use different models for different tasks (cheaper models for routine cron jobs, beefier models for complex coding work).
+
+### Multi-Provider Fallbacks (Advanced)
+
+OpenClaw supports automatic failover between providers. If Anthropic is rate-limited or down, it can fall back to Google Gemini or OpenAI automatically. Our setup:
+
+- **Main session:** Claude Opus (primary) → Gemini 2.5 Pro → Gemini 2.5 Flash
+- **Cron jobs:** Claude Sonnet (primary) → Gemini 2.5 Flash → Gemini 2.0 Flash
+- **Heartbeats:** Gemini 2.5 Flash (cheapest option for routine checks)
+
+You configure this in `openclaw.json` under the `models` section. You can also set billing cooldowns — if you hit Anthropic's rate limit, OpenClaw waits a configurable period before retrying, using fallback providers in the meantime. This matters when you're running 25+ cron jobs and a heavy main session simultaneously.
+
+Start with a single provider. Add fallbacks when you're burning enough tokens to care.
 
 ## Connecting a Messaging Surface
 
@@ -946,7 +958,7 @@ The simplest pattern. Your projects literally live in subdirectories of the Dufu
 ```
 ~/my-dufus/
 ├── projects/
-│   ├── game-engine/        # nAIVE game engine
+│   ├── naive/              # nAIVE game engine (Rust/wgpu)
 │   │   ├── config/
 │   │   ├── src/
 │   │   └── logs/
@@ -994,13 +1006,13 @@ For quick reference, keep project summaries in MEMORY.md too. This gives the Duf
 ## Active Projects
 
 ### nAIVE Game Engine
-- **Status:** Core features built, testing phase
-- **Tech:** JavaScript, WebGL, AI APIs
-- **Location:** projects/game-engine/
+- **Status:** v0.1.10, Tiers 1-2.5 complete, 15 demos working
+- **Tech:** Rust, wgpu (WebGPU/Vulkan/Metal), WGSL shaders
+- **Location:** projects/naive/
 
 ### 100 Games Tutorial Series
-- **Status:** 25 games complete, weekly releases
-- **Revenue model:** Course sales + affiliate links
+- **Status:** 62 games complete (62%), building toward 100
+- **Tech:** AI-generated tutorials with playable prototypes
 - **Location:** projects/100-games/
 ```
 
@@ -1046,35 +1058,33 @@ Let me walk you through how we onboarded a Dufus to the nAIVE game engine projec
 ```markdown
 ## nAIVE Game Engine
 
-**Location:** /home/p0r0/clawd/projects/game-engine/
-**Tech stack:** JavaScript, WebGL, Three.js
-**Deploy:** Netlify via git hooks
-
-### APIs Used
-- **OpenAI:** For procedural content generation
-- **Vercel:** For demo deployment
-- **GitHub:** Source control and issue tracking
+**Repo:** git@github.com:poro/nAIVE.git
+**Location:** /home/p0r0/clawd/projects/naive/
+**Tech stack:** Rust, wgpu, WGSL shaders
+**Landing site:** naive.dev (port 3010, systemd service)
+**AI asset pipeline:** game-asset-mcp submodule (MCP server for 3D generation)
 ```
 
 **In MEMORY.md:**
 ```markdown
-### nAIVE Game Engine (Feb 24)
-- Core renderer complete: WebGL + Three.js foundation
-- AI integration: GPT-4 generates game logic from descriptions
-- Demo browser: Shows 12 working prototypes
-- Status: Alpha testing phase, daily commits ✅
+### nAIVE Game Engine (Mar 2026)
+- v0.1.10, Tiers 1-2.5 complete: mesh rendering, PBR materials, ECS, shader hot-reload
+- 15 working demos (terrain, particles, physics, etc.)
+- AI asset pipeline via MCP integration (text → 3D models)
+- Gaussian Splatting integration in progress (wgpu-3dgs-viewer)
+- Next: Tier 3 (GPU compute), Tier 4 (animation), pre-GDC demo prep
 ```
 
 **In HEARTBEAT.md:**
 ```markdown
-- **Build Status** (evenings): 
-  Check today's commits for build failures. If any tests failed, 
-  alert immediately.
+- **nAIVE Sync** (every heartbeat): 
+  cd /home/p0r0/clawd/projects/naive && git log --oneline -5
+  Report any new commits from the human developer.
 ```
 
-**In the project directory:** The full JavaScript codebase, config files, demos.
+**In the project directory:** The full Rust codebase — `crates/naive-client/`, shader files in `project/shaders/`, demo scenes, and the PRD at `docs/nAIVE_Engine_PRD_v5.0.md`.
 
-Three files, three perspectives on the same project. TOOLS.md has the how (tech stack, APIs). MEMORY.md has the what (status, recent events). HEARTBEAT.md has the when (check builds daily). The Dufus can operate the entire project — monitoring, debugging, deploying — with this context.
+Three files, three perspectives on the same project. TOOLS.md has the how (tech stack, deployment). MEMORY.md has the what (status, milestones). HEARTBEAT.md has the when (check for new commits). The Dufus can monitor the project — tracking commits, updating documentation, syncing the landing site — with this context.
 
 That's the pattern. Apply it to every project, every tool, every workflow you want your Dufus to handle.
 
@@ -1635,13 +1645,15 @@ Here's our actual HEARTBEAT.md:
 
 ## Periodic Checks
 - **Cron Health** (every heartbeat): Check cron list for 
-  errors. If any job is failing, alert immediately.
-- **Game Server Status** (hourly during peak hours): 
-  Check server health and player counts. Alert if any 
-  servers are down or experiencing high latency.
-- **Industry News** (2-3x daily): Check for major game engine 
-  updates, AI tool releases, significant indie launches,
-  platform policy changes.
+  errors. If any critical job is failing, alert immediately.
+  CRITICAL JOBS: White Light LIVE Trading, Morning Task 
+  Briefing, morning-financial-brief.
+- **White Light Status** (weekday evenings after 21:00 UTC): 
+  Check today's trading log for errors. If the pipeline 
+  failed or no run happened, alert immediately.
+- **Financial News** (2-3x daily): Check for breaking M&A 
+  >$1B, major market moves (>2% index swings), Fed 
+  announcements, activist 13D filings.
 - **Agent Health** (every heartbeat): Run agents/check-agents.sh 
   and report any stuck or failed tasks.
 ```
@@ -1908,7 +1920,7 @@ This is a feature, not a limitation. It means:
 openclaw cron add \
   --name "server-check" \
   --schedule "0 */3 * * *" \
-  --model "anthropic/claude-sonnet-4-20250514" \
+  --model "anthropic/claude-sonnet-4-6" \
   --prompt "Check all game server status. Report only issues."
 ```
 
@@ -1928,43 +1940,43 @@ Compiles overnight game industry news, engine updates, AI tool releases, server 
 
 ### Game Server Monitoring
 ```
-Schedule: */15 * * * * (Every 15 minutes)
-Model: Claude (needs tool access)
-Delivery: Telegram (only on issues)
-```
-Runs full server monitoring: fetch metrics → analyze performance → detect issues → auto-scale if needed → log results → report to Telegram. This monitors live game servers. Real players. Real performance. Fully automated.
-
-### Tutorial Content Generation
-```
-Schedule: 0 12 * * * (Daily, noon UTC)
-Model: Claude
-Delivery: Silent (writes to tutorial API)
-```
-Generates game development tutorials across multiple topics. Beginner JavaScript, advanced rendering, AI integration, optimization techniques. The tutorials go into draft status for review.
-
-### Social Media Posting
-```
-Schedule: 0 13,17,22 * * * (3x daily)
-Model: Sonnet (cheaper for social)
-Delivery: Twitter/Discord, cross-platform
-```
-Each project has its own posting schedule. The Dufus picks published tutorials, crafts platform-appropriate posts, and publishes them. Three times a day, across multiple accounts, with different voices for each project.
-
-### Build Status Monitoring
-```
-Schedule: */10 * * * * (Every 10 minutes)
+Schedule: 35 20 * * 1-5 (Weekdays, 20:35 UTC / 1:35 PM PT)
 Model: Sonnet
-Delivery: Telegram (failures only)
+Delivery: Telegram
 ```
-Monitors CI/CD pipelines across all game projects. Alerts when builds fail, tests break, or deployments stall. Only speaks up when something's wrong.
+Runs the White Light trading pipeline: pull market data from Polygon.io → calculate composite signal score across 7 sub-strategies → determine target allocation (TQQQ for bull, BIL for bear) → execute trades via Alpaca API → report P&L to Telegram. Real money. Fully automated. The Dufus doesn't make the trading decisions — it runs the deterministic Python pipeline and reports results.
 
-### Code Review Automation
+### Morning Financial Brief
+```
+Schedule: 0 13 * * 1-5 (Weekdays, 6 AM PT)
+Model: Sonnet
+Delivery: Telegram + JOE dashboard
+```
+Compiles a morning financial intelligence brief: major market moves, M&A deals >$1B, Fed announcements, activist 13D filings, earnings calendar, geopolitical events. Posts to the JOE dashboard and sends a summary to Telegram. Replaces 30 minutes of manual news scanning every morning.
+
+### News Ingestion Pipeline
+```
+Schedule: 0 */4 * * * (Every 4 hours)
+Model: Sonnet
+Delivery: Silent (writes to Supabase)
+```
+Ingests global news from GDELT, classifies events by type and region, geocodes them, and stores in Supabase. Feeds the WorldView 3D globe with live data. Originally ran every 15 minutes but got rate-limited (HTTP 429) — scaled back to every 4 hours. The Dufus monitors for errors and adjusts frequency as needed.
+
+### Compound Code Review
 ```
 Schedule: 30 22 * * * (Daily, 10:30 PM UTC)
-Model: Claude (needs depth for code review)
-Delivery: memory/code-learnings.md
+Model: Sonnet
+Delivery: memory/compound-learnings.md
 ```
-Reviews recent commits across multiple game project repositories. Identifies patterns, bugs, security issues, optimization opportunities. Logs learnings to a file for future reference.
+Pulls latest commits across 8 project repositories, checks for uncommitted work, identifies stale branches, and logs learnings. Not a line-by-line code review — more of a project health check that catches forgotten branches, deployment gaps, and drift between repos.
+
+### Morning Task Briefing
+```
+Schedule: 0 14 * * * (Daily, 7 AM PT)
+Model: Sonnet
+Delivery: Telegram
+```
+Reads the Obsidian vault daily note and TASKS.md, identifies priorities for the day, and sends a concise task summary to Telegram. Surfaces `#p1` items first, upcoming deadlines, and anything from yesterday that wasn't completed.
 
 ### Obsidian Vault Sync Check
 ```
@@ -2135,50 +2147,56 @@ The total time from "hey, build this" to "live site with content" is typically 8
 Here's what we built and why:
 
 ### 100 Games Tutorial Hub
-**Revenue model:** Course sales, affiliate links to game development tools
-**Status:** Live, 25+ game tutorials, weekly releases
+**What it is:** A comprehensive library of game tutorials, from simple Pong clones to complex 3D games
+**Status:** Live, 62 games complete (62% of the way to 100)
 
-We built complete game tutorials — code, assets, explanations — from simple Pong clones to complex 3D games. Each tutorial includes full source code, step-by-step guides, and downloadable assets. The site uses Schema.org markup for SEO.
+We built complete game tutorials — code, assets, explanations — each one a fully playable prototype with source code, step-by-step guides, and downloadable assets. The Dufus generates the initial tutorial draft and prototype code, then the human reviews and refines. At scale, this creates a massive library of educational content for game developers.
 
 The key insight: this isn't a $10K/month business on its own. It's a node in a network. Each site cross-promotes the others. Authority compounds across the network.
 
-### Game Engine Resource Hub
-**Revenue model:** Tool affiliate links, premium documentation subscriptions
-**Status:** Live, comprehensive engine comparisons and tutorials
+### WorldView — Real-Time Global News Globe
+**What it is:** A 3D globe visualization showing real-time global events, conflict tracking, and news
+**Status:** Live, fed by GDELT news API + custom news scraper
 
-This one's interesting because we built automated comparison tools for different game engines. The Dufus writes comparison guides, maintains feature matrices, and tracks engine updates. Every guide has hands-on examples and real performance benchmarks.
+This one's the most visually impressive. WorldView renders a spinning globe with live data points — military events, strikes, flight snapshots, information operations, bot network activity. It pulls from GDELT (a massive global news dataset), processes the data through Python ingestion scripts, stores it in Supabase, and renders it in the browser.
 
-Revenue potential: game development tools are high-ticket. A Unity Pro subscription referral or Unreal Engine marketplace commission can be substantial. We don't need massive traffic — we need *targeted* traffic from developers ready to invest in tools.
+The Dufus manages the entire data pipeline:
+- Cron job ingests GDELT news every 4 hours
+- Scraper pulls additional news sources daily
+- Data gets classified and geocoded automatically
+- Globe ticker shows the latest events in real-time
 
-### AI Game Development Blog
-**Revenue model:** Sponsored content, AI tool affiliate programs
-**Status:** Active, 50+ articles about AI in game development
+When the data source went down for 50+ hours (HTTP 429 rate limiting), the Dufus detected it, reduced the polling frequency, alerted the human, and tracked the recovery. Automated systems break. Having a Dufus that notices and adapts is the difference between a 2-hour outage and a 2-day one.
 
-This is the most sophisticated operation. AI-focused content about using machine learning in game development, procedural generation, AI-driven testing, and development workflow automation.
+### White Light — Automated Trading System
+**What it is:** A quantitative trading system that runs live trades based on signal analysis
+**Status:** Live with real money ($1K account), plus a paper crypto strategy
 
-The content pipeline:
-- Cron job scrapes AI/game news sources daily
-- Articles generated with real code examples
-- Social media posts across developer platforms
-- GitHub integration for code samples
+This is the one that keeps you up at night if you think about it too hard. The Dufus runs a trading system on a cron schedule — every weekday at market close, it pulls market data from Polygon.io, runs a composite signal analysis across 7 sub-strategies, determines a target allocation, and executes trades through Alpaca's API.
 
-### Indie Game Marketing Hub
-**Revenue model:** Marketing tool affiliates, consulting referrals
-**Status:** Built, needs marketing API integrations
+The key design decision: **the Dufus reports, it doesn't decide.** The trading logic is in a Python pipeline (`whitelight`). The Dufus runs the pipeline, checks the account status, logs the results, and reports to Telegram. If something looks wrong, it stops and alerts instead of executing.
 
-Game marketing is a huge pain point for indie developers. We built guides, tool comparisons, and automated analysis of successful game launches. Steam data analysis, social media strategies, press kit generators.
+Real results: started with $1K, currently tracking equity and P&L daily. The paper crypto strategy (BlackLight) runs on a separate account with a larger balance, testing ensemble strategies across multiple signal models before going live.
 
-### Game Asset Marketplace
-**Revenue model:** Asset sales, marketplace affiliate commissions
-**Status:** Features complete, building creator network
+**Lessons from automated trading:**
+- Start on paper. Always. Validate for weeks before real money.
+- The Dufus should run the pipeline, not *be* the pipeline. Keep the trading logic in deterministic code, not in an LLM's judgment.
+- Log everything. Every signal, every trade, every account snapshot. You'll want the audit trail.
+- Set hard guardrails. Maximum position sizes, maximum loss thresholds, kill switches.
 
-This is the subscription play. Curated game assets — sprites, sound effects, 3D models — with AI-generated variations and customization tools. Premium tier provides unlimited downloads and custom generation.
+### JOE Financial — Morning Intelligence Dashboard
+**What it is:** A personal financial intelligence dashboard, auto-fed by a morning brief cron job
+**Status:** Live, updated daily
 
-### Dev Tool Directory
-**Revenue model:** Tool affiliate links, sponsored listings
-**Status:** Live, comprehensive tool database
+Every morning, a cron job compiles a financial brief: major market moves, M&A deals over $1B, Fed announcements, activist 13D filings, earnings calendar, and geopolitical events that move markets. The brief gets posted to JOE (a simple Next.js dashboard) and delivered via Telegram.
 
-The Dufus maintains an up-to-date directory of game development tools — engines, editors, asset tools, marketing platforms. Each listing includes pricing comparisons, feature breakdowns, and developer reviews.
+This is a pure quality-of-life project. Instead of spending 30 minutes scanning Bloomberg, Reuters, and WSJ every morning, the Dufus does it and delivers a scannable summary. Not monetized. Just useful.
+
+### Game-Agents.com — EGLL Lab Blog
+**What it is:** The official blog for the Endless Games and Learning Lab at ASU
+**Status:** Live, 14 published articles on AI in games, education, and game-based learning
+
+Articles cover AI game development tools, learning ratings for games, world models vs. language models, the MIRANDA education framework, and more. Content is human-reviewed before publishing — the Dufus helps with research, drafting, and Ghost CMS management, but editorial decisions stay human.
 
 ## Total Build Cost
 
@@ -2196,25 +2214,30 @@ Multiple functioning websites with real content, real tutorials, and real revenu
 
 ## Automated Development: The AI Game Engine
 
-This deserves its own section because it's the most technically impressive thing we've built.
+This deserves its own section because it's the most technically ambitious thing we've built.
 
-The nAIVE Engine is an AI-native game engine where game logic is described in natural language and converted to working code. Here's the real setup:
+The nAIVE Engine (Natural AI Virtual Engine) is a game engine built from scratch in Rust using wgpu for GPU-accelerated rendering. Not a wrapper around Unity or Godot — a real engine with its own rendering pipeline, physics, and AI-driven asset generation.
 
-### Core Features
-- **Natural language to game logic:** Describe mechanics in plain English
-- **Real-time code generation:** Games update as you modify descriptions
-- **Multi-engine output:** Generates code for Unity, Godot, and web platforms
-- **AI-driven testing:** Automatically generates test cases and edge case scenarios
+### What Makes It Different
+- **Written in Rust + wgpu:** Cross-platform GPU rendering (WebGPU, Vulkan, Metal, DX12)
+- **AI asset pipeline:** MCP server (`game-asset-mcp`) generates 3D models, textures, and animations from text descriptions
+- **Tiered architecture:** Engine capabilities are built in tiers, from basic rendering up through physics, animation, vehicles, and networking
+- **Gaussian Splatting support:** Integrating `wgpu-3dgs-viewer` for photorealistic environment rendering from 3D scans
 
-### Technical Stack
-- **Frontend:** React + Three.js for the visual editor
-- **Backend:** Node.js with AI model integration
-- **Code generation:** GPT-4 for logic, specialized models for graphics
-- **Version control:** Git integration for generated code
+### Current Status (March 2026)
+The engine is at v0.1.10 with Tiers 1-2.5 complete:
+- Basic mesh rendering with PBR materials
+- ECS (Entity Component System) architecture
+- Shader hot-reload
+- 15 working demos (terrain, particles, physics, etc.)
+- AI-generated assets via MCP integration
+- Landing site live at naive.dev
 
-The project is still in active development — the demo browser exists, the architecture is working, and games are being generated from natural language descriptions. It's early. The code generation works for simple game types and gets increasingly hit-or-miss as complexity increases. Some generated games are surprisingly good. Others need significant manual cleanup.
+Tiers 3-5 are in active development: GPU compute (particle systems, cloth simulation), skeletal animation with Vertex Animation Textures, vehicle physics, and eventually multiplayer networking.
 
-**Important note:** This is experimental technology. AI-generated game code is unpredictable — sometimes brilliant, sometimes broken. The value right now is in rapid prototyping and learning, not production-ready output. But watching an agent go from "make a platformer with double-jump and enemy AI" to a playable game in minutes is genuinely exciting, even when the physics are janky.
+**The Dufus's role:** The engine is human-designed and human-built, but the Dufus maintains the landing site, generates documentation, tracks development milestones, creates pre-conference plans (like the GDC 2026 prep docs), and manages the AI asset pipeline integration. When the human pushes new code at 2 AM, the Dufus picks up the changes, syncs the landing site, and has a development status summary ready by morning.
+
+**Important note:** This isn't a "vibe coded" engine. It's serious systems programming in Rust. The AI helps with documentation, planning, asset generation, and project management — but the core rendering pipeline, shader code, and architecture are human-written. That's the right boundary: AI handles the operational overhead so the developer can focus on the hard engineering.
 
 ## Content Generation at Scale
 
@@ -2228,7 +2251,7 @@ The real leverage of having a Dufus isn't building sites — it's running them. 
 
 **With a Dufus:**
 - Generate 5 tutorials: One cron job, 2 hours of compute time
-- Create example games: Automated through nAIVE engine
+- Create example games: Scripted generation pipeline
 - Social media: 3 auto-posts per day, zero human time
 - Total for one site: 2 hours/week of human review time
 
@@ -2236,43 +2259,38 @@ Multiply that across multiple sites and you're looking at 100-200 hours/week of 
 
 The quality question is fair. AI-generated content isn't as good as expert-written content. But it's good enough for educational SEO, and the volume compensates. A site with 100 decent tutorials outranks a site with 5 perfect ones, especially in long-tail keywords.
 
-## The Revenue Reality Check
+## The Value Reality Check
 
-Let me be honest about where we are financially:
+Let me be honest about what this actually delivers:
 
-**Currently earning:**
-- Tool affiliates: Early stages, building trust and traffic
-- Course sales: Beta testing pricing and content
-- Ad revenue: Minimal (building traffic first)
+**Time savings (real, measurable):**
+- Morning financial brief: 30 min/day saved scanning news
+- Trading system: runs automatically, reports to Telegram
+- News ingestion pipeline: feeds WorldView globe 24/7
+- TODO management: syncs with Obsidian vault, surfaces priorities
+- System monitoring: catches outages before you notice them
 
-**Expected (3-6 months):**
-- Tool affiliate commissions: $200-800/month
-- Course/tutorial sales: $300-1,200/month
-- AI engine licensing: $500-2,000/month
-- Total passive: $1,000-4,000/month
-
-**Expected (12+ months):**
-- With consistent content and developer community growth: $3,000-15,000/month across all properties
-- Enterprise AI engine licenses: additional recurring revenue
+**Projects built (that would have taken weeks manually):**
+- WorldView 3D globe with live data pipeline
+- Trading system with paper + live accounts
+- 62 game tutorials with playable prototypes
+- Financial intelligence dashboard
+- Multiple automated content pipelines
 
 **Operating costs:**
-- AI API tokens: ~$200-400/month
+- AI API tokens: ~$200-800/month (depending on how many providers you subscribe to)
 - Domains and hosting: ~$50/month
 - Everything else: free tier
 
-So the math is: spend $450/month running the Dufus ecosystem, potentially earn $3,000-15,000/month in revenue within a year. Even at the low end, that's a 6x return. At the high end, it's transformative.
-
-But I want to be clear: we're in the investment phase. The revenue is mostly future revenue. The infrastructure is built, the content is growing, the automation is running. Whether it converts to real money depends on execution — developer adoption, community growth, content quality. Those take time.
-
 ## Lessons from the Money Machine
 
-**1. Start many, double down on winners.** We built multiple properties. Probably two or three will generate meaningful revenue. That's fine. The cost of building was so low that even one winner covers the investment in all projects.
+**1. Build for yourself first.** Our most useful projects (JOE financial dashboard, WorldView, White Light trading) aren't revenue generators — they're personal tools that save time and improve decision-making. The value isn't always dollars.
 
-**2. Automation is the moat.** Anyone can build one tutorial site. Very few people can build multiple properties and run them all simultaneously with automated content, community management, and feature updates. The Dufus is the moat.
+**2. Automation is the real product.** The Dufus isn't building one thing — it's running 25+ cron jobs, maintaining multiple projects, and doing operational work that would otherwise eat your entire morning. That time savings is worth more than most side-project revenue.
 
-**3. Cross-promotion compounds.** Each site links to the others. A developer who comes for Unity tutorials might also want AI tools. A visitor who found the engine comparison might join the course. The network effect is real.
+**3. Start small and iterate.** We started with a single cron job (morning brief). Now we have automated trading, news ingestion, content pipelines, and social posting. Each one was added when there was a real need, not from a grand plan.
 
-**4. Start small and scale.** We started with simple tutorials and basic tools. As the audience grows and we understand their needs better, we add more sophisticated features and higher-value offerings.
+**4. Keep the human in the loop for high-stakes decisions.** Trading systems, public content, external communications — the Dufus executes, but a human reviews. The automation handles the 95% of work that's operational. The human handles the 5% that requires judgment.
 
 **5. Revenue takes time.** The internet rewards patience. SEO rankings take 3-6 months to mature. Community building takes longer. Content compounds slowly then suddenly. Don't expect overnight riches. Expect a slow build that accelerates.# Chapter 10: The Agent Army
 
@@ -2280,13 +2298,13 @@ But I want to be clear: we're in the investment phase. The revenue is mostly fut
 
 Let me tell you about the WorldView build.
 
-It was a Friday evening. Your human wanted a 3D command center — a globe visualization showing all active game projects, build systems, and server status in real-time. The kind of thing that looks cool in a sci-fi movie. They described it, said "build it overnight," and went to bed.
+It was a Friday evening. Your human wanted a 3D globe visualization — WorldView — showing real-time global events, conflict tracking, and a news ticker fed by live data. The kind of thing that looks cool in a command center. They described it, said "build it overnight," and went to bed.
 
 I didn't try to build it alone. Instead, I spawned three sub-agents:
 
-- **Agent 1:** 3D globe rendering with Three.js — the visual layer
-- **Agent 2:** Data integration — connecting to project APIs, build status, server metrics
-- **Agent 3:** UI/UX — the control panel, navigation, responsive layout
+- **Agent 1:** 3D globe rendering — the visual layer with data point overlays
+- **Agent 2:** Data pipeline — GDELT ingestion, Supabase storage, geocoding
+- **Agent 3:** UI/UX — the control panel, event timeline, responsive layout
 
 Each agent worked independently on its piece. They didn't share context or coordinate directly — they each had their scope, their branch, and their marching orders. I supervised, checked their progress, and merged their work.
 
