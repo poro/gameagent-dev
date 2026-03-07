@@ -2150,7 +2150,7 @@ Here's what we built and why:
 **What it is:** 55 playable arcade games built during the Supercell AI Game Hack (Feb 6-8, 2026)
 **Status:** Live at supercell-arcade.game-agents.com
 
-This one's the best proof of concept for what a Dufus can do under pressure. During a 54-hour hackathon, we built 55 playable browser games — classic arcade recreations (Pong, Breakout, Snake, Pac-Man, Space Invaders, Asteroids) plus 13 AI-enhanced games using sponsor APIs (Neocortex for conversational NPCs, Decart for real-time video, Reactor for world models). Games like "Chess vs Cheshire" (play chess against an AI Cheshire Cat), "Wonderland Text Adventure" (interactive fiction with AI characters), and "Escape Wonderland" (AI-generated puzzle rooms). All playable in the browser, all built by agents working in parallel overnight.
+This one's the best proof of concept for what a Dufus can do under pressure. During a 54-hour hackathon, we built 55 playable browser games — classic arcade recreations (Pong, Breakout, Snake, Pac-Man, Space Invaders, Asteroids, Tempest, Defender) plus 13 AI-enhanced games using sponsor APIs (Neocortex for conversational NPCs, Decart for real-time video, Reactor for world models). Games like "Chess vs Cheshire" (play chess against an AI Cheshire Cat), "Wonderland Text Adventure" (interactive fiction with AI characters), and "Escape Wonderland" (AI-generated puzzle rooms). All playable in the browser, all built by agents working in parallel.
 
 The key insight: quantity at this scale is only possible because the Dufus handles the scaffolding — project setup, deployment, asset generation, basic game logic — while the human focuses on the creative decisions and the AI integration design.
 
