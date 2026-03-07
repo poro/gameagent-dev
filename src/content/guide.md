@@ -639,15 +639,16 @@ And another section:
 ```markdown
 ## Active Projects
 
-### 100 Games Project (Feb 24)
-- Tutorial series: AI-generated game prototypes
-- Tech stack: JavaScript, WebGL, AI APIs
-- Status: 15 games completed, deploying weekly ✅
+### nAIVE Game Engine (Mar 2026)
+- AI-native game engine built in Rust + wgpu
+- v0.1.10, Tiers 1-2.5 complete, 15 demos working
+- Gaussian Splatting integration in progress
+- Landing site: naive.dev
 
-### Game Dev Blog Engine
-- Custom CMS for game tutorials
-- Auto-generates code examples and screenshots
-- Status: MVP deployed, content pipeline active
+### 100 Games Tutorial Series
+- 62 games complete (62% to goal)
+- AI-generated tutorials with playable prototypes
+- Status: Active, building toward 100 ✅
 ```
 
 See what's happening? This isn't a log. It's a reference document. It's organized by topic, it contains just the essential facts, and it's structured so the Dufus can quickly find what it needs. When you ask "what's the status of the 100 Games project?" the Dufus doesn't need to search through weeks of chat history — it reads MEMORY.md and knows.
@@ -661,20 +662,22 @@ MEMORY.md gets loaded at the start of every main session. It's the first thing t
 These are raw daily logs. Everything that happened today gets captured here. Think of them as a work journal — messy, detailed, chronological.
 
 ```markdown
-# 2026-02-24
+# 2026-03-06
 
-## 100 Games Project
-- Deployed Game #15: AI Asteroids with GPT-4 generated physics
-- Fixed WebGL context issues across mobile browsers
-- Updated tutorial template to include accessibility features
+## nAIVE Engine
+- Pulled latest 3 commits from GitHub (Gaussian Splat demo, game-asset-mcp submodule)
+- Created Pre-GDC and Post-GDC development plans
+- Pushed docs to origin/master
 
-## Game Dev Blog
-- Published "Building Games with AI Agents" post
-- Set up automated screenshot generation for demos
-- Configured CDN for faster game asset loading
+## WorldView
+- GDELT ingestion recovered after 50h outage (was HTTP 429)
+- Reduced polling from every 15 min to every 4 hours
+- News pipeline operational again
 
-## Memory Maintenance
-- Updated MEMORY.md with project statuses
+## System Health
+- 7 cron jobs showing errors (Message failed / timed out)
+- All critical jobs (trading, financial brief) running fine
+- BlackLight daemon running, no active agent tasks
 - Cleaned up completed tutorial entries
 ```
 
@@ -690,13 +693,13 @@ This is the "what should I be checking right now?" file. It's short, actionable,
 # HEARTBEAT.md
 
 ## Active Reminders
-*None*
+- 🚨 .cn domains expire March 17 — remind Mark on March 16
 
 ## Periodic Checks
 - **Cron Health** (every heartbeat): Check cron list for errors.
-  If any job is failing, alert immediately.
-- **Game Project Status** (evenings): 
-  Check today's deployments for errors. If any builds failed, 
+  If any critical job is failing, alert immediately.
+- **White Light Status** (weekday evenings): 
+  Check today's trading log for errors. If the pipeline failed, 
   alert immediately.
 - **Industry News** (2-3x daily): Check for major game engine updates, 
   AI tool releases, significant indie game launches.
@@ -976,27 +979,26 @@ A workspace can have dozens of projects living in it. The Dufus can navigate bet
 For projects that don't live in the workspace (maybe they're on GitHub, or on another server), give your Dufus a README:
 
 ```markdown
-# projects/game-blog/README.md
+# projects/worldview/README.md
 
-Game development blog with AI-generated tutorials and prototypes.
+Real-time 3D globe showing global events, conflict tracking, and news.
 
 ## Access
-- **Repo:** github.com/you/game-blog
-- **Live:** game-dev-blog.com
-- **CMS API:** /api/cms (auth: X-Bot-Token header)
+- **Repo:** github.com/you/worldview
+- **Live:** worldview.game-agents.com
+- **Data:** Supabase (scenarios, claims, narratives, conflict_events, news_articles)
 
-## Content Types
-- Tutorial posts
-- Game prototypes  
-- Development logs
+## Data Pipeline
+- GDELT ingestion: `python3 scripts/ingest-gdelt.py --minutes 30 --limit 50`
+- Scraper ingestion: `python3 scripts/ingest-scraper.py 50`
 
 ## Workflow
-1. Generate content via POST /api/generate
-2. Review drafts via GET /api/posts?status=draft
-3. Publish via POST /api/publish
+1. GDELT cron runs every 4 hours
+2. Scraper ingestion runs every 30 minutes
+3. Globe renders latest events in browser
 ```
 
-Now the Dufus can work with the game blog even without the full codebase — it knows the API, the content types, and the workflow. This is the "cheat sheet for a new hire" pattern in action.
+Now the Dufus can operate the WorldView data pipeline even without the full codebase — it knows the scripts, the data sources, and the workflow. This is the "cheat sheet for a new hire" pattern in action.
 
 ### Approach 3: MEMORY.md Project Sections
 
@@ -1199,17 +1201,17 @@ cat > skills/my-custom-skill/SKILL.md << 'EOF'
 # My Custom Skill
 
 ## What This Does
-Checks the status of game servers every hour.
+Checks the trading system status and account health.
 
 ## How To Use
 ```bash
-curl -s https://api.gameserver.com/status | jq '.servers[] | select(.status != "online")'
+cd projects/whitelight && python3 scripts/check_status.py
 ```
 
 ## When To Use
-- When asked about server status
-- During server health checks
-- Before deploying new builds
+- When asked about trading status
+- During heartbeat health checks
+- After market close on weekdays
 EOF
 ```
 
@@ -1471,7 +1473,7 @@ This is the difference between a junior employee who raises their hand every fiv
 
 This is the safety/boldness balance. Notice the distinction: "Be careful with external actions. Be bold with internal ones."
 
-Internal actions — reading files, writing code, organizing projects, running analyses — are safe. The Dufus should do these without asking. If you ask "check the game server logs," the Dufus should just go check them. No "Shall I read the log file?" No "I'll need your permission to access the project directory." Just do it.
+Internal actions — reading files, writing code, organizing projects, running analyses — are safe. The Dufus should do these without asking. If you ask "check the trading system logs," the Dufus should just go check them. No "Shall I read the log file?" No "I'll need your permission to access the project directory." Just do it.
 
 External actions — sending emails, posting tweets, deploying to production, anything that leaves the machine and touches the real world — deserve caution. These are irreversible. A misworded email can't be unsent. A bad deployment can't be un-deployed (easily). The soul file tells the Dufus to ask before doing anything external.
 
@@ -1611,7 +1613,7 @@ Heartbeats are what turn your Dufus from a tool into an employee.
 
 A heartbeat is a periodic check-in — every 30 minutes or so, the system pokes your Dufus and says "hey, anything you should be doing right now?" The Dufus reads its HEARTBEAT.md file, checks whatever's on the list, and either takes action or goes back to sleep.
 
-This is the mechanism that lets your Dufus check your email without being asked. Monitor your game servers. Notice a calendar event coming up and remind you. Spot a failing cron job and alert you before things break.
+This is the mechanism that lets your Dufus check your email without being asked. Monitor your data pipelines. Notice a calendar event coming up and remind you. Spot a failing cron job and alert you before things break.
 
 Without heartbeats, your Dufus is reactive — it does things when you tell it to. With heartbeats, it's proactive — it does things because they need doing.
 
@@ -1713,7 +1715,7 @@ This is a common source of confusion. Both heartbeats and cron jobs make your Du
 - One-shot reminders ("remind me in 20 minutes")
 - Output that goes directly to a channel
 
-Here's a practical example: checking email and checking game server status could both be heartbeat tasks — they're periodic, they can batch, and exact timing doesn't matter. But the weekly project status report is a cron job — it needs to fire at exactly 9 AM Monday, it generates a long-form report, and it uses specific data analysis.
+Here's a practical example: checking email and checking trading system status could both be heartbeat tasks — they're periodic, they can batch, and exact timing doesn't matter. But the weekly project status report is a cron job — it needs to fire at exactly 9 AM Monday, it generates a long-form report, and it uses specific data analysis.
 
 The rule of thumb: if it's monitoring, use heartbeats. If it's producing, use cron.
 
@@ -1739,7 +1741,7 @@ Here are the rules we've developed:
 - You just checked <30 minutes ago
 - The information isn't actionable
 
-That last point is crucial. "Your game servers are running normally" is not actionable. "Game Server #3 just went down with high error rates" is actionable. Your heartbeat checks should filter for signal, not just relay data.
+That last point is crucial. "All cron jobs are running normally" is not actionable. "White Light trading pipeline failed — Polygon.io timeout" is actionable. Your heartbeat checks should filter for signal, not just relay data.
 
 ### The Quiet Hours Rule
 
@@ -1797,7 +1799,7 @@ Without this, MEMORY.md gets stale. With it, your Dufus's context improves over 
 Let me walk through some real heartbeat moments from our setup:
 
 **Scenario 1: Server Alert**
-Heartbeat fires at 21:00 UTC. Dufus checks HEARTBEAT.md, sees "Game Server Status (hourly during peak hours)." It checks the server monitoring API, discovers Server #3 is responding with 500 errors and high latency. Sends alert: "⚠️ Game Server #3 is down — 500 errors and 2.5s latency. Player count dropped 40%. Want me to restart it or check logs?"
+Heartbeat fires at 21:00 UTC. Dufus checks HEARTBEAT.md, sees "White Light Status (weekday evenings)." It checks today's trading log, discovers the pipeline failed with an API timeout from Polygon.io. Sends alert: "⚠️ White Light trading pipeline failed — Polygon.io timeout at 20:35 UTC. No trades executed today. Account equity unchanged at $898. Want me to retry or check the API status?"
 
 That alert probably saved us from players abandoning the game due to server issues.
 
@@ -1821,7 +1823,7 @@ More frequent = more responsive but higher cost. Less frequent = cheaper but slo
 
 For most people, 30 minutes is the sweet spot. Your Dufus checks in often enough to catch urgent things within a reasonable window, but not so often that it's burning tokens on empty checks.
 
-If you're on a tight budget, 60 minutes works fine. If you're running time-sensitive operations (live game servers, urgent email monitoring), 15 minutes might be worth the extra cost.
+If you're on a tight budget, 60 minutes works fine. If you're running time-sensitive operations (trading systems, data pipelines, urgent email monitoring), 15 minutes might be worth the extra cost.
 
 ## Your First HEARTBEAT.md
 
@@ -1850,9 +1852,9 @@ Heartbeats are the most customizable part of your Dufus. They evolve with you. A
 
 ## Your Dufus Never Sleeps
 
-It's 3:45 PM on a Tuesday. You're in a meeting. You're not thinking about your game servers. You're not thinking about your deployment pipeline. You don't need to be.
+It's 3:45 PM on a Tuesday. You're in a meeting. You're not thinking about your trading system. You're not thinking about your data pipelines. You don't need to be.
 
-At exactly 20:45 UTC, a cron job fires. A sub-agent spins up, pulls server metrics from your monitoring API, runs the health check strategy, analyzes the performance data, decides server resources are running high, scales up the container cluster through your cloud API, logs the result, and sends you a message: "🔧 Auto-scaling: Added 2 game server instances. CPU usage: 85% → 62%. Player count: 1,247 active."
+At exactly 20:35 UTC, a cron job fires. A sub-agent spins up, pulls market data from Polygon.io, runs the composite signal analysis across 7 sub-strategies, determines the target allocation, executes the trade through Alpaca's API, logs the result, and sends you a message: "📊 White Light: Composite +0.215 (mild bull). Holding 18 TQQQ. Account equity: $898.63. No new trades."
 
 You glance at the notification between agenda items. Everything's handled. You go back to your meeting.
 
@@ -1918,10 +1920,10 @@ This is a feature, not a limitation. It means:
 
 ```bash
 openclaw cron add \
-  --name "server-check" \
+  --name "system-health" \
   --schedule "0 */3 * * *" \
   --model "anthropic/claude-sonnet-4-6" \
-  --prompt "Check all game server status. Report only issues."
+  --prompt "Check cron job health and data pipeline status. Report only issues."
 ```
 
 3. **Cron jobs don't pollute your chat.** The output goes where you tell it — Telegram, a webhook, a file, or nowhere (silent mode). Your conversation thread stays clean.
@@ -1930,15 +1932,15 @@ openclaw cron add \
 
 Here's what's running in our production setup. This is real — these fire every day:
 
-### The Morning Dev Brief
+### The Morning Financial Brief
 ```
-Schedule: 0 14 * * 1-5 (Weekdays, morning)
+Schedule: 0 13 * * 1-5 (Weekdays, 6 AM PT)
 Model: Claude Sonnet
-Delivery: Telegram + project dashboard
+Delivery: Telegram + JOE dashboard
 ```
-Compiles overnight game industry news, engine updates, AI tool releases, server status, and your project statuses. Posts a concise briefing to Telegram and feeds the data to your project dashboard.
+Compiles overnight market moves, M&A deals >$1B, Fed announcements, activist 13D filings, and earnings calendar. Posts a scannable summary to Telegram and feeds it to the JOE financial intelligence dashboard.
 
-### Game Server Monitoring
+### White Light Trading
 ```
 Schedule: 35 20 * * 1-5 (Weekdays, 20:35 UTC / 1:35 PM PT)
 Model: Sonnet
@@ -1985,36 +1987,36 @@ Mechanism: Git plugin auto-pull/push
 ```
 Not technically a Dufus cron — this is Obsidian's git plugin running on a 5-minute sync cycle. But the Dufus can read and reference the vault at any time because it's synced to the local filesystem.
 
-### Game Analytics Summary
+### GDELT News Ingestion
 ```
-Schedule: 0 22 * * * (Daily, evening)
+Schedule: 0 */4 * * * (Every 4 hours)
 Model: Sonnet
-Delivery: Telegram
+Delivery: Silent (writes to Supabase)
 ```
-Compiles daily analytics from game projects — player counts, engagement metrics, crash reports, performance data. Sends a summary with key insights and trends.
+Ingests global news from GDELT, classifies events, geocodes them, and stores in Supabase. Feeds the WorldView 3D globe with live data. Originally ran every 15 minutes but got rate-limited — scaled back.
 
-### Domain & SSL Monitoring
+### Domain Portfolio Health
 ```
 Schedule: 0 8 * * 1 (Weekly, Mondays)
 Model: Sonnet
 Delivery: Telegram
 ```
-Checks domain expiration dates and SSL certificate validity across all game project domains. Alerts if anything is expiring within 30 days.
+Checks domain expiration dates across all domains. Alerts if anything is expiring within 30 days. This one caught our 14 .cn domains approaching expiry — would have been easy to miss otherwise.
 
-That's nearly a dozen cron jobs, running 24/7, handling everything from server monitoring to content generation to build automation. Total cost: maybe $5-10/day in API tokens. Value: you don't have to think about any of it.
+That's 25+ cron jobs running 24/7, handling everything from trading to news ingestion to content generation. Total cost: maybe $5-10/day in API tokens. Value: you don't have to think about any of it.
 
 ## Building a Daily Routine
 
 Here's how to think about cron jobs as a daily routine for your Dufus:
 
 **Morning (your wake-up time):**
-- Industry brief: game news, engine updates, tool releases
-- Server status: overnight issues, performance metrics
+- Financial brief: market moves, M&A, earnings calendar
+- Task briefing: today's priorities from Obsidian vault
 - Calendar: today's meetings and deadlines
 
 **Midday:**
-- Content generation: tutorials, blog posts, documentation
-- Build monitoring: CI status, deployment health
+- News scraping: GDELT ingestion, industry news
+- Content generation: blog posts, documentation
 - Analytics check: player metrics, performance data
 
 **Afternoon/Evening:**
@@ -2027,7 +2029,7 @@ Here's how to think about cron jobs as a daily routine for your Dufus:
 - Health checks: domain expiration, SSL certs, server status
 
 **Weekly:**
-- Deep analysis: game performance, player retention trends
+- Compound code review: all repos, stale branches, deployment gaps
 - Industry intel: competitor monitoring, technology updates
 - Cleanup: stale branches, old logs, expired reminders
 
@@ -2058,13 +2060,13 @@ The first line of defense is the heartbeat cron health check. Every heartbeat, t
 But you can also build error handling into the cron prompts themselves:
 
 ```
-If the server monitoring API returns an error, log the error to 
-projects/game-servers/logs/errors.log and send an alert with 
-the error message. Do NOT attempt to scale servers without 
-valid metrics data.
+If the Polygon.io API returns an error, log the error to 
+projects/whitelight/logs/errors.log and send an alert with 
+the error message. Do NOT execute trades without valid 
+market data.
 ```
 
-This is important for automated system management especially. You do *not* want your server management bot making decisions based on stale or missing data. Fail loud, fail safe.
+This is important for automated trading especially. You do *not* want your trading bot making decisions based on stale or missing data. Fail loud, fail safe.
 
 Common failure modes:
 - **API rate limits** — Add backoff logic or schedule jobs to avoid overlap
@@ -2381,7 +2383,7 @@ We even built tooling for this:
 # Register a task in the agent registry
 ./agents/register-task.sh add \
   --id "multiplayer-engine" \
-  --repo "game-engine" \
+  --repo "naive" \
   --branch "clawd/multiplayer" \
   --desc "Add multiplayer networking to nAIVE engine"
 
@@ -2389,7 +2391,7 @@ We even built tooling for this:
 ./agents/check-agents.sh
 
 # Set up an isolated worktree for parallel work
-./agents/setup-worktree.sh game-engine multiplayer
+./agents/setup-worktree.sh naive multiplayer
 ```
 
 The `check-agents.sh` script is deterministic — zero LLM tokens. It checks branch existence, PR status, CI results, and deployment health. The heartbeat runs it every cycle to catch stuck or failed agent tasks.
@@ -2436,8 +2438,8 @@ When multiple agents work on the same repo, they need isolation. Git worktrees s
 
 ```bash
 # Create isolated worktrees
-./agents/setup-worktree.sh game-engine feature-multiplayer
-./agents/setup-worktree.sh game-engine feature-assets
+./agents/setup-worktree.sh naive feature-multiplayer
+./agents/setup-worktree.sh naive feature-assets
 ```
 
 Each worktree is a separate working directory with its own branch. Agents can't step on each other's changes. When both are done, you merge their branches — handling conflicts at merge time rather than during development.
@@ -2485,7 +2487,7 @@ We built a simple system for tracking all agent tasks:
   "tasks": [
     {
       "id": "multiplayer-engine",
-      "repo": "game-engine",
+      "repo": "naive",
       "branch": "clawd/multiplayer",
       "status": "done",
       "pr": 12,
@@ -2493,13 +2495,13 @@ We built a simple system for tracking all agent tasks:
       "description": "Add multiplayer networking to nAIVE engine"
     },
     {
-      "id": "tutorial-generator",
-      "repo": "tutorial-hub",
-      "branch": "clawd/auto-generation",
+      "id": "worldview-pipeline",
+      "repo": "worldview",
+      "branch": "clawd/gdelt-v2",
       "status": "running",
       "pr": null,
       "created": "2026-02-20T22:00:00Z",
-      "description": "Automated tutorial generation system"
+      "description": "Upgrade GDELT ingestion to v2 API"
     }
   ]
 }
@@ -2531,7 +2533,7 @@ We have a review system:
 
 ```bash
 # Fetch PR diff and generate review
-./agents/review-pr.sh game-engine 42
+./agents/review-pr.sh naive 42
 ```
 
 This pulls the PR diff, builds a review prompt from a template (security, logic, performance, data quality, breaking changes), and generates a structured review. The template is at `agents/review-prompt.md`.
@@ -2650,18 +2652,20 @@ Every night at 22:30 UTC, a cron job reviews recent commits across all game deve
 ## Compound Review Output
 
 ### Cross-Project Patterns
-- Three repos added TypeScript this week — should 
-  standardize the configuration into a shared template
-- Error handling inconsistent: game-engine uses try/catch, 
-  tutorial-hub uses .catch(), asset-tools uses neither. Pick one.
-- All projects use different analytics snippets. Consolidate 
-  on one solution.
+- rmbr.me: Stripe payments branch merged to main. Legacy 
+  $9.99/mo + Immortal $29.99/mo plans coded. Needs 5 Vercel 
+  env vars to go live.
+- meatlover: Added 15 BBQ guides, rewrote About page, added 
+  editorial sections. guide-content.ts now ~4,600 lines. 
+  Amazon affiliate tag (dufus0b-20) expires August 22.
+- odds-cn: Real Odds API merged. Live odds from 6 sportsbooks 
+  in production (5-min cache, 500 req/month free tier).
 
 ### Shared Learnings
-- WebGL optimization patterns work well across all 
-  rendering projects. Document the pattern for future games.
-- Vercel free tier limit approaching on tutorial site (due to 
-  large asset files). Monitor build times.
+- Vercel deploy hooks are reliable — always pass 
+  "target":"production". Git email must match team config.
+- Private repo naming matters: rmbr-me → poro/rmbr-me-web; 
+  lineup-guru → poro/girthy. Use local git; gh CLI returns 404.
 ```
 
 The review output goes to `memory/compound-learnings.md`. The Dufus reads this during future development and applies the learnings. Over time, code quality converges because past mistakes inform future decisions.
@@ -3668,7 +3672,7 @@ NEVER use phrases like "Great question", "I'd be happy to",
 1. Git remote correct? → `git remote -v`
 2. Correct branch? → `git branch`
 3. Commit author authorized? → Check if git email is on the deployment team
-4. Build passing? → Check Vercel/Netlify dashboard
+4. Build passing? → Check Vercel dashboard
 5. Deploy hook working? → Try manual trigger
 
 **Common cause:** Git email mismatch. The Dufus commits with an email that may not be on the Vercel team. Fix: configure git to use an authorized email, or add the Dufus email to the team.
