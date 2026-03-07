@@ -2198,6 +2198,14 @@ This is a pure quality-of-life project. Instead of spending 30 minutes scanning 
 
 Articles cover AI game development tools, learning ratings for games, world models vs. language models, the MIRANDA education framework, and more. Content is human-reviewed before publishing — the Dufus helps with research, drafting, and Ghost CMS management, but editorial decisions stay human.
 
+### markollila.com — Personal Blog
+**What it is:** Personal thought leadership blog on AI, gaming, and education
+**Status:** Live (Ghost CMS), 16 published articles + 3 drafts
+
+This is the human's personal voice — essays on building in public with AI agents, the future of game engines, AI in education, short fiction, and industry analysis. Pieces like "The AI Employee: What Happens When You Give an Agent Its Own Email, Budget, and Cron Jobs" and "GDC 2026: What I'm Watching" establish professional positioning.
+
+The Dufus helps with research, fact-checking, and Ghost CMS publishing, but the writing voice is distinctly human. This is where the boundary matters most — the blog represents a real person's perspective, not AI-generated content. The Dufus drafts outlines and pulls data, the human writes.
+
 ## Total Build Cost
 
 Let me be transparent about what this cost to build:
