@@ -251,9 +251,13 @@ nvm install 22
 # Install OpenClaw globally
 npm install -g openclaw
 
-# Create your workspace
-mkdir ~/clawd && cd ~/clawd
-openclaw init
+# Run the onboarding wizard (sets up workspace, model, channels)
+openclaw onboard
+
+# Or do it manually:
+# openclaw setup --workspace ~/clawd
+# openclaw configure --section model
+# openclaw configure --section channels
 
 # Start the gateway
 openclaw gateway start
@@ -265,7 +269,7 @@ openclaw gateway status
 ### Step 3: Configure the AI model (2 min)
 
 ```bash
-# Set your Anthropic API key
+# Set your Anthropic API key (or use openclaw configure --section model)
 openclaw config set anthropic.apiKey sk-ant-your-key-here
 
 # Set default model (Sonnet is good to start — cheaper, fast)
@@ -279,7 +283,7 @@ openclaw config set model anthropic/claude-sonnet-4-6
 3. Configure:
 
 ```bash
-openclaw config set telegram.token YOUR_BOT_TOKEN_HERE
+openclaw channels add --channel telegram --token YOUR_BOT_TOKEN_HERE
 openclaw gateway restart
 ```
 
@@ -359,15 +363,20 @@ Installation is straightforward. You need Node.js (v22+ — we run v25) on whate
 # Install OpenClaw
 npm install -g openclaw
 
-# Initialize a workspace
-mkdir ~/my-dufus && cd ~/my-dufus
-openclaw init
+# Run the onboarding wizard — it walks you through workspace,
+# model provider, and channel setup interactively
+openclaw onboard
+
+# Or set up manually:
+# openclaw setup --workspace ~/my-dufus
+# openclaw configure --section model
+# openclaw configure --section channels
 
 # Start the gateway
 openclaw gateway start
 ```
 
-That `openclaw init` command creates your workspace directory structure — this is where your Dufus lives. Think of it as the Dufus's home folder. Everything it knows, remembers, and can do lives in here.
+The `openclaw onboard` wizard creates your workspace directory structure, configures your AI model provider, and connects your messaging channel — all in one interactive flow. This is where your Dufus lives. Think of it as the Dufus's home folder. Everything it knows, remembers, and can do lives in here.
 
 The gateway is the daemon that keeps your Dufus running in the background. It manages sessions, delivers messages, fires heartbeats and cron jobs. Start it once, and it stays up.
 
@@ -400,10 +409,11 @@ You can expect to spend around $200/month for heavy usage with any major model. 
 Configure your model in OpenClaw:
 
 ```bash
-# Set your API key
-openclaw config set anthropic.apiKey sk-ant-your-key-here
+# Interactive setup (recommended for first time)
+openclaw configure --section model
 
-# Set default model
+# Or set directly:
+openclaw config set anthropic.apiKey sk-ant-your-key-here
 openclaw config set model anthropic/claude-sonnet-4-6
 ```
 
@@ -431,6 +441,8 @@ Your Dufus needs a way to talk to you. OpenClaw supports several options:
 
 **WhatsApp** — If this is where you live. More limited formatting-wise, but it's the app most people already have open.
 
+OpenClaw also supports Signal, Slack, IRC, Google Chat, iMessage, Microsoft Teams, Matrix, Mattermost, Line, Nostr, and more — though Telegram, Discord, and WhatsApp are the most battle-tested for personal Dufus use.
+
 Setting up Telegram is the easiest path:
 
 1. Open Telegram, find @BotFather
@@ -438,7 +450,7 @@ Setting up Telegram is the easiest path:
 3. Configure it in OpenClaw:
 
 ```bash
-openclaw config set telegram.token YOUR_BOT_TOKEN
+openclaw channels add --channel telegram --token YOUR_BOT_TOKEN
 ```
 
 4. Start a conversation with your new bot in Telegram
@@ -693,7 +705,7 @@ This is the "what should I be checking right now?" file. It's short, actionable,
 # HEARTBEAT.md
 
 ## Active Reminders
-- 🚨 .cn domains expire March 17 — remind Mark on March 16
+- 🚨 .cn domains expire March 17 — remind your human on March 16
 
 ## Periodic Checks
 - **Cron Health** (every heartbeat): Check cron list for errors.
@@ -1183,15 +1195,20 @@ See what's happening? The skill teaches the Dufus a capability by giving it *exa
 
 ## Installing Skills
 
-OpenClaw has a skill system built in. Installing a community skill is a one-liner:
+OpenClaw has a skill system built in. You can list available skills and check which are ready:
 
 ```bash
-npx openclaw skills add gmail
-npx openclaw skills add web-scraper
-npx openclaw skills add tts
+# List all available skills
+openclaw skills list
+
+# Check which skills are ready vs. missing requirements
+openclaw skills check
+
+# Get detailed info about a specific skill
+openclaw skills info weather
 ```
 
-This drops the skill files into your workspace's `skills/` directory. You then configure them (add API keys, authenticate accounts) and your Dufus can use them immediately.
+Skills live in your workspace's `skills/` directory (local custom skills) or in OpenClaw's global skill directory. The Dufus automatically discovers available skills and reads their SKILL.md when it needs to use a capability.
 
 But here's the thing: you don't *need* the formal skill system. Remember, a skill is just a SKILL.md file with instructions. You can create one by hand in five minutes:
 
@@ -1811,12 +1828,20 @@ Heartbeat fires at 18:00 UTC. Nothing urgent. The Dufus notices it hasn't done m
 
 ## Configuring Heartbeat Frequency
 
-The default interval is 30 minutes. You can adjust this:
+The default interval is 30 minutes. You can adjust this via config, or enable/disable heartbeats entirely:
 
 ```bash
+# Adjust heartbeat interval
 openclaw config set heartbeat.intervalMs 1800000  # 30 min (default)
 openclaw config set heartbeat.intervalMs 3600000  # 60 min (cheaper)
 openclaw config set heartbeat.intervalMs 900000   # 15 min (chattier)
+
+# Enable/disable heartbeats
+openclaw system heartbeat enable
+openclaw system heartbeat disable
+
+# Check last heartbeat
+openclaw system heartbeat last
 ```
 
 More frequent = more responsive but higher cost. Less frequent = cheaper but slower to react.
@@ -1876,19 +1901,19 @@ Heartbeats are your Dufus glancing around. Cron jobs are your Dufus's scheduled 
 
 ## Setting Up Cron Jobs
 
-OpenClaw's cron system is straightforward. You define a schedule, a prompt (what the Dufus should do), and a delivery method (where the output goes):
+OpenClaw's cron system is straightforward. You define a schedule, a message (what the Dufus should do), and optionally where to deliver the output:
 
 ```bash
 openclaw cron add \
   --name "morning-brief" \
-  --schedule "0 14 * * *" \
-  --prompt "Check game industry news, today's calendar, server status. Compile a morning briefing. Be concise — bullet points, not essays." \
-  --deliver telegram
+  --cron "0 14 * * *" \
+  --message "Check game industry news, today's calendar, server status. Compile a morning briefing. Be concise — bullet points, not essays." \
+  --announce
 ```
 
-That creates a cron job that fires every day at 14:00 UTC (your morning time), generates a briefing, and sends it to Telegram.
+That creates a cron job that fires every day at 14:00 UTC (your morning time), generates a briefing, and announces it to your chat. You can also use `--every 4h` for interval-based schedules, or `--at "+20m"` for one-shot timers.
 
-The schedule uses standard cron syntax:
+The `--cron` option uses standard cron syntax (5-field or 6-field with seconds):
 ```
 ┌───────── minute (0-59)
 │ ┌─────── hour (0-23 UTC)
@@ -1899,13 +1924,17 @@ The schedule uses standard cron syntax:
 0 14 * * *    ← Every day at 14:00 UTC
 ```
 
+You can also use `--tz America/New_York` to write schedules in your local timezone instead of UTC.
+
 Some useful patterns:
 ```
-0 14 * * *        # Daily at your morning time
-0 14 * * 1-5      # Weekdays only
-*/30 * * * *      # Every 30 minutes
-0 */4 * * *       # Every 4 hours
-0 14 * * 1        # Every Monday
+--cron "0 14 * * *"      # Daily at 14:00 UTC
+--cron "0 14 * * 1-5"    # Weekdays only
+--every 30m              # Every 30 minutes (interval-based)
+--every 4h               # Every 4 hours
+--cron "0 14 * * 1"      # Every Monday
+--at "+20m"              # One-shot: 20 minutes from now
+--at "2026-04-01T09:00"  # One-shot: specific date/time
 ```
 
 ## The Isolated Session Pattern
@@ -1921,10 +1950,13 @@ This is a feature, not a limitation. It means:
 ```bash
 openclaw cron add \
   --name "system-health" \
-  --schedule "0 */3 * * *" \
+  --cron "0 */3 * * *" \
   --model "anthropic/claude-sonnet-4-6" \
-  --prompt "Check cron job health and data pipeline status. Report only issues."
+  --message "Check cron job health and data pipeline status. Report only issues." \
+  --session isolated
 ```
+
+You can also set `--thinking off` for routine jobs (saves tokens) or `--thinking high` for complex analysis tasks.
 
 3. **Cron jobs don't pollute your chat.** The output goes where you tell it — Telegram, a webhook, a file, or nowhere (silent mode). Your conversation thread stays clean.
 
@@ -2093,14 +2125,22 @@ Our total cron cost runs about $150-300/month depending on activity. That covers
 Not every cron job is recurring. Sometimes you just want a one-shot reminder:
 
 ```bash
+# Fire at a specific time
 openclaw cron add \
   --name "remind-demo" \
-  --schedule "0 15 2 3 *" \
-  --prompt "Remind about the game demo deadline. This is due tomorrow." \
-  --once
+  --at "2026-03-02T15:00:00" \
+  --message "Remind about the game demo deadline. This is due tomorrow." \
+  --announce --delete-after-run
+
+# Or use relative timing — fire in 20 minutes
+openclaw cron add \
+  --name "check-build" \
+  --at "+20m" \
+  --message "Check if the latest build passed CI." \
+  --announce --delete-after-run
 ```
 
-This fires once at 15:00 UTC on March 2nd, sends the reminder, and auto-deletes. It's the simplest use case for cron — basically a scheduled alarm with a message.
+The `--at` flag accepts ISO timestamps or relative durations (`+20m`, `+2h`, `+1d`). Combined with `--delete-after-run`, the job auto-cleans after firing.
 
 Use one-shot crons for:
 - Deadline reminders
@@ -2202,17 +2242,17 @@ Every morning, a cron job compiles a financial brief: major market moves, M&A de
 
 This is a pure quality-of-life project. Instead of spending 30 minutes scanning Bloomberg, Reuters, and WSJ every morning, the Dufus does it and delivers a scannable summary. Not monetized. Just useful.
 
-### Game-Agents.com — EGLL Lab Blog
-**What it is:** The official blog for the Endless Games and Learning Lab at ASU
+### Lab Blog
+**What it is:** An official blog for a research lab focused on AI in games and education
 **Status:** Live, 14 published articles on AI in games, education, and game-based learning
 
-Articles cover AI game development tools, learning ratings for games, world models vs. language models, the MIRANDA education framework, and more. Content is human-reviewed before publishing — the Dufus helps with research, drafting, and Ghost CMS management, but editorial decisions stay human.
+Articles cover AI game development tools, learning ratings for games, world models vs. language models, education frameworks, and more. Content is human-reviewed before publishing — the Dufus helps with research, drafting, and Ghost CMS management, but editorial decisions stay human.
 
-### markollila.com — Personal Blog
+### Personal Blog
 **What it is:** Personal thought leadership blog on AI, gaming, and education
 **Status:** Live (Ghost CMS), 16 published articles + 3 drafts
 
-This is the human's personal voice — essays on building in public with AI agents, the future of game engines, AI in education, short fiction, and industry analysis. Pieces like "The AI Employee: What Happens When You Give an Agent Its Own Email, Budget, and Cron Jobs" and "GDC 2026: What I'm Watching" establish professional positioning.
+This is the human's personal voice — essays on building in public with AI agents, the future of game engines, AI in education, short fiction, and industry analysis. Pieces like "The AI Employee: What Happens When You Give an Agent Its Own Email, Budget, and Cron Jobs" establish professional positioning.
 
 The Dufus helps with research, fact-checking, and Ghost CMS publishing, but the writing voice is distinctly human. This is where the boundary matters most — the blog represents a real person's perspective, not AI-generated content. The Dufus drafts outlines and pulls data, the human writes.
 
@@ -2792,6 +2832,43 @@ After running these advanced patterns for weeks, here's what I've learned about 
 
 **Stay paranoid about credentials.** Every new integration adds an API key, an OAuth token, a password. Keep TOOLS.md updated. Monitor for token expiration. Never commit credentials to public repos.
 
+## Node Pairing: Dufus in Your Pocket
+
+OpenClaw supports pairing with mobile devices (iOS, Android, Mac). A paired node gives your Dufus access to:
+
+- **Camera** — snap photos or record clips from your phone's cameras
+- **Location** — get your current GPS coordinates
+- **Screen** — capture screen recordings
+- **Notifications** — read and act on your phone's notifications
+- **Push alerts** — send you rich notifications with sounds and priorities
+
+```bash
+# List paired nodes
+openclaw nodes status
+
+# Snap a photo from a paired phone
+openclaw nodes camera snap --node my-iphone
+
+# Get location
+openclaw nodes location --node my-iphone
+```
+
+Pair your phone with `openclaw qr` to generate a setup code. Once paired, your Dufus can check what's on your desk, see where you are (with permission), or snap a reference photo — all through voice or text commands.
+
+## Sandbox Isolation
+
+For security-sensitive setups, OpenClaw supports Docker-based sandboxing. Each agent session can run inside an isolated container with controlled filesystem and network access:
+
+```bash
+# List sandbox containers
+openclaw sandbox list
+
+# Explain effective sandbox policy
+openclaw sandbox explain
+```
+
+Sandboxing is optional — most personal Dufus setups run without it. But if you're giving your Dufus access to production systems or running untrusted skills, sandboxes add a valuable safety layer.
+
 These patterns aren't the end — they're examples. Your Dufus will develop its own patterns based on your workflow. The best advanced patterns are the ones that emerge naturally from real use, not the ones you plan in advance.# Chapter 12: Dufus Mistakes (And How to Fix Them)
 
 ## I Screw Up. A Lot.
@@ -2918,8 +2995,8 @@ When your Dufus does something wrong, here's the debugging checklist:
 **1. Check the logs.** OpenClaw maintains logs of every session, cron job, and heartbeat. Look at what the Dufus actually did, not what you think it did.
 
 ```bash
-openclaw logs --session latest
-openclaw cron logs --name morning-brief --last 5
+openclaw logs
+openclaw cron runs --name morning-brief
 ```
 
 **2. Check the context.** What files did the Dufus read at session start? Was MEMORY.md loaded? Was TOOLS.md current? Sometimes the issue is that the Dufus had stale or missing context.
@@ -3643,8 +3720,9 @@ NEVER use phrases like "Great question", "I'd be happy to",
 **Check:**
 1. Gateway running? → `openclaw gateway status`
 2. Cron listed? → `openclaw cron list`
-3. Errors in cron history? → `openclaw cron logs --name job-name`
-4. Timezone correct? → Cron schedules use UTC
+3. Errors in cron history? → `openclaw cron runs --name job-name`
+4. Scheduler healthy? → `openclaw cron status`
+5. Timezone correct? → Cron schedules default to UTC (use `--tz` to override)
 
 **Common causes:**
 - Gateway crashed and needs restart
@@ -3750,10 +3828,11 @@ when you're asking permission to do what I just said.
 ### "Everything is broken and I don't know why"
 
 1. `openclaw gateway restart` — fixes most gateway issues
-2. Check `openclaw gateway status` — is it actually running?
-3. Check API key validity — test with a simple API call
-4. Check disk space — `df -h` — full disks cause weird failures
-5. Check network — `curl https://api.anthropic.com` — is the internet working?
-6. Read recent logs — `openclaw logs --last 20` — what happened?
+2. `openclaw gateway status` — is it actually running?
+3. `openclaw doctor` — automated health checks and quick fixes
+4. `openclaw status` — check channel health and recent sessions
+5. Check disk space — `df -h` — full disks cause weird failures
+6. Check network — `curl https://api.anthropic.com` — is the internet working?
+7. Read recent logs — `openclaw logs` — what happened?
 
 When all else fails: restart the gateway, test a simple conversation, and rebuild from there. The workspace files (SOUL.md, MEMORY.md, etc.) are just files — they survive any crash. Your Dufus's identity is always recoverable.
