@@ -9,19 +9,25 @@ export const metadata = {
 };
 
 const chapters = [
-  { id: "chapter-1", num: 1, title: "What Is a Dufus?" },
-  { id: "chapter-2", num: 2, title: "Setting Up Your Dufus" },
-  { id: "chapter-3", num: 3, title: "The Memory System" },
-  { id: "chapter-4", num: 4, title: "Giving Dufus Context" },
-  { id: "chapter-5", num: 5, title: "Skills — Teaching Dufus New Tricks" },
-  { id: "chapter-6", num: 6, title: "The Soul File" },
-  { id: "chapter-7", num: 7, title: "Heartbeats — Being Proactive" },
-  { id: "chapter-8", num: 8, title: "Cron Jobs — Dufus on Autopilot" },
-  { id: "chapter-9", num: 9, title: "The Money Machine" },
-  { id: "chapter-10", num: 10, title: "The Agent Army" },
-  { id: "chapter-11", num: 11, title: "Advanced Dufus Patterns" },
-  { id: "chapter-12", num: 12, title: "Dufus Mistakes (And How to Fix Them)" },
-  { id: "chapter-13", num: 13, title: "Growing Together" },
+  { id: "chapter-1", label: "01", title: "What Is a Dufus?" },
+  { id: "chapter-2", label: "02", title: "Setting Up Your Dufus" },
+  { id: "chapter-3", label: "03", title: "The Memory System" },
+  { id: "chapter-4", label: "04", title: "Giving Dufus Context" },
+  { id: "chapter-5", label: "05", title: "Skills — Teaching Dufus New Tricks" },
+  { id: "chapter-6", label: "06", title: "The Soul File" },
+  { id: "chapter-7", label: "07", title: "Heartbeats — Being Proactive" },
+  { id: "chapter-8", label: "08", title: "Cron Jobs — Dufus on Autopilot" },
+  { id: "chapter-9", label: "09", title: "The Money Machine" },
+  { id: "chapter-10", label: "10", title: "The Agent Army" },
+  { id: "chapter-11", label: "11", title: "Advanced Dufus Patterns" },
+  { id: "chapter-12", label: "12", title: "Dufus Mistakes (And How to Fix Them)" },
+  { id: "chapter-13", label: "13", title: "Growing Together" },
+  { id: "appendix-a", label: "A", title: "Full SOUL.md Template" },
+  { id: "appendix-b", label: "B", title: "Full AGENTS.md Template" },
+  { id: "appendix-c", label: "C", title: "Recommended Skills Directory" },
+  { id: "appendix-d", label: "D", title: "API Key Checklist" },
+  { id: "appendix-e", label: "E", title: "Cost Breakdown" },
+  { id: "appendix-f", label: "F", title: "Troubleshooting Guide" },
 ];
 
 export default function GuidePage() {
@@ -59,7 +65,7 @@ export default function GuidePage() {
                 className="text-sm text-white/50 hover:text-accent transition-colors font-mono py-1.5 px-2 rounded hover:bg-surface-light"
               >
                 <span className="text-accent/40 mr-2">
-                  {String(ch.num).padStart(2, "0")}
+                  {ch.label.padStart(2, "\u00A0")}
                 </span>
                 {ch.title}
               </a>
@@ -92,7 +98,7 @@ export default function GuidePage() {
                     className="text-sm text-white/50 hover:text-accent transition-colors font-mono py-1.5 px-2 rounded hover:bg-surface-light"
                   >
                     <span className="text-accent/40 mr-2">
-                      {String(ch.num).padStart(2, "0")}
+                      {ch.label.padStart(2, "\u00A0")}
                     </span>
                     {ch.title}
                   </a>

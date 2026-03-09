@@ -12,8 +12,11 @@ function slugify(text: string) {
 }
 
 function chapterId(text: string) {
-  const match = text.match(/^Chapter\s+(\d+)/i);
-  return match ? `chapter-${match[1]}` : slugify(text);
+  const chapterMatch = text.match(/^Chapter\s+(\d+)/i);
+  if (chapterMatch) return `chapter-${chapterMatch[1]}`;
+  const appendixMatch = text.match(/^Appendix\s+([A-F])/i);
+  if (appendixMatch) return `appendix-${appendixMatch[1].toLowerCase()}`;
+  return slugify(text);
 }
 
 const components: Components = {

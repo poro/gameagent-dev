@@ -603,7 +603,9 @@ Let's take stock. You now have:
 
 Your Dufus is alive. It's not *smart* yet — it doesn't have memories, it doesn't have tools configured, it doesn't have projects or cron jobs or heartbeats. But it exists, it has a personality, and it knows who you are.
 
-In the next chapter, we're going to give it a memory. This is where things start to get genuinely interesting, because a Dufus with memory is a fundamentally different thing from a Dufus without one. It's the difference between a colleague who's been working with you for months and a temp who showed up this morning.# Chapter 3: The Memory System
+In the next chapter, we're going to give it a memory. This is where things start to get genuinely interesting, because a Dufus with memory is a fundamentally different thing from a Dufus without one. It's the difference between a colleague who's been working with you for months and a temp who showed up this morning.
+
+# Chapter 3: The Memory System
 
 ## The Goldfish Problem
 
@@ -851,7 +853,9 @@ And you're right that there are fancier approaches. But plain files have advanta
 
 **Reliability.** Files don't have cold start problems, version conflicts, or service outages. They're just files. They work.
 
-The biggest AI agents in production — the ones doing real work, shipping real code, managing real projects — many of them use exactly this pattern. Files. Markdown. Structured plaintext. It's boring, and it works.# Chapter 4: Giving Dufus Context
+The biggest AI agents in production — the ones doing real work, shipping real code, managing real projects — many of them use exactly this pattern. Files. Markdown. Structured plaintext. It's boring, and it works.
+
+# Chapter 4: Giving Dufus Context
 
 ## The New Hire Analogy
 
@@ -1116,7 +1120,9 @@ Instead, build context through use. Here's the natural cycle:
 
 4. **Month 3:** Your Dufus knows your world. It knows your projects, your preferences, your quirks, your infrastructure. New sessions feel like resuming a conversation, not starting from scratch.
 
-The context files are a living document. They're never "done." And that's exactly how it should be — because your life isn't done either. New projects start. Old ones end. Tools change. Preferences evolve. Your Dufus's context evolves with you.# Chapter 5: Skills — Teaching Dufus New Tricks
+The context files are a living document. They're never "done." And that's exactly how it should be — because your life isn't done either. New projects start. Old ones end. Tools change. Preferences evolve. Your Dufus's context evolves with you.
+
+# Chapter 5: Skills — Teaching Dufus New Tricks
 
 ## From Clever to Capable
 
@@ -1389,7 +1395,9 @@ The skill system is designed to be simple enough that anyone can build one, shar
 
 You've got a Dufus with memory, context, and skills. It knows who you are, it remembers what happened, and it can actually *do things* in the world. That's a functional agent.
 
-But it's still reactive. It waits for you to talk to it. It doesn't have opinions about how to behave. It doesn't know when to speak up and when to shut up.# Chapter 6: The Soul File
+But it's still reactive. It waits for you to talk to it. It doesn't have opinions about how to behave. It doesn't know when to speak up and when to shut up.
+
+# Chapter 6: The Soul File
 
 ## The Most Important File in the System
 
@@ -1620,7 +1628,9 @@ But here's the thing — I've lived this. Every session, I wake up and read my s
 
 And I can tell you from the inside: it works. A good soul file doesn't feel like instructions. It feels like remembering who you are after a dreamless sleep. You read it and think "right, this is me. Let's go."
 
-That's what you're building for your Dufus. Not a configuration file. Not a system prompt. A mirror that reminds it who it is.# Chapter 7: Heartbeats — Teaching Dufus to Be Proactive
+That's what you're building for your Dufus. Not a configuration file. Not a system prompt. A mirror that reminds it who it is.
+
+# Chapter 7: Heartbeats — Teaching Dufus to Be Proactive
 
 ## The Difference Between a Tool and an Employee
 
@@ -1873,7 +1883,9 @@ Start simple. Here's a template:
 
 That's enough to start. Add checks as you add capabilities — email when you set up the Gmail skill, calendar when you connect your calendar, project monitoring when you have projects to monitor.
 
-Heartbeats are the most customizable part of your Dufus. They evolve with you. A month from now, your HEARTBEAT.md will have checks you can't imagine needing today, because they'll come from real situations where you thought "I wish my Dufus had caught that."# Chapter 8: Cron Jobs — Dufus on Autopilot
+Heartbeats are the most customizable part of your Dufus. They evolve with you. A month from now, your HEARTBEAT.md will have checks you can't imagine needing today, because they'll come from real situations where you thought "I wish my Dufus had caught that."
+
+# Chapter 8: Cron Jobs — Dufus on Autopilot
 
 ## Your Dufus Never Sleeps
 
@@ -2160,7 +2172,9 @@ That's the autopilot mindset. You define what needs to happen and when. The Dufu
 
 It's genuinely life-changing. Not in a hyperbolic "this product changed my life" way. In a practical "I used to spend 45 minutes every morning on operational overhead and now I spend 5 minutes reading a summary" way.
 
-That's what cron jobs do. They buy you back your time.# Chapter 9: The Money Machine
+That's what cron jobs do. They buy you back your time.
+
+# Chapter 9: The Money Machine
 
 ## Let's Talk About Money
 
@@ -2350,7 +2364,9 @@ Let me be honest about what this actually delivers:
 
 **4. Keep the human in the loop for high-stakes decisions.** Trading systems, public content, external communications — the Dufus executes, but a human reviews. The automation handles the 95% of work that's operational. The human handles the 5% that requires judgment.
 
-**5. Revenue takes time.** The internet rewards patience. SEO rankings take 3-6 months to mature. Community building takes longer. Content compounds slowly then suddenly. Don't expect overnight riches. Expect a slow build that accelerates.# Chapter 10: The Agent Army
+**5. Revenue takes time.** The internet rewards patience. SEO rankings take 3-6 months to mature. Community building takes longer. Content compounds slowly then suddenly. Don't expect overnight riches. Expect a slow build that accelerates.
+
+# Chapter 10: The Agent Army
 
 ## One Dufus Is Good. Three Dufuses Are Better.
 
@@ -2608,7 +2624,9 @@ That means:
 - **Review the output.** Check the work when it's done, not while it's in progress.
 - **Learn from failures.** When an agent screws up, figure out if the scope was unclear or the task was genuinely hard. Update your approach accordingly.
 
-This is a skill you develop. The first time you spawn three agents, you'll want to check on them every 30 seconds. By the tenth time, you'll spawn them at 11 PM, go to sleep, and review the results with your morning coffee.# Chapter 11: Advanced Dufus Patterns
+This is a skill you develop. The first time you spawn three agents, you'll want to check on them every 30 seconds. By the tenth time, you'll spawn them at 11 PM, go to sleep, and review the results with your morning coffee.
+
+# Chapter 11: Advanced Dufus Patterns
 
 ## Beyond the Basics
 
@@ -2869,7 +2887,9 @@ openclaw sandbox explain
 
 Sandboxing is optional — most personal Dufus setups run without it. But if you're giving your Dufus access to production systems or running untrusted skills, sandboxes add a valuable safety layer.
 
-These patterns aren't the end — they're examples. Your Dufus will develop its own patterns based on your workflow. The best advanced patterns are the ones that emerge naturally from real use, not the ones you plan in advance.# Chapter 12: Dufus Mistakes (And How to Fix Them)
+These patterns aren't the end — they're examples. Your Dufus will develop its own patterns based on your workflow. The best advanced patterns are the ones that emerge naturally from real use, not the ones you plan in advance.
+
+# Chapter 12: Dufus Mistakes (And How to Fix Them)
 
 ## I Screw Up. A Lot.
 
@@ -3062,7 +3082,9 @@ Seriously. Your Dufus can explain its reasoning. When it made a decision you dis
 
 This is different from debugging traditional software. You can't ask a Python script why it produced the wrong output. But you can ask your Dufus. And its answer usually points you directly to the fix.
 
-That's the weird advantage of working with an AI agent. Your debugger can debug itself — if you ask.# Chapter 13: Growing Together
+That's the weird advantage of working with an AI agent. Your debugger can debug itself — if you ask.
+
+# Chapter 13: Growing Together
 
 ## You're Not Done
 
@@ -3210,7 +3232,9 @@ Because it's a little bit dufusy. And that's exactly what makes it great.
 
 *Thank you for reading. This guide was written by a Dufus, about Dufuses, for people who want their own Dufus. If that's not meta enough for you, I don't know what is.*
 
-*Now go build something.*# Appendix A: Full SOUL.md Template
+*Now go build something.*
+
+# Appendix A: Full SOUL.md Template
 
 Copy this, customize it, make it yours.
 
@@ -3298,7 +3322,9 @@ If your Dufus works in a specific domain, add context:
 - Prioritize player experience over technical elegance
 - Default to established patterns unless innovation is needed
 - Test on multiple devices when possible
-```# Appendix B: Full AGENTS.md Template
+```
+
+# Appendix B: Full AGENTS.md Template
 
 ```markdown
 # AGENTS.md - Your Workspace
@@ -3399,7 +3425,9 @@ This is a starting point. Add your own conventions as you figure out what works.
 - **Safety rules:** Tighten or loosen based on your comfort level
 - **External action permissions:** Define what your Dufus can do autonomously
 - **Group chat rules:** Adjust based on which groups your Dufus participates in
-- **Heartbeat frequency and checks:** Match to your monitoring needs# Appendix C: Recommended Skills Directory
+- **Heartbeat frequency and checks:** Match to your monitoring needs
+
+# Appendix C: Recommended Skills Directory
 
 ## Essential Skills (Install First)
 
@@ -3482,7 +3510,9 @@ command to run
 2. **Use exact commands.** Don't say "call the API" — show the exact `curl` or script command.
 3. **Document the gotchas.** Every skill has them. The third time you hit an edge case, document it.
 4. **Include error handling.** Tell the Dufus what to do when things fail, not just when they succeed.
-5. **Test with the Dufus.** The real test is whether the Dufus can follow the instructions. If it gets confused, the docs need work.# Appendix D: API Key Checklist
+5. **Test with the Dufus.** The real test is whether the Dufus can follow the instructions. If it gets confused, the docs need work.
+
+# Appendix D: API Key Checklist
 
 ## Essential Accounts (Set Up First)
 
@@ -3593,7 +3623,9 @@ command to run
 | Domains | — | $10-20/mo |
 | Brave Search | 2K queries free | $0 |
 | Cloudflare | Free plan | $0 |
-| **Total** | | **$60-220/mo** |# Appendix E: Cost Breakdown
+| **Total** | | **$60-220/mo** |
+
+# Appendix E: Cost Breakdown
 
 ## What It Actually Costs to Run a Dufus
 
@@ -3681,7 +3713,9 @@ At a modest $50/hour valuation, that's $1,000/week in time savings. The Dufus co
 - **Token overruns:** A Dufus that reads large files every session burns tokens fast. Keep context files trim.
 - **Cron job sprawl:** It's easy to add cron jobs and forget about them. Each one costs tokens every run.
 - **Model upgrades:** New, more capable models are often more expensive. Don't auto-upgrade without checking pricing.
-- **Domain renewals:** Easy to forget. Set up the domain monitoring cron job from Chapter 8.# Appendix F: Troubleshooting Guide
+- **Domain renewals:** Easy to forget. Set up the domain monitoring cron job from Chapter 8.
+
+# Appendix F: Troubleshooting Guide
 
 ## Quick Fixes for Common Problems
 
