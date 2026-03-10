@@ -18,7 +18,7 @@ export default function Footer() {
               key={s.label}
               href={s.href}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="text-white/30 hover:text-accent transition-colors font-mono text-sm"
               title={s.label}
             >

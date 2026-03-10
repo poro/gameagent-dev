@@ -8,6 +8,10 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" }
 export const metadata: Metadata = {
   title: "Game Agent — Building AI Products Live",
   description: "Watch Mark Ollila build real, revenue-generating AI products live with his AI agent Dufus. Streams, projects, and the future of AI development.",
+  metadataBase: new URL("https://gameagent.dev"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Game Agent — Building AI Products Live",
     description: "Watch real AI products get built live. No tutorials. No toy demos. Real products, real revenue.",
@@ -18,6 +22,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@markollila",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

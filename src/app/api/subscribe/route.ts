@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const RESEND_API_KEY = "re_DSQwePeD_KrqomQxecM6cWMA2vScKXZ9e";
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const AUDIENCE_NAME = "Game Agent Newsletter";
-const FROM_EMAIL = "dufus@game-agents.com";
+const FROM_EMAIL = process.env.FROM_EMAIL || "dufus@game-agents.com";
 
 async function resend(path: string, body: Record<string, unknown>) {
   return fetch(`https://api.resend.com${path}`, {
@@ -41,6 +41,14 @@ async function getOrCreateAudience(): Promise<string> {
 
 export async function POST(req: NextRequest) {
   try {
+    if (!RESEND_API_KEY) {
+      console.error("RESEND_API_KEY not configured");
+      return NextResponse.json(
+        { error: "Newsletter service is not configured." },
+        { status: 503 }
+      );
+    }
+
     const { email } = await req.json();
 
     if (!email || typeof email !== "string") {
