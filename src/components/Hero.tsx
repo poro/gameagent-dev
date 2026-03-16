@@ -27,10 +27,17 @@ export default function Hero() {
         </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
+            href="/getting-started"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-black font-mono font-bold text-sm rounded hover:bg-accent/90 transition-all hover:shadow-[0_0_30px_rgba(0,255,136,0.3)]"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            GET STARTED
+          </a>
+          <a
             href="https://youtube.com/@markollila"
             target="_blank"
             rel="noopener"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-black font-mono font-bold text-sm rounded hover:bg-accent/90 transition-all hover:shadow-[0_0_30px_rgba(0,255,136,0.3)]"
+            className="inline-flex items-center gap-2 px-8 py-3 border border-accent/30 text-accent font-mono font-bold text-sm rounded hover:bg-accent/10 transition-all"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.87.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
             WATCH LIVE
@@ -39,7 +46,7 @@ export default function Hero() {
             href="https://twitch.tv/markollila"
             target="_blank"
             rel="noopener"
-            className="inline-flex items-center gap-2 px-8 py-3 border border-accent/30 text-accent font-mono font-bold text-sm rounded hover:bg-accent/10 transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-white/60 font-mono font-bold text-sm rounded hover:bg-white/5 transition-all"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.64 5.93h1.43v4.28h-1.43m3.93-4.28H17v4.28h-1.43M7 2 3.43 5.57v12.86h4.28V22l3.58-3.57h2.85L20.57 12V2m-1.43 9.29-2.85 2.85h-2.86l-2.5 2.5v-2.5H7.71V3.43h11.43z"/></svg>
             TWITCH
