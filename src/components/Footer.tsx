@@ -7,19 +7,19 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-surface-border py-12 px-4">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="border-t border-surface-border py-8 sm:py-12 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
         <div className="font-mono text-sm text-white/30">
           <span className="text-accent/50">{'>'}</span> GAME_AGENT © {new Date().getFullYear()}
         </div>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
           {socials.map((s) => (
             <a
               key={s.label}
               href={s.href}
               target="_blank"
               rel="noopener"
-              className="text-white/30 hover:text-accent transition-colors font-mono text-sm"
+              className="text-white/30 hover:text-accent transition-colors font-mono text-sm py-1 active:text-accent"
               title={s.label}
             >
               {s.icon} {s.label}

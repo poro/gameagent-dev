@@ -24,7 +24,7 @@ export default function Nav() {
             </a>
           ))}
         </div>
-        <button onClick={() => setOpen(!open)} className="md:hidden text-white/60 hover:text-accent">
+        <button onClick={() => setOpen(!open)} className="md:hidden text-white/60 hover:text-accent p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Toggle menu">
           <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
             {open ? <path d="M6 6l12 12M6 18L18 6" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
           </svg>
@@ -33,7 +33,7 @@ export default function Nav() {
       {open && (
         <div className="md:hidden bg-black/95 border-b border-surface-border px-4 pb-4">
           {links.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-2 text-sm text-white/60 hover:text-accent font-mono">
+            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-3 text-sm text-white/60 hover:text-accent active:text-accent font-mono">
               {l.label}
             </a>
           ))}

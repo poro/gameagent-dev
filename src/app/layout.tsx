@@ -25,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark scroll-smooth">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <script defer src="https://analytics.game-agents.com/script.js" data-website-id="00b9dafe-2ebd-41d1-bb4b-381f8dd377f0"></script>
       </head>
       <body className={`${inter.variable} ${jetbrains.variable} font-sans bg-black text-white antialiased`}>

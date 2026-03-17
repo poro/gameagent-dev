@@ -65,16 +65,16 @@ function CardContent({ p }: { p: (typeof projects)[number] }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-4 bg-surface/50">
+    <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6 bg-surface/50">
       <div className="max-w-6xl mx-auto">
         <div className="font-mono text-accent/50 text-xs mb-2">// projects</div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
           The <span className="text-accent">Portfolio</span>
         </h2>
-        <p className="text-white/40 mb-12 max-w-xl">
+        <p className="text-sm sm:text-base text-white/40 mb-8 sm:mb-12 max-w-xl">
           Real products. Real users. All built live on stream with AI.
         </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
           {projects.map((p) =>
             p.url ? (
               <a

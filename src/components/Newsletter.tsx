@@ -48,13 +48,13 @@ export default function Newsletter() {
   }
 
   return (
-    <section id="newsletter" className="py-24 px-4 bg-surface/50">
+    <section id="newsletter" className="py-16 sm:py-24 px-4 sm:px-6 bg-surface/50">
       <div className="max-w-xl mx-auto text-center">
         <div className="font-mono text-accent/50 text-xs mb-2">// subscribe</div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
           Stay in the <span className="text-accent">Loop</span>
         </h2>
-        <p className="text-white/40 mb-8">
+        <p className="text-sm sm:text-base text-white/40 mb-6 sm:mb-8">
           Get notified about new streams, project launches, and behind-the-scenes updates.
         </p>
         {status === "success" ? (
@@ -74,7 +74,7 @@ export default function Newsletter() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="px-6 py-3 bg-accent text-black font-mono font-bold text-sm rounded hover:bg-accent/90 transition-all hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3.5 sm:py-3 bg-accent text-black font-mono font-bold text-sm rounded hover:bg-accent/90 transition-all hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] active:scale-95 shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {status === "loading" ? "SUBSCRIBING..." : "SUBSCRIBE"}
             </button>

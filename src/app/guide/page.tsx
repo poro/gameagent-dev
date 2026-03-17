@@ -108,7 +108,7 @@ export default function GuidePage() {
           </div>
 
           {/* Article */}
-          <article className="max-w-3xl mx-auto px-4 sm:px-8 py-12 pb-24">
+          <article className="max-w-3xl mx-auto px-4 sm:px-8 py-8 sm:py-12 pb-24 overflow-x-hidden">
             <div className="mb-12">
               <div className="font-mono text-accent/50 text-xs mb-3">
                 // the-complete-guide
