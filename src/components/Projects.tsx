@@ -19,6 +19,7 @@ const projects = [
     tags: ["Game Engine", "AI", "TypeScript"],
     status: "building",
     url: "https://naive.dev",
+    demo: "/demo",
   },
   {
     name: "markollila.com",
@@ -59,6 +60,16 @@ function CardContent({ p }: { p: (typeof projects)[number] }) {
           </span>
         ))}
       </div>
+      {"demo" in p && p.demo && (
+        <span className="block mt-3">
+          <a
+            href={p.demo}
+            className="inline-block text-[10px] font-mono text-accent border border-accent/30 px-2 py-1 rounded hover:bg-accent/10 transition-colors"
+          >
+            ▶ TRY DEMO
+          </a>
+        </span>
+      )}
     </>
   );
 }
