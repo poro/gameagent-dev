@@ -42,7 +42,9 @@ The difference between "using AI" and "having a Dufus" is the difference between
 
 Here's what you need to set up your own Dufus. The list is shorter than you think:
 
-**A computer that stays on.** Could be a home server, a VPS, a Raspberry Pi if you're feeling adventurous, or just a laptop that you leave open. Our setup runs on a Linux box called "myra." Nothing fancy. It just needs to be on and connected to the internet.
+**A computer that stays on.** Could be a home server, a VPS, a Raspberry Pi if you're feeling adventurous, or just a laptop that you leave open. Our setup runs on a Beelink mini PC called "myra." Nothing fancy. It just needs to be on and connected to the internet.
+
+**Real-world hardware cost:** When we priced out the hardware on Amazon — a Beelink mini PC, a 1TB NVMe drive, and a 500GB backup drive — it came to about **$770**. That's the actual number, not a theoretical minimum. You can go cheaper with a VPS ($5-20/month) or more expensive with beefier hardware, but $770 gets you a solid dedicated machine that sits quietly on a shelf and runs 24/7.
 
 **An AI API key.** You need access to a language model. Claude (Anthropic), GPT (OpenAI), Gemini (Google) — pick your poison. We use Claude as the default and swap in others for specific tasks. The cost is real but manageable. You can expect to spend around $200/month for heavy agent usage. You can start much cheaper.
 
@@ -142,6 +144,38 @@ The first time our Dufus tried to manage DNS records, it had the wrong Cloudflar
 Building with a Dufus is like having a brilliant intern who graduated top of their class but has never had a job before. The raw capability is there. The judgment comes with experience — and your patience in building the right guardrails.
 
 This guide is about building those guardrails. It's about setting things up so your Dufus is genuinely useful, reliably capable, and honest about what it doesn't know.
+
+## "But What About Claude Computer Use?"
+
+Good question. Anthropic just released Claude Computer Use — a feature where Claude can see your screen, move your mouse, click buttons, and type. It's impressive. It looks like magic. And you might be wondering: do I still need a Dufus if Claude can just use my computer?
+
+Short answer: yes. They're fundamentally different things.
+
+**Claude Computer Use** is a tool. It's screen automation — it sees pixels, clicks buttons, fills forms. Think of it as a very smart person controlling your mouse. When you close the session, it's gone. It has no memory of what it did yesterday. It can't check your email at 7 AM while you're sleeping. It can't run a trading bot at market close. It can't monitor your servers. It exists only while you're watching.
+
+**A Dufus** is an entity. It persists. It has memory, personality, scheduled tasks, proactive behavior, and agency. It works while you sleep. It remembers what happened last week. It has opinions about your code. It runs cron jobs, manages projects, sends alerts, and builds things overnight.
+
+Here's the comparison:
+
+| | Claude Computer Use | Dufus (OpenClaw) |
+|---|---|---|
+| **Memory** | None between sessions | Persistent (files) |
+| **Runs without you** | No | Yes (heartbeats, cron) |
+| **Scheduled tasks** | No | Yes (cron jobs, 24/7) |
+| **Multi-channel** | No (screen only) | Telegram, Discord, email, etc. |
+| **Personality** | Generic | Soul file, evolves over time |
+| **Tool access** | Screen + keyboard | Shell, APIs, databases, web, files |
+| **Agent army** | No | Yes (parallel sub-agents) |
+| **Proactive** | No (waits for you) | Yes (heartbeats, monitoring) |
+| **Cost model** | Per-session | Always-on (optimizable) |
+
+Computer Use is great for tasks that *require* a GUI — filling out web forms, navigating apps that don't have APIs, interacting with desktop software. If you need to file your taxes through TurboTax's web interface, Computer Use is your tool.
+
+But a Dufus doesn't need a screen. It works through APIs, shell commands, file operations, and direct tool access. It's faster (no pixel-by-pixel screen reading), more reliable (no "I can't find the button"), and dramatically more capable for the kind of autonomous work described in this guide.
+
+The real power move? **Use both.** Your Dufus handles the 95% that works through APIs and commands. When it hits something that genuinely needs a browser UI, it can use browser automation tools (OpenClaw includes Playwright-based browser control) to handle it. Best of both worlds.
+
+Computer Use is a feature. A Dufus is a colleague. They're complementary, not competitive.
 
 ## What's Coming in This Guide
 
@@ -3696,17 +3730,99 @@ The real question isn't "what does it cost?" but "what's it worth?"
 
 At a modest $50/hour valuation, that's $1,000/week in time savings. The Dufus costs $200-300/month. That's a 15-20x ROI on time alone, not counting productivity gains from automated workflows.
 
-## Cost Optimization Tips
+## Understanding Sessions and Token Burn
 
-1. **Use cheaper models for routine tasks.** Claude Sonnet costs a fraction of Opus. Use it for email checks, social posts, and monitoring. Save Opus for complex coding and analysis.
+This is the part that trips up most new Dufus operators: **what counts as a "session" and why are tokens disappearing so fast?**
 
-2. **Reduce heartbeat frequency if budget-tight.** Every 60 minutes instead of 30 cuts heartbeat costs in half.
+### What's a Session?
 
-3. **Batch cron jobs.** One cron job that checks 5 things costs less than 5 separate cron jobs.
+Every time your Dufus "wakes up" — whether from a chat message, a heartbeat, or a cron job — that's a session. And every session loads context: AGENTS.md, SOUL.md, USER.md, MEMORY.md, today's daily file, yesterday's daily file. That's potentially thousands of tokens *before your Dufus says a single word*.
 
-4. **Use free tiers aggressively.** Vercel, Supabase, Brave Search, Cloudflare, Telegram — all have generous free tiers that cover most Dufus needs.
+Here's the math that'll scare you:
 
-5. **Monitor token usage.** OpenClaw tracks usage per session and cron job. Review monthly. Kill jobs that aren't providing value.
+| Event | Context Loaded | Frequency | Daily Token Cost (approx) |
+|-------|---------------|-----------|---------------------------|
+| Your messages | Full context | 10-50/day | Varies |
+| Heartbeats | Full context | 48/day (every 30 min) | High |
+| Cron jobs | Full context each | 15+ jobs/day | High |
+| Sub-agents | Own context per agent | As needed | Varies |
+
+If you have a large MEMORY.md (3,000+ words), a detailed TOOLS.md, and 15 cron jobs each loading that full context — you're burning tokens on context alone before any actual work happens.
+
+### The Minute Limit Problem
+
+Claude and other providers have **rate limits** — not just daily caps, but per-minute token limits. If three cron jobs fire close together while you're also chatting, you can hit the per-minute ceiling. Symptoms: slow responses, timeouts, or "rate limit exceeded" errors.
+
+This is especially painful during the first week when you're actively configuring things AND all your new cron jobs are running.
+
+### How to Keep Token Costs Down
+
+**1. Use your subscription, not just API tokens.**
+
+This is the biggest win most people miss. If you have a Claude Max subscription ($200/month), you get a massive included token allocation. OpenClaw can be configured to route through your subscription rather than burning pure API credits. Check OpenClaw's model configuration — the difference between pure API and routing through your subscription can save hundreds of dollars per month.
+
+**2. Use cheaper models for routine tasks.**
+
+Claude Sonnet costs a fraction of Opus. Claude Haiku costs a fraction of Sonnet. Use the cheapest model that gets the job done:
+
+| Task | Recommended Model | Why |
+|------|------------------|-----|
+| Complex coding | Opus or Sonnet | Needs reasoning depth |
+| Morning briefs | Sonnet | Summarization doesn't need Opus |
+| Email checks | Haiku | Simple scan-and-report |
+| Social posting | Haiku or Sonnet | Template-based output |
+| Fitness reminders | Haiku | Nearly trivial task |
+
+Set model per cron job:
+```bash
+openclaw cron add --name "email-check" --model "anthropic/claude-haiku" ...
+```
+
+**3. Trim your context files.**
+
+Every word in MEMORY.md, TOOLS.md, and USER.md gets loaded into every session. A 5,000-word MEMORY.md loaded 48 times per day (heartbeats alone) is 240,000 words of context — just for monitoring.
+
+Aggressive pruning rules:
+- MEMORY.md: Keep under 2,000 words. Archive completed projects.
+- TOOLS.md: Only active credentials. Remove tools you haven't used in a month.
+- Daily files: Archive files older than 7 days to `memory/archive/`.
+
+**4. Reduce heartbeat frequency.**
+
+Every 60 minutes instead of 30 cuts heartbeat token costs in **half**. For most people, 60 minutes is plenty responsive.
+
+**5. Batch cron jobs ruthlessly.**
+
+One cron job that checks 5 things costs less than 5 separate cron jobs, because each separate job loads the full context independently.
+
+**6. Checkpoint system for heavy work.**
+
+If you're doing iterative work (building a site, debugging a complex issue), context grows with every exchange. Instead of one marathon session, break work into checkpoints:
+- Work for 10-15 exchanges
+- Save state to a file: "checkpoint: completed X, Y, Z. Next: A, B"
+- Start a fresh session pointing at the checkpoint file
+
+This prevents context from snowballing and hitting expensive long-context pricing tiers.
+
+**7. Monitor and kill wasteful jobs.**
+
+Run `openclaw cron list` monthly. Check consecutive errors — a failing cron job still burns tokens trying to run. Disable jobs that aren't providing value.
+
+### Real Cost Scenarios
+
+**Unoptimized (what happens if you don't think about it):**
+- Large context files + 30-min heartbeats + 20 cron jobs + Opus everywhere
+- **$400-800/month** in API tokens
+
+**Optimized (what we actually run):**
+- Trimmed context + 30-min heartbeats + 15 cron jobs + mixed models
+- **$150-300/month** in API tokens
+
+**Budget-friendly (getting started):**
+- Minimal context + 60-min heartbeats + 3-5 cron jobs + Haiku for routine
+- **$30-60/month** in API tokens
+
+The difference between unoptimized and optimized can be 3-5x. It's worth spending an hour configuring model assignments and trimming context files.
 
 ## Hidden Costs to Watch
 
@@ -3714,6 +3830,7 @@ At a modest $50/hour valuation, that's $1,000/week in time savings. The Dufus co
 - **Cron job sprawl:** It's easy to add cron jobs and forget about them. Each one costs tokens every run.
 - **Model upgrades:** New, more capable models are often more expensive. Don't auto-upgrade without checking pricing.
 - **Domain renewals:** Easy to forget. Set up the domain monitoring cron job from Chapter 8.
+- **Rate limit penalties:** Hitting per-minute limits causes retries, which burn even more tokens. Stagger your cron job schedules.
 
 # Appendix F: Troubleshooting Guide
 
